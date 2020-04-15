@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ReusableFoodCell" rowHeight="76" id="7yh-Vg-Dqd" customClass="FoodCell" customModule="TJSympTrack" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="347" height="76"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7yh-Vg-Dqd" id="g66-W7-1mm">
+                <rect key="frame" x="0.0" y="0.0" width="347" height="76"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="0jN-G3-7sF" userLabel="Food Stack View">
+                        <rect key="frame" x="0.0" y="0.0" width="347" height="76"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vb6-5A-weF" userLabel="Food Cell View">
+                                <rect key="frame" x="0.0" y="0.0" width="347" height="76"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AQi-1q-xZm" userLabel="Food Image">
+                                        <rect key="frame" x="20" y="5" width="66" height="66"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="AQi-1q-xZm" secondAttribute="height" multiplier="1:1" id="21n-sa-zWk"/>
+                                            <constraint firstAttribute="width" constant="66" id="Phu-6d-DrX"/>
+                                            <constraint firstAttribute="height" constant="66" id="ZhM-Jk-2Im"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Food Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="njH-RR-7N5">
+                                        <rect key="frame" x="91" y="5" width="201" height="66"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="v8e-ZK-fm5" userLabel="Food Check Circle">
+                                        <rect key="frame" x="297" y="23.5" width="30" height="28.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="P1n-m3-27c"/>
+                                            <constraint firstAttribute="width" constant="30" id="q4y-bt-WcW"/>
+                                        </constraints>
+                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="thin"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="yV2-rI-Y8a" userLabel="Food Checkmark">
+                                        <rect key="frame" x="302" y="30" width="20" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="XTN-11-zvh"/>
+                                            <constraint firstAttribute="width" constant="20" id="yDL-xR-Q9Z"/>
+                                        </constraints>
+                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="thin"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" name="BrandGray"/>
+                                <constraints>
+                                    <constraint firstItem="njH-RR-7N5" firstAttribute="leading" secondItem="AQi-1q-xZm" secondAttribute="trailing" constant="5" id="3yF-dD-5lj"/>
+                                    <constraint firstItem="v8e-ZK-fm5" firstAttribute="centerY" secondItem="Vb6-5A-weF" secondAttribute="centerY" id="5nc-ZP-W0S"/>
+                                    <constraint firstAttribute="trailing" secondItem="yV2-rI-Y8a" secondAttribute="trailing" constant="25" id="ENj-X4-vez"/>
+                                    <constraint firstItem="AQi-1q-xZm" firstAttribute="top" secondItem="Vb6-5A-weF" secondAttribute="top" constant="5" id="Fsb-g8-E2x"/>
+                                    <constraint firstAttribute="trailing" secondItem="v8e-ZK-fm5" secondAttribute="trailing" constant="20" id="MB6-7N-P44"/>
+                                    <constraint firstItem="njH-RR-7N5" firstAttribute="top" secondItem="Vb6-5A-weF" secondAttribute="top" constant="5" id="Rec-5V-8M8"/>
+                                    <constraint firstItem="yV2-rI-Y8a" firstAttribute="centerY" secondItem="Vb6-5A-weF" secondAttribute="centerY" id="etG-We-Cb9"/>
+                                    <constraint firstItem="AQi-1q-xZm" firstAttribute="leading" secondItem="Vb6-5A-weF" secondAttribute="leading" constant="20" id="exX-ao-bjq"/>
+                                    <constraint firstAttribute="bottom" secondItem="AQi-1q-xZm" secondAttribute="bottom" constant="5" id="fOL-fM-aVg"/>
+                                    <constraint firstItem="AQi-1q-xZm" firstAttribute="centerY" secondItem="Vb6-5A-weF" secondAttribute="centerY" id="pX2-7D-Ab2"/>
+                                    <constraint firstAttribute="bottom" secondItem="njH-RR-7N5" secondAttribute="bottom" constant="5" id="v6B-ok-jPj"/>
+                                    <constraint firstItem="v8e-ZK-fm5" firstAttribute="leading" secondItem="njH-RR-7N5" secondAttribute="trailing" constant="5" id="xO8-kv-1ox"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="Vb6-5A-weF" firstAttribute="top" secondItem="0jN-G3-7sF" secondAttribute="top" id="1RE-4b-UBr"/>
+                            <constraint firstItem="Vb6-5A-weF" firstAttribute="leading" secondItem="0jN-G3-7sF" secondAttribute="leading" id="3Tw-dz-FMn"/>
+                            <constraint firstAttribute="bottom" secondItem="Vb6-5A-weF" secondAttribute="bottom" id="82a-NK-ZDy"/>
+                            <constraint firstAttribute="trailing" secondItem="Vb6-5A-weF" secondAttribute="trailing" id="jWK-TB-TRB"/>
+                        </constraints>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="0jN-G3-7sF" secondAttribute="trailing" id="8nU-MY-SbA"/>
+                    <constraint firstItem="0jN-G3-7sF" firstAttribute="top" secondItem="g66-W7-1mm" secondAttribute="top" id="9Cq-7Q-ynt"/>
+                    <constraint firstItem="0jN-G3-7sF" firstAttribute="leading" secondItem="g66-W7-1mm" secondAttribute="leading" id="LS3-ar-BDH"/>
+                    <constraint firstAttribute="bottom" secondItem="0jN-G3-7sF" secondAttribute="bottom" id="zh7-h4-aNA"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="xcq-Gy-N6I"/>
+            <connections>
+                <outlet property="foodCheckmark" destination="yV2-rI-Y8a" id="VEQ-pP-6cn"/>
+                <outlet property="foodImage" destination="AQi-1q-xZm" id="NJa-zz-Cnx"/>
+                <outlet property="foodLabel" destination="njH-RR-7N5" id="k67-si-ygQ"/>
+            </connections>
+            <point key="canvasLocation" x="157.24637681159422" y="145.98214285714286"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="checkmark" catalog="system" width="64" height="56"/>
+        <image name="circle" catalog="system" width="64" height="60"/>
+        <namedColor name="BrandGray">
+            <color red="0.89800000190734863" green="0.89800000190734863" blue="0.89800000190734863" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

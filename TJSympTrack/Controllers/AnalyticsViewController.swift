@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  AnalyticsViewController.swift
 //  TJSympTrack
 //
 //  Created by Theo Goodman on 4/15/20.
@@ -7,14 +7,13 @@
 //
 
 import UIKit
+import CoreData
 
-class ViewController: UIViewController {
-
+class AnalyticsViewController: UIViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
-
+    
 }
-

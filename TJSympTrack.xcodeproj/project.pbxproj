@@ -3,18 +3,37 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		D5BA83C0C221C2D3F47A6AB6 /* Pods_TJSympTrack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82ADDAAA5EE24D9FF11D86F3 /* Pods_TJSympTrack.framework */; };
 		E486D1A324474A0100358D35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E486D1A224474A0100358D35 /* AppDelegate.swift */; };
 		E486D1A524474A0100358D35 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E486D1A424474A0100358D35 /* SceneDelegate.swift */; };
-		E486D1A724474A0100358D35 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E486D1A624474A0100358D35 /* ViewController.swift */; };
 		E486D1AA24474A0100358D35 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E486D1A824474A0100358D35 /* Main.storyboard */; };
-		E486D1AD24474A0100358D35 /* TJSympTrack.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E486D1AB24474A0100358D35 /* TJSympTrack.xcdatamodeld */; };
+		E486D1AD24474A0100358D35 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E486D1AB24474A0100358D35 /* DataModel.xcdatamodeld */; };
 		E486D1AF24474A0100358D35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E486D1AE24474A0100358D35 /* Assets.xcassets */; };
 		E486D1B224474A0100358D35 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E486D1B024474A0100358D35 /* LaunchScreen.storyboard */; };
+		E4877D2624475DA400BC249B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E4877D2524475DA400BC249B /* GoogleService-Info.plist */; };
+		E4877D2B24476D7A00BC249B /* FoodManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4877D2A24476D7A00BC249B /* FoodManager.swift */; };
+		E4877D2D24476DAB00BC249B /* GoogleDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4877D2C24476DAB00BC249B /* GoogleDataManager.swift */; };
+		E4877D2F24476DD000BC249B /* FoodData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4877D2E24476DD000BC249B /* FoodData.swift */; };
+		E4877D3124476E0900BC249B /* TJSymptomsBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4877D3024476E0900BC249B /* TJSymptomsBrain.swift */; };
+		E4877D3324476E2E00BC249B /* SelfSizedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4877D3224476E2E00BC249B /* SelfSizedTableView.swift */; };
+		E4877D3524476E4D00BC249B /* SelectedSymptomData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4877D3424476E4D00BC249B /* SelectedSymptomData.swift */; };
+		E4877D382447720900BC249B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4877D372447720900BC249B /* Constants.swift */; };
+		E4877D3B24477C0F00BC249B /* SymptomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4877D3924477C0F00BC249B /* SymptomCell.swift */; };
+		E4877D3C24477C0F00BC249B /* SymptomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4877D3A24477C0F00BC249B /* SymptomCell.xib */; };
+		E4877D3F24477C2800BC249B /* FoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4877D3D24477C2800BC249B /* FoodCell.swift */; };
+		E4877D4024477C2800BC249B /* FoodCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4877D3E24477C2800BC249B /* FoodCell.xib */; };
+		E4877D4224477EF600BC249B /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4877D4124477EF600BC249B /* FirstViewController.swift */; };
+		E4877D4424477F1D00BC249B /* AddSymptomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4877D4324477F1D00BC249B /* AddSymptomsViewController.swift */; };
+		E4877D4624477F4C00BC249B /* SelectedSymptoms.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4877D4524477F4C00BC249B /* SelectedSymptoms.swift */; };
+		E4877D4824477F7200BC249B /* AddFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4877D4724477F7200BC249B /* AddFoodViewController.swift */; };
+		E4877D4A24477F9400BC249B /* CompleteEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4877D4924477F9400BC249B /* CompleteEntryViewController.swift */; };
+		E4877D4C2447802600BC249B /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4877D4B2447802600BC249B /* CalendarViewController.swift */; };
+		E4877D4E2447805300BC249B /* ViewEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4877D4D2447805300BC249B /* ViewEntryViewController.swift */; };
+		E4877D502447807900BC249B /* AnalyticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4877D4F2447807900BC249B /* AnalyticsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,12 +43,31 @@
 		E486D19F24474A0100358D35 /* TJSympTrack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TJSympTrack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E486D1A224474A0100358D35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E486D1A424474A0100358D35 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E486D1A624474A0100358D35 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E486D1A924474A0100358D35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E486D1AC24474A0100358D35 /* TJSympTrack.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TJSympTrack.xcdatamodel; sourceTree = "<group>"; };
 		E486D1AE24474A0100358D35 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E486D1B124474A0100358D35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E486D1B324474A0100358D35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E4877D2524475DA400BC249B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E4877D2A24476D7A00BC249B /* FoodManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodManager.swift; sourceTree = "<group>"; };
+		E4877D2C24476DAB00BC249B /* GoogleDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleDataManager.swift; sourceTree = "<group>"; };
+		E4877D2E24476DD000BC249B /* FoodData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodData.swift; sourceTree = "<group>"; };
+		E4877D3024476E0900BC249B /* TJSymptomsBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TJSymptomsBrain.swift; sourceTree = "<group>"; };
+		E4877D3224476E2E00BC249B /* SelfSizedTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfSizedTableView.swift; sourceTree = "<group>"; };
+		E4877D3424476E4D00BC249B /* SelectedSymptomData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedSymptomData.swift; sourceTree = "<group>"; };
+		E4877D372447720900BC249B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		E4877D3924477C0F00BC249B /* SymptomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomCell.swift; sourceTree = "<group>"; };
+		E4877D3A24477C0F00BC249B /* SymptomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SymptomCell.xib; sourceTree = "<group>"; };
+		E4877D3D24477C2800BC249B /* FoodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCell.swift; sourceTree = "<group>"; };
+		E4877D3E24477C2800BC249B /* FoodCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FoodCell.xib; sourceTree = "<group>"; };
+		E4877D4124477EF600BC249B /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		E4877D4324477F1D00BC249B /* AddSymptomsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSymptomsViewController.swift; sourceTree = "<group>"; };
+		E4877D4524477F4C00BC249B /* SelectedSymptoms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedSymptoms.swift; sourceTree = "<group>"; };
+		E4877D4724477F7200BC249B /* AddFoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFoodViewController.swift; sourceTree = "<group>"; };
+		E4877D4924477F9400BC249B /* CompleteEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteEntryViewController.swift; sourceTree = "<group>"; };
+		E4877D4B2447802600BC249B /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		E4877D4D2447805300BC249B /* ViewEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewEntryViewController.swift; sourceTree = "<group>"; };
+		E4877D4F2447807900BC249B /* AnalyticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,7 +88,6 @@
 				184659C72DB6E75288F3AB1A /* Pods-TJSympTrack.debug.xcconfig */,
 				9F9FA9A860688BDF1B30FBEA /* Pods-TJSympTrack.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -85,14 +122,65 @@
 			children = (
 				E486D1A224474A0100358D35 /* AppDelegate.swift */,
 				E486D1A424474A0100358D35 /* SceneDelegate.swift */,
-				E486D1A624474A0100358D35 /* ViewController.swift */,
-				E486D1A824474A0100358D35 /* Main.storyboard */,
-				E486D1AE24474A0100358D35 /* Assets.xcassets */,
-				E486D1B024474A0100358D35 /* LaunchScreen.storyboard */,
+				E4877D2724476D0E00BC249B /* Models */,
+				E4877D2924476D4B00BC249B /* Controllers */,
+				E4877D2824476D2200BC249B /* Views */,
+				E4877D36244771EF00BC249B /* Supporting Files */,
 				E486D1B324474A0100358D35 /* Info.plist */,
-				E486D1AB24474A0100358D35 /* TJSympTrack.xcdatamodeld */,
+				E4877D2524475DA400BC249B /* GoogleService-Info.plist */,
 			);
 			path = TJSympTrack;
+			sourceTree = "<group>";
+		};
+		E4877D2724476D0E00BC249B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E486D1AB24474A0100358D35 /* DataModel.xcdatamodeld */,
+				E4877D2A24476D7A00BC249B /* FoodManager.swift */,
+				E4877D2C24476DAB00BC249B /* GoogleDataManager.swift */,
+				E4877D2E24476DD000BC249B /* FoodData.swift */,
+				E4877D3024476E0900BC249B /* TJSymptomsBrain.swift */,
+				E4877D3224476E2E00BC249B /* SelfSizedTableView.swift */,
+				E4877D3424476E4D00BC249B /* SelectedSymptomData.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E4877D2824476D2200BC249B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E486D1A824474A0100358D35 /* Main.storyboard */,
+				E4877D3924477C0F00BC249B /* SymptomCell.swift */,
+				E4877D3A24477C0F00BC249B /* SymptomCell.xib */,
+				E4877D3D24477C2800BC249B /* FoodCell.swift */,
+				E4877D3E24477C2800BC249B /* FoodCell.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E4877D2924476D4B00BC249B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E4877D4124477EF600BC249B /* FirstViewController.swift */,
+				E4877D4324477F1D00BC249B /* AddSymptomsViewController.swift */,
+				E4877D4524477F4C00BC249B /* SelectedSymptoms.swift */,
+				E4877D4724477F7200BC249B /* AddFoodViewController.swift */,
+				E4877D4924477F9400BC249B /* CompleteEntryViewController.swift */,
+				E4877D4F2447807900BC249B /* AnalyticsViewController.swift */,
+				E4877D4B2447802600BC249B /* CalendarViewController.swift */,
+				E4877D4D2447805300BC249B /* ViewEntryViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		E4877D36244771EF00BC249B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E486D1B024474A0100358D35 /* LaunchScreen.storyboard */,
+				E486D1AE24474A0100358D35 /* Assets.xcassets */,
+				E4877D372447720900BC249B /* Constants.swift */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,6 +244,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E486D1B224474A0100358D35 /* LaunchScreen.storyboard in Resources */,
+				E4877D3C24477C0F00BC249B /* SymptomCell.xib in Resources */,
+				E4877D2624475DA400BC249B /* GoogleService-Info.plist in Resources */,
+				E4877D4024477C2800BC249B /* FoodCell.xib in Resources */,
 				E486D1AF24474A0100358D35 /* Assets.xcassets in Resources */,
 				E486D1AA24474A0100358D35 /* Main.storyboard in Resources */,
 			);
@@ -210,10 +301,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E486D1AD24474A0100358D35 /* TJSympTrack.xcdatamodeld in Sources */,
-				E486D1A724474A0100358D35 /* ViewController.swift in Sources */,
+				E4877D4A24477F9400BC249B /* CompleteEntryViewController.swift in Sources */,
+				E4877D2F24476DD000BC249B /* FoodData.swift in Sources */,
+				E4877D382447720900BC249B /* Constants.swift in Sources */,
+				E4877D2D24476DAB00BC249B /* GoogleDataManager.swift in Sources */,
+				E4877D3524476E4D00BC249B /* SelectedSymptomData.swift in Sources */,
+				E4877D4424477F1D00BC249B /* AddSymptomsViewController.swift in Sources */,
+				E4877D4C2447802600BC249B /* CalendarViewController.swift in Sources */,
+				E4877D502447807900BC249B /* AnalyticsViewController.swift in Sources */,
+				E4877D4E2447805300BC249B /* ViewEntryViewController.swift in Sources */,
+				E4877D3F24477C2800BC249B /* FoodCell.swift in Sources */,
+				E4877D4624477F4C00BC249B /* SelectedSymptoms.swift in Sources */,
+				E4877D3324476E2E00BC249B /* SelfSizedTableView.swift in Sources */,
+				E4877D3B24477C0F00BC249B /* SymptomCell.swift in Sources */,
+				E486D1AD24474A0100358D35 /* DataModel.xcdatamodeld in Sources */,
+				E4877D2B24476D7A00BC249B /* FoodManager.swift in Sources */,
 				E486D1A324474A0100358D35 /* AppDelegate.swift in Sources */,
+				E4877D3124476E0900BC249B /* TJSymptomsBrain.swift in Sources */,
+				E4877D4824477F7200BC249B /* AddFoodViewController.swift in Sources */,
 				E486D1A524474A0100358D35 /* SceneDelegate.swift in Sources */,
+				E4877D4224477EF600BC249B /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,13 +524,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		E486D1AB24474A0100358D35 /* TJSympTrack.xcdatamodeld */ = {
+		E486D1AB24474A0100358D35 /* DataModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				E486D1AC24474A0100358D35 /* TJSympTrack.xcdatamodel */,
 			);
 			currentVersion = E486D1AC24474A0100358D35 /* TJSympTrack.xcdatamodel */;
-			path = TJSympTrack.xcdatamodeld;
+			path = DataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

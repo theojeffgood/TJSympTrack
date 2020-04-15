@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="IHk-uq-D2X">
+            <objects>
+                <viewController id="4Wz-z9-UfM" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0Tj-hm-ZgK" userLabel="Background View">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Loading page" translatesAutoresizingMaskIntoConstraints="NO" id="6hG-wZ-LWt">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="THE T&amp;J SYMPTOM TRACKER" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xZg-vA-oSR" userLabel="App Title">
+                                <rect key="frame" x="30" y="362" width="354" height="72"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find out the Foods Your Body Doesn't Like." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DSO-Ly-SwF" userLabel="App Subtitle">
+                                <rect key="frame" x="40" y="499" width="334" height="20"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.062745098040000002" green="0.53725490200000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="xZg-vA-oSR" firstAttribute="centerY" secondItem="0Tj-hm-ZgK" secondAttribute="centerY" constant="-50" id="C4f-0s-pIq"/>
+                            <constraint firstAttribute="trailing" secondItem="DSO-Ly-SwF" secondAttribute="trailing" constant="40" id="CV4-iN-gRL"/>
+                            <constraint firstItem="6hG-wZ-LWt" firstAttribute="leading" secondItem="yT6-Nu-sCW" secondAttribute="leading" id="DcU-p5-0s8"/>
+                            <constraint firstItem="DSO-Ly-SwF" firstAttribute="leading" secondItem="0Tj-hm-ZgK" secondAttribute="leading" constant="40" id="HcS-Dg-k5j"/>
+                            <constraint firstAttribute="bottom" secondItem="6hG-wZ-LWt" secondAttribute="bottom" id="Iox-nO-MwO"/>
+                            <constraint firstItem="xZg-vA-oSR" firstAttribute="centerX" secondItem="0Tj-hm-ZgK" secondAttribute="centerX" id="JEJ-s6-hfD"/>
+                            <constraint firstItem="DSO-Ly-SwF" firstAttribute="top" secondItem="xZg-vA-oSR" secondAttribute="bottom" constant="65" id="KYM-T2-ZzS"/>
+                            <constraint firstItem="xZg-vA-oSR" firstAttribute="leading" secondItem="yT6-Nu-sCW" secondAttribute="leading" constant="30" id="bwo-08-aHp"/>
+                            <constraint firstItem="DSO-Ly-SwF" firstAttribute="centerX" secondItem="0Tj-hm-ZgK" secondAttribute="centerX" id="g90-18-90B"/>
+                            <constraint firstItem="6hG-wZ-LWt" firstAttribute="trailing" secondItem="yT6-Nu-sCW" secondAttribute="trailing" id="gfm-GU-YTa"/>
+                            <constraint firstItem="yT6-Nu-sCW" firstAttribute="trailing" secondItem="xZg-vA-oSR" secondAttribute="trailing" constant="30" id="ubV-0X-J1g"/>
+                            <constraint firstItem="6hG-wZ-LWt" firstAttribute="top" secondItem="0Tj-hm-ZgK" secondAttribute="top" id="znS-D7-efJ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="yT6-Nu-sCW"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hEO-AB-iD7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="52.173913043478265" y="375"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Loading page" width="750" height="1344"/>
+    </resources>
+</document>
