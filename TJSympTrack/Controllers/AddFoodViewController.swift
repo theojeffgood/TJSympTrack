@@ -33,7 +33,10 @@ class AddFoodViewController: UIViewController, UITableViewDelegate{
         clearSelectedFoods()
         searchBar.becomeFirstResponder()
         
-        print("oh hai")
+        let tapRecognizer = UITapGestureRecognizer()
+        tapRecognizer.addTarget(self, action: #selector(AddFoodViewController.didTapView))
+        tapRecognizer.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapRecognizer)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -46,6 +49,11 @@ class AddFoodViewController: UIViewController, UITableViewDelegate{
     
     @IBAction func addFoodPressed(_ sender: Any) {
         performSegue(withIdentifier: K.completeEntrySegue, sender: self)
+    }
+    
+    @objc func didTapView() {
+        searchBar.resignFirstResponder()
+        print ("didTapView")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -221,20 +229,30 @@ extension AddFoodViewController: UITextFieldDelegate {
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
         resetFoodSearchResults()
         foodList.reloadData()
-        searchBar.endEditing(true)
+        print ("textFieldShouldClear")
         searchBar.resignFirstResponder()
         return true
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
+        print ("textFieldDidEndEditing")
     }
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
         if let foodItem = searchBar.text {
             if foodItem.count >= 2 {
                 foodManager.fetchFoods(foodItem)
+            } else if foodItem.count == 0 {
+                resetFoodSearchResults()
+                foodList.reloadData()
             }
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        searchBar.resignFirstResponder()
+        print ("textFieldShouldReturn")
+        return false
     }
 }
 
