@@ -8,16 +8,16 @@
 
 import Foundation
 
-struct FoodData: Decodable {
+struct FoodData: Codable {
     let common: [Common]
 }
 
-struct Common: Decodable {
+struct Common: Codable {
     let tag_name: String
     let tag_id: String
     let photo: Photo
 }
 
-struct Photo: Decodable {
+struct Photo: Codable {
     let thumb: String
 }

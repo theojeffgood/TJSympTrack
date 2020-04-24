@@ -16,6 +16,8 @@ class AddFoodViewController: UIViewController, UITableViewDelegate{
     var foodManager = FoodManager()
     var foodString = ""
     
+    var imageCache: [String: UIImage?] = [:]
+    
     @IBOutlet weak var foodList: UITableView!
     @IBOutlet weak var searchBar: UITextField!
     @IBOutlet weak var addFoodButton: UIButton!
@@ -32,11 +34,8 @@ class AddFoodViewController: UIViewController, UITableViewDelegate{
         resetFoodSearchResults()
         clearSelectedFoods()
         searchBar.becomeFirstResponder()
-        
-        let tapRecognizer = UITapGestureRecognizer()
-        tapRecognizer.addTarget(self, action: #selector(AddFoodViewController.didTapView))
-        tapRecognizer.cancelsTouchesInView = false
-        view.addGestureRecognizer(tapRecognizer)
+
+        activateTapRecognition()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -51,9 +50,15 @@ class AddFoodViewController: UIViewController, UITableViewDelegate{
         performSegue(withIdentifier: K.completeEntrySegue, sender: self)
     }
     
+    func activateTapRecognition() {
+        let tapRecognizer = UITapGestureRecognizer()
+        tapRecognizer.addTarget(self, action: #selector(AddFoodViewController.didTapView))
+        tapRecognizer.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapRecognizer)
+    }
+    
     @objc func didTapView() {
         searchBar.resignFirstResponder()
-        print ("didTapView")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -70,9 +75,9 @@ class AddFoodViewController: UIViewController, UITableViewDelegate{
     //    This block animates the Searchbar Placeholder text
     func displaySearchbarAnimation() {
         searchBar.placeholder = ""
-        let searchText = K.searchbarPlaceholder
+        let searchBarPlaceholderText = K.searchbarPlaceholder
         var charIndex = 0.0
-        for eachLetter in searchText{
+        for eachLetter in searchBarPlaceholderText{
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.07 * charIndex){
                 self.searchBar.placeholder?.append(eachLetter)
             }
@@ -80,16 +85,14 @@ class AddFoodViewController: UIViewController, UITableViewDelegate{
         }
     }
     
-    func displaySearchResults(food: FoodData){
-        var uniqueFoodsList: [String] = []
+        func displaySearchResults(food: FoodData){
         for eachFood in food.common {
-            if !uniqueFoodsList.contains(eachFood.tag_id) {
+            if !universeOfFood[1].map({ return $0.id }).contains(eachFood.tag_id) {
                 let newFood = Food(context: self.context)
                 newFood.id = eachFood.tag_id
                 newFood.title = eachFood.tag_name
                 newFood.isChecked = false
                 newFood.imageUrl = eachFood.photo.thumb
-                uniqueFoodsList.append(eachFood.tag_id)
                 universeOfFood[1].append(newFood)
             }
         }
@@ -125,15 +128,6 @@ class AddFoodViewController: UIViewController, UITableViewDelegate{
         }
     }
     
-    func setButtonStatus (toStatus status: Bool) {
-        addFoodButton.isEnabled = status
-        if status == true {
-            addFoodButton.alpha = 1.0
-        } else {
-            addFoodButton.alpha = 0.55
-        }
-    }
-    
     //MARK: - TableView Delegate Methods
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -150,17 +144,11 @@ class AddFoodViewController: UIViewController, UITableViewDelegate{
             newIndexpathSection = 1
             if selectedFoods.count == 1 {
                 setButtonStatus(toStatus: newButtonStatus)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.275){
-                    self.foodList.reloadData()
-                }
             }
         } else {
             newIndexpathSection = 0
             if selectedFoods.isEmpty {
                 setButtonStatus(toStatus: newButtonStatus)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.275){
-                    self.foodList.reloadData()
-                }
             }
         }
         universeOfFood[indexPath.section].remove(at: indexPath.row)
@@ -168,6 +156,19 @@ class AddFoodViewController: UIViewController, UITableViewDelegate{
         let destinationindexPath = NSIndexPath(row: 0, section: newIndexpathSection!)
         tableView.moveRow(at: indexPath, to: destinationindexPath as IndexPath)
         TJSymptomsBrain.saveContext()
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        searchBar.resignFirstResponder()
+    }
+    
+    func setButtonStatus (toStatus status: Bool) {
+        addFoodButton.isEnabled = status
+        addFoodButton.alpha = (addFoodButton.isEnabled ? 1.0 : 0.55)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.275){
+            self.foodList.reloadData()
+        }
     }
 }
 
@@ -189,36 +190,49 @@ extension AddFoodViewController: UITableViewDataSource {
         
         cell.foodLabel?.text = latestFood.title
         
-        if latestFood.isChecked {
-            cell.foodCheckmark.isHidden = false
-        } else {
-            cell.foodCheckmark.isHidden = true
-        }
+        // Displays the cell's checkmark when corresponding array.item is checked
+        cell.foodCheckmark.isHidden = !(latestFood.isChecked)
         
+        cell.imageView?.image = nil
+        if let url = URL(string: latestFood.imageUrl!) {
+            if let cachedImage = imageCache[url.absoluteString] {
+                cell.imageView?.image = cachedImage
+            } else {
+                foodManager.imageFrom(url: url) {
+                    (image, error) in
+                    guard error == nil else {
+                        print(error!)
+                        return
+                    }
+                    
+                    // Save the image so we won't have to keep fetching it if they scroll
+                    self.imageCache[url.absoluteString] = image
+                    
+                    if let cellToUpdate = tableView.cellForRow(at: indexPath) {
+                        cellToUpdate.imageView?.image = image // will work fine even if image is nil
+                        // need to reload the view, which won't happen otherwise
+                        // since this is in an async call
+                        cellToUpdate.setNeedsLayout()
+                    }
+                }
+            }
+        }
         return cell
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let selectedFoods = universeOfFood[0]
-        let headerView = UIView()
-        headerView.backgroundColor = UIColor(named: K.BrandColors.gray)
-        
-        let sectionLabel = UILabel(frame: CGRect(x: 8, y: 20, width:
-            tableView.bounds.size.width, height: tableView.bounds.size.height))
-        //        sectionLabel.font = UIFont(name: "System", size: 15)
-        sectionLabel.textColor = UIColor(named: K.BrandColors.blue)
-        sectionLabel.text = K.foodTableHeaders[section]
-        sectionLabel.sizeToFit()
-        if selectedFoods.isEmpty && section == 0 {
-            sectionLabel.textColor = UIColor.systemGray
-        }
-        
-        headerView.addSubview(sectionLabel)
-        return headerView
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return K.foodTableHeaders[section]
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 45
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UITableViewHeaderFooterView()
+        
+        if !(universeOfFood[section].isEmpty) {
+            headerView.textLabel?.textColor = UIColor(named: K.BrandColors.blue)
+        } else {
+            headerView.textLabel?.textColor = UIColor.systemGray
+        }
+        return headerView
     }
 }
 
@@ -229,13 +243,11 @@ extension AddFoodViewController: UITextFieldDelegate {
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
         resetFoodSearchResults()
         foodList.reloadData()
-        print ("textFieldShouldClear")
         searchBar.resignFirstResponder()
         return true
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        print ("textFieldDidEndEditing")
     }
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
@@ -251,7 +263,6 @@ extension AddFoodViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         searchBar.resignFirstResponder()
-        print ("textFieldShouldReturn")
         return false
     }
 }

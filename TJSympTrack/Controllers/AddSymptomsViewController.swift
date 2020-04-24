@@ -74,19 +74,16 @@ class AddSymptomsViewController: UIViewController, UITableViewDelegate {
         
         let newIndexpathSection: Int?
         let selectedSymptoms = universeOfSymptoms[0]
+        let newButtonStatus = selectedSymptoms.isEmpty
         if indexPath.section == 0 {
             newIndexpathSection = 1
-            if selectedSymptoms.isEmpty {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.275){
-                    self.symptomsList.reloadData()
-                }
+            if selectedSymptoms.count == 1 {
+                setButtonStatus(toStatus: newButtonStatus)
             }
         } else {
             newIndexpathSection = 0
             if selectedSymptoms.isEmpty {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.275){
-                    self.symptomsList.reloadData()
-                }
+                setButtonStatus(toStatus: newButtonStatus)
             }
         }
         
@@ -95,13 +92,14 @@ class AddSymptomsViewController: UIViewController, UITableViewDelegate {
         let destinationindexPath = NSIndexPath(row: 0, section: newIndexpathSection!)
         tableView.moveRow(at: indexPath, to: destinationindexPath as IndexPath)
         TJSymptomsBrain.saveContext()
+    }
+    
+    func setButtonStatus (toStatus status: Bool) {
+        addSymptomsButton.isEnabled = status
+        addSymptomsButton.alpha = (addSymptomsButton.isEnabled ? 1.0 : 0.55)
         
-        if universeOfSymptoms[0].count == 0 {
-            addSymptomsButton.isEnabled = false
-            addSymptomsButton.alpha = 0.55
-        } else {
-            addSymptomsButton.isEnabled = true
-            addSymptomsButton.alpha = 1.0
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.275){
+            self.symptomsList.reloadData()
         }
     }
 }
@@ -115,36 +113,25 @@ extension AddSymptomsViewController: UITableViewDataSource {
         let latestSymptom = universeOfSymptoms[indexPath.section][indexPath.row]
         cell.symptomLabel?.text = latestSymptom.title
         
-        if latestSymptom.isChecked {
-            cell.symptomCheckmark.isHidden = false
-        } else {
-            cell.symptomCheckmark.isHidden = true
-        }
+        // Displays the cell's checkmark when corresponding array.item is checked
+        cell.symptomCheckmark.isHidden = !(latestSymptom.isChecked)
+        
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return K.symptomsTableHeaders[section]
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let selectedSymptoms = universeOfSymptoms[0]
-        let headerView = UIView()
-        headerView.backgroundColor = UIColor(named: K.BrandColors.gray)
+        let headerView = UITableViewHeaderFooterView()
         
-        let sectionLabel = UILabel(frame: CGRect(x: 8, y: 20, width:
-            tableView.bounds.size.width, height: tableView.bounds.size.height))
-//        sectionLabel.font = UIFont(name: "System", size: 15)
-        sectionLabel.textColor = UIColor(named: K.BrandColors.blue)
-        sectionLabel.text = K.symptomsTableHeaders[section]
-        sectionLabel.sizeToFit()
-        if selectedSymptoms.isEmpty && section == 0 {
-            sectionLabel.textColor = UIColor.systemGray
+        if !(universeOfSymptoms[section].isEmpty) {
+            headerView.textLabel?.textColor = UIColor(named: K.BrandColors.blue)
+        } else {
+            headerView.textLabel?.textColor = UIColor.systemGray
         }
-        headerView.addSubview(sectionLabel)
-        
         return headerView
-
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -154,5 +141,4 @@ extension AddSymptomsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return universeOfSymptoms[section].count
     }
-    
 }

@@ -24,7 +24,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="383" height="93"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Symptom Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YZU-e1-wEr" userLabel="Symptom Label">
-                                        <rect key="frame" x="10" y="10" width="363" height="73"/>
+                                        <rect key="frame" x="20" y="10" width="353" height="73"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -47,7 +47,7 @@
                                 </subviews>
                                 <color key="backgroundColor" name="BrandGray"/>
                                 <constraints>
-                                    <constraint firstItem="YZU-e1-wEr" firstAttribute="leading" secondItem="NDJ-TU-yi9" secondAttribute="leading" constant="10" id="6ut-82-VQ1"/>
+                                    <constraint firstItem="YZU-e1-wEr" firstAttribute="leading" secondItem="NDJ-TU-yi9" secondAttribute="leading" constant="20" id="6ut-82-VQ1"/>
                                     <constraint firstAttribute="trailing" secondItem="EfV-xg-6lV" secondAttribute="trailing" constant="20" id="8LT-p5-c50"/>
                                     <constraint firstItem="EfV-xg-6lV" firstAttribute="centerY" secondItem="NDJ-TU-yi9" secondAttribute="centerY" id="AGb-U1-KdN"/>
                                     <constraint firstAttribute="trailing" secondItem="YTW-LO-1rO" secondAttribute="trailing" constant="25" id="EAD-1E-sDj"/>

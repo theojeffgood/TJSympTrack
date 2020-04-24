@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import UIKit
+import Alamofire
 
 protocol FoodManagerDelegate {
     func didUpdateFood(food: FoodData)
@@ -14,7 +16,7 @@ protocol FoodManagerDelegate {
 }
 
 struct FoodManager {
-
+    
     let foodUrl = "https://trackapi.nutritionix.com/v2/search/instant?query"
     
     var delegate: FoodManagerDelegate?
@@ -25,7 +27,7 @@ struct FoodManager {
         let urlString = "\(foodUrl)=\(safeFoodName)&\(brandedSearchParameter)"
         performFoodRequest(with: urlString)
     }
-        
+    
     func performFoodRequest(with urlString: String){
         // 1. Create a valid URL
         if let url = URL(string: urlString) {
@@ -37,8 +39,8 @@ struct FoodManager {
             request.addValue("application/json", forHTTPHeaderField: "Accept")
             request.addValue("8b2064bc", forHTTPHeaderField: "x-app-id")
             request.addValue("ee8c1590bf5c0e7b43ba1d06dff4074f", forHTTPHeaderField: "x-app-key")
-        
-                // 3. Give the url session a task
+            
+            // 3. Give the url session a task
             let task = session.dataTask(with: request) { (data, response, error) in
                 if error != nil {
                     self.delegate?.didFailWithError(error: error!)
@@ -53,8 +55,8 @@ struct FoodManager {
             }
             // 4. Kickoff the task (e.g. pressing enter in the url bar)
             task.resume()
-            }
         }
+    }
     
     func parseJSON(foodData: Data) -> FoodData? {
         let decoder = JSONDecoder()
@@ -65,6 +67,18 @@ struct FoodManager {
         } catch {
             delegate?.didFailWithError(error: error)
             return nil
+        }
+    }
+    
+    func imageFrom(url: URL,
+                   completionHandler: @escaping (UIImage?, Error?) -> Void) {
+        AF.request(url)
+            .responseData { response in
+                guard let data = response.data else {
+                    completionHandler(nil, response.error)
+                    return }
+                let image = UIImage(data: data)
+                completionHandler(image, nil)
         }
     }
 }
