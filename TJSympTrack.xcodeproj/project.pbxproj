@@ -34,6 +34,7 @@
 		E4877D4C2447802600BC249B /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4877D4B2447802600BC249B /* CalendarViewController.swift */; };
 		E4877D4E2447805300BC249B /* ViewEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4877D4D2447805300BC249B /* ViewEntryViewController.swift */; };
 		E4877D502447807900BC249B /* AnalyticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4877D4F2447807900BC249B /* AnalyticsViewController.swift */; };
+		E4D6777D2454662500C20308 /* UIImageResizeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D6777C2454662400C20308 /* UIImageResizeExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +69,7 @@
 		E4877D4B2447802600BC249B /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		E4877D4D2447805300BC249B /* ViewEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewEntryViewController.swift; sourceTree = "<group>"; };
 		E4877D4F2447807900BC249B /* AnalyticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsViewController.swift; sourceTree = "<group>"; };
+		E4D6777C2454662400C20308 /* UIImageResizeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageResizeExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 				E4877D2C24476DAB00BC249B /* GoogleDataManager.swift */,
 				E4877D2E24476DD000BC249B /* FoodData.swift */,
 				E4877D3024476E0900BC249B /* TJSymptomsBrain.swift */,
+				E4D6777C2454662400C20308 /* UIImageResizeExtension.swift */,
 				E4877D3224476E2E00BC249B /* SelfSizedTableView.swift */,
 				E4877D3424476E4D00BC249B /* SelectedSymptomData.swift */,
 			);
@@ -304,6 +307,7 @@
 				E4877D4A24477F9400BC249B /* CompleteEntryViewController.swift in Sources */,
 				E4877D2F24476DD000BC249B /* FoodData.swift in Sources */,
 				E4877D382447720900BC249B /* Constants.swift in Sources */,
+				E4D6777D2454662500C20308 /* UIImageResizeExtension.swift in Sources */,
 				E4877D2D24476DAB00BC249B /* GoogleDataManager.swift in Sources */,
 				E4877D3524476E4D00BC249B /* SelectedSymptomData.swift in Sources */,
 				E4877D4424477F1D00BC249B /* AddSymptomsViewController.swift in Sources */,

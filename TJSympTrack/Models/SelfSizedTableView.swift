@@ -21,7 +21,6 @@ class SelfSizedTableView2: UITableView {
     override var intrinsicContentSize: CGSize {
         return contentSize
     }
-    
 }
 
 class SelfSizedTableView3: UITableView {

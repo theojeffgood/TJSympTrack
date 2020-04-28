@@ -125,6 +125,7 @@ extension AddSymptomsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UITableViewHeaderFooterView()
+        headerView.contentView.backgroundColor = UIColor.white
         
         if !(universeOfSymptoms[section].isEmpty) {
             headerView.textLabel?.textColor = UIColor(named: K.BrandColors.blue)

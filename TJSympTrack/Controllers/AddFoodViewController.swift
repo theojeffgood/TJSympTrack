@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import AVFoundation
 
 class AddFoodViewController: UIViewController, UITableViewDelegate{
     
@@ -206,13 +207,15 @@ extension AddFoodViewController: UITableViewDataSource {
                     }
                     
                     // Save the image so we won't have to keep fetching it if they scroll
-                    self.imageCache[url.absoluteString] = image
-                    
-                    if let cellToUpdate = tableView.cellForRow(at: indexPath) {
-                        cellToUpdate.imageView?.image = image // will work fine even if image is nil
-                        // need to reload the view, which won't happen otherwise
-                        // since this is in an async call
-                        cellToUpdate.setNeedsLayout()
+                    if let scaledImage = image?.scaleImageToSize(img: image!, size: cell.foodImage.frame.size) {
+                        self.imageCache[url.absoluteString] = scaledImage
+                        if let cellToUpdate = tableView.cellForRow(at: indexPath) {
+                            
+                            cellToUpdate.imageView?.image = scaledImage // will work fine even if image is nil
+                            // need to reload the view, which won't happen otherwise
+                            // since this is in an async call
+                            cellToUpdate.setNeedsLayout()
+                        }
                     }
                 }
             }
@@ -226,7 +229,8 @@ extension AddFoodViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UITableViewHeaderFooterView()
-        
+        headerView.contentView.backgroundColor = UIColor.white
+
         if !(universeOfFood[section].isEmpty) {
             headerView.textLabel?.textColor = UIColor(named: K.BrandColors.blue)
         } else {

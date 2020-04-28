@@ -99,7 +99,7 @@ class CompleteEntryViewController: UIViewController, UITableViewDelegate{
         func numberOfSections(in tableView: UITableView) -> Int {
             return SelectedSymptomData.entryTableHeaders.count
         }
-        
+
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             return 1
         }
@@ -111,4 +111,14 @@ class CompleteEntryViewController: UIViewController, UITableViewDelegate{
             cell.symptomCheckCircle.isHidden = true
             return cell
         }
+        
+        func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+            let headerView = UITableViewHeaderFooterView()  
+            headerView.contentView.backgroundColor = UIColor.white
+
+//            headerView.textLabel?.textColor = UIColor(named: K.BrandColors.blue)
+            
+            return headerView
+        }
+
     }

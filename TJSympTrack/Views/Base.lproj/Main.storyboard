@@ -100,7 +100,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="5ni-xV-nqM" firstAttribute="leading" secondItem="Je1-hm-m1T" secondAttribute="leading" constant="20" id="4DS-f0-uaF"/>
                             <constraint firstItem="vep-mk-zFk" firstAttribute="bottom" secondItem="7US-2V-lGF" secondAttribute="bottom" constant="20" id="Gr2-qo-YPW"/>
@@ -134,7 +134,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oRb-HN-Cld" userLabel="Selected Symptoms List">
                                 <rect key="frame" x="20" y="197" width="374" height="575"/>
-                                <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="30" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SymptomCell" id="gb2-Y9-TYO">
@@ -190,7 +190,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="5Za-IT-0wU" firstAttribute="top" secondItem="7UY-hz-7Zh" secondAttribute="bottom" constant="20" id="4Yc-ch-MaZ"/>
                             <constraint firstItem="5Za-IT-0wU" firstAttribute="centerX" secondItem="WpY-9x-gvd" secondAttribute="centerX" id="C6R-sd-mW8"/>
@@ -253,7 +253,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="Wiq-Nk-GFP" secondAttribute="trailing" id="4WY-ju-mc6"/>
                                             <constraint firstAttribute="height" constant="35" id="AoX-Z4-cEh"/>
@@ -295,7 +295,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="2w5-iH-Qqw" firstAttribute="top" secondItem="V3G-1G-aLN" secondAttribute="top" constant="20" id="CI1-qM-isZ"/>
                                     <constraint firstItem="2w5-iH-Qqw" firstAttribute="bottom" secondItem="V3G-1G-aLN" secondAttribute="bottom" constant="-20" id="So3-L5-xdC"/>
@@ -320,33 +320,35 @@
                                 <rect key="frame" x="0.0" y="204" width="414" height="612"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z5S-xG-nAc" userLabel="Left Padding View">
-                                        <rect key="frame" x="0.0" y="0.0" width="17" height="612"/>
-                                        <color key="backgroundColor" name="BrandGray"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="20" height="612"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="17" id="jv3-G5-QSN"/>
+                                            <constraint firstAttribute="width" constant="20" id="jv3-G5-QSN"/>
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8bs-JM-bmk" userLabel="Food Table View">
-                                        <rect key="frame" x="17" y="0.0" width="380" height="612"/>
-                                        <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <color key="separatorColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <color key="sectionIndexBackgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <rect key="frame" x="20" y="0.0" width="374" height="612"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="separatorColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FoodCell" id="KLL-Jw-tr7">
-                                                <rect key="frame" x="0.0" y="28" width="380" height="65"/>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationWidth="0.0" reuseIdentifier="ReusableFoodCell" id="KLL-Jw-tr7">
+                                                <rect key="frame" x="0.0" y="28" width="374" height="65"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KLL-Jw-tr7" id="PnW-Id-F2K">
-                                                    <rect key="frame" x="0.0" y="0.0" width="380" height="65"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="65"/>
                                                     <autoresizingMask key="autoresizingMask"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </tableViewCellContentView>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lns-AW-s8t" userLabel="Right Padding View">
-                                        <rect key="frame" x="397" y="0.0" width="17" height="612"/>
-                                        <color key="backgroundColor" name="BrandGray"/>
+                                        <rect key="frame" x="394" y="0.0" width="20" height="612"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="17" id="BlI-l6-qxo"/>
+                                            <constraint firstAttribute="width" constant="20" id="BlI-l6-qxo"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -366,8 +368,8 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="4aq-DS-osG" firstAttribute="leading" secondItem="Bq7-m1-74h" secondAttribute="leading" id="057-RG-IPa"/>
-                            <constraint firstItem="Bq7-m1-74h" firstAttribute="trailing" secondItem="7Gj-JX-nKh" secondAttribute="trailing" id="6KN-ir-8xn"/>
+                            <constraint firstItem="4aq-DS-osG" firstAttribute="leading" secondItem="3VA-ds-baC" secondAttribute="leading" id="057-RG-IPa"/>
+                            <constraint firstAttribute="trailing" secondItem="7Gj-JX-nKh" secondAttribute="trailing" id="6KN-ir-8xn"/>
                             <constraint firstItem="cgB-Wy-SoV" firstAttribute="top" secondItem="Bq7-m1-74h" secondAttribute="top" constant="30" id="840-Jv-7hx"/>
                             <constraint firstItem="Bq7-m1-74h" firstAttribute="trailing" secondItem="cgB-Wy-SoV" secondAttribute="trailing" constant="30" id="DJQ-QO-Bp4"/>
                             <constraint firstItem="V3G-1G-aLN" firstAttribute="top" secondItem="4aq-DS-osG" secondAttribute="bottom" id="ILa-fc-0m9"/>
@@ -379,7 +381,7 @@
                             <constraint firstItem="cgB-Wy-SoV" firstAttribute="leading" secondItem="Bq7-m1-74h" secondAttribute="leading" constant="25" id="Zjd-oh-XZh"/>
                             <constraint firstAttribute="bottom" secondItem="V3G-1G-aLN" secondAttribute="bottom" id="dKj-vn-DPQ"/>
                             <constraint firstItem="Yi5-Ht-iAu" firstAttribute="leading" secondItem="Bq7-m1-74h" secondAttribute="leading" id="eW9-Kz-L2a"/>
-                            <constraint firstItem="7Gj-JX-nKh" firstAttribute="leading" secondItem="Bq7-m1-74h" secondAttribute="leading" id="hH2-3N-hgH"/>
+                            <constraint firstItem="7Gj-JX-nKh" firstAttribute="leading" secondItem="3VA-ds-baC" secondAttribute="leading" id="hH2-3N-hgH"/>
                             <constraint firstAttribute="trailing" secondItem="4aq-DS-osG" secondAttribute="trailing" id="hui-Q9-rAo"/>
                             <constraint firstItem="4aq-DS-osG" firstAttribute="leading" secondItem="Bq7-m1-74h" secondAttribute="leading" id="q3c-at-Q4L"/>
                             <constraint firstItem="Yi5-Ht-iAu" firstAttribute="top" secondItem="Bq7-m1-74h" secondAttribute="top" id="uYc-gn-IY3"/>
@@ -1170,7 +1172,7 @@
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="335" placeholderIntrinsicHeight="200" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VqP-4K-XXe" customClass="SelfSizedTableView" customModule="TJSympTrack" customModuleProvider="target">
                                 <rect key="frame" x="20" y="226.5" width="374" height="200"/>
-                                <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="separatorInset" minX="30" minY="0.0" maxX="30" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SymptomCell" id="tZ7-NG-c0R">
@@ -1239,7 +1241,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="57A-uR-NKd" firstAttribute="top" secondItem="Kdw-G9-CgC" secondAttribute="bottom" constant="25" id="76N-kb-4Js"/>
                             <constraint firstItem="a56-cN-W43" firstAttribute="leading" secondItem="3Dw-9h-YS2" secondAttribute="leading" constant="20" id="Bsx-Cu-Cvk"/>
@@ -1364,13 +1366,13 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bX2-U0-gvu" id="fb1-1i-gUD">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Je0-o4-q4D" firstAttribute="top" secondItem="ggx-pO-Gn0" secondAttribute="bottom" constant="10" id="1ly-vM-BOL"/>
                             <constraint firstItem="e5w-np-MyK" firstAttribute="leading" secondItem="I6L-GU-A31" secondAttribute="leading" constant="20" id="7bC-5L-u7P"/>
