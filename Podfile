@@ -9,5 +9,6 @@ target 'TJSympTrack' do
   pod 'Firebase/Analytics'
   pod 'FirebaseFirestoreSwift'
   pod 'Alamofire', '~> 5.1'
+  pod 'Charts', '~> 3.5.0'
 
 end
