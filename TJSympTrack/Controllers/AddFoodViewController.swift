@@ -8,7 +8,6 @@
 
 import UIKit
 import CoreData
-import AVFoundation
 
 class AddFoodViewController: UIViewController, UITableViewDelegate{
     

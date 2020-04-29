@@ -7,7 +7,8 @@
 //
 
 import UIKit
-import CoreData
+import Firebase
+import Charts
 
 class AnalyticsViewController: UIViewController {
     
