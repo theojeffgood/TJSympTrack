@@ -283,6 +283,7 @@ extension AddFoodViewController: FoodManagerDelegate {
                     self.displaySearchResults(food: food)
                 }
             }
+            print ("func didUpdateFood(food: FoodData){")
         }
     }
     

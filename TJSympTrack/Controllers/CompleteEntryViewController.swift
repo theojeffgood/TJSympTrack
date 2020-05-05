@@ -16,7 +16,8 @@ class CompleteEntryViewController: UIViewController, UITableViewDelegate{
     let db = Firestore.firestore()
     var selectedFoods: [String] = []
     var foodString: String = ""
-    lazy var monthString: String = ""
+    lazy var dateString: String = ""
+//    lazy var googleDataManager = GoogleDataManager()
 
     @IBOutlet weak var completedEntryTableView: SelfSizedTableView2!
     
@@ -33,21 +34,21 @@ class CompleteEntryViewController: UIViewController, UITableViewDelegate{
         convertFoodListToString()
         completedEntryTableView.reloadData()
         
-        setTheDate()
+        getCurrentDate()
     }
     
     @IBAction func completeEntryButtonPressed(_ sender: UIButton) {
-//        performSegue(withIdentifier: K.submitEntrySegue, sender: self)
-        saveEntryToGoogle()
-        SelectedSymptomData.entryTableHeaders = [""]
+        performSegue(withIdentifier: K.submitEntrySegue, sender: self)
+//        googleDataManager.saveEntryToGoogle(forFoods: selectedFoods, forDate: dateString)
+        SelectedSymptomData.currentEntryTableHeaders = [""]
         selectedFoods = []
     }
 
-    func setTheDate(){
+    func getCurrentDate(){
         let date = Date()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMMM d"
-        monthString = dateFormatter.string(from: date)
+        dateString = dateFormatter.string(from: date)
     }
     
     func convertFoodListToString() {
@@ -59,33 +60,6 @@ class CompleteEntryViewController: UIViewController, UITableViewDelegate{
         }
         foodString = foodString.capitalized
     }
-
-    func saveEntryToGoogle() {
-        print ("saveEntryToGoogle \(monthString)")
-        if SelectedSymptomData.entryTableHeaders.count != 0, selectedFoods.count != 0 {
-            let googleFirebaseFoods = db.collection(K.FStore.foodCollectionName)
-            let googleFirebaseSymptoms = db.collection(K.FStore.symptomsCollectionName)
-            
-            for eachSymptom in SelectedSymptomData.entryTableHeaders {
-                googleFirebaseSymptoms.addDocument(data: [K.FStore.symptomField: eachSymptom, K.FStore.dateField: monthString]) { (error) in
-                    if let e = error {
-                        print ("there was an error saving symptom data \(e)")
-                    } else {
-                        print ("Successfully saved data.")
-                    }
-                }
-            }
-            for eachFood in selectedFoods {
-                googleFirebaseFoods.addDocument(data: [K.FStore.foodField: eachFood, K.FStore.dateField: monthString]) { (error) in
-                    if let e = error {
-                        print ("there was an error saving food data \(e)")
-                    } else {
-                        print ("Successfully saved data.")
-                    }
-                }
-            }
-        }
-    }
 }
 
     //MARK: - UITableViewSource
@@ -93,11 +67,11 @@ class CompleteEntryViewController: UIViewController, UITableViewDelegate{
     extension CompleteEntryViewController: UITableViewDataSource {
         
         func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-            return SelectedSymptomData.entryTableHeaders[section]
+            return SelectedSymptomData.currentEntryTableHeaders[section]
         }
 
         func numberOfSections(in tableView: UITableView) -> Int {
-            return SelectedSymptomData.entryTableHeaders.count
+            return SelectedSymptomData.currentEntryTableHeaders.count
         }
 
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -115,10 +89,6 @@ class CompleteEntryViewController: UIViewController, UITableViewDelegate{
         func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
             let headerView = UITableViewHeaderFooterView()  
             headerView.contentView.backgroundColor = UIColor.white
-
-//            headerView.textLabel?.textColor = UIColor(named: K.BrandColors.blue)
-            
             return headerView
         }
-
     }

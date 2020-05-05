@@ -35,14 +35,14 @@ class AddSymptomsViewController: UIViewController, UITableViewDelegate {
     
     @IBAction func addSymptomsPressed(_ sender: UIButton) {
         if theUserHasMadeASelection() {
-            self.performSegue(withIdentifier: "reviewSymptomsAdded", sender: self)
+            self.performSegue(withIdentifier: K.reviewSymptomsAddedSegue, sender: self)
         } else {displayAnErrorMessage()}
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let usersSelectedSymptoms = universeOfSymptoms[0]
         
-        if segue.identifier == "reviewSymptomsAdded" {
+        if segue.identifier == K.reviewSymptomsAddedSegue {
             let destinationVC = segue.destination as! SelectedSymptomsViewController
             destinationVC.selectedSymptoms = usersSelectedSymptoms
         }

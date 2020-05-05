@@ -22,31 +22,22 @@ struct GoogleDataManager {
     let db = Firestore.firestore()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    func downloadSymptomsAndFoodDataFromGoogle(searchDate: String) {
-        var savedSymptoms = [Symptom]()
+    func loadFoodData(forSymptom: Symptom? = nil, searchDate: String? = nil) {
+        var query: Query?
         var saveFoods = [Food]()
+        let searchReference = db.collection(K.FStore.foodCollectionName)
         
-        db.collection(K.FStore.symptomsCollectionName).whereField(K.FStore.dateField, isEqualTo: searchDate)
-            .getDocuments() { (querySnapshot, err) in
-                if let err = err {
-                    print("Error getting documents: \(err)")
-                } else {
-                    for document in querySnapshot!.documents {
-                        let data = document.data()
-                        if let symptomTitle = data[K.FStore.symptomField] as? String {
-                            let newSymptom = Symptom(context: self.context)
-                            newSymptom.title = symptomTitle
-                            newSymptom.isChecked = false
-                            savedSymptoms.append(newSymptom)
-                        }
-                    }
-                    DispatchQueue.main.async {
-                        self.delegate?.didRetrieveSymptomData(symptomsData: savedSymptoms)
-                    }
-                }
+        if let safeSearchDate = searchDate {
+            query = searchReference.whereField(K.FStore.dateField, isEqualTo: safeSearchDate)
+        } else if let safeSearchSymptom = forSymptom {
+            let resrictionDates = loadUpDates(searchSymptom: safeSearchSymptom)
+            query = searchReference.whereField(K.FStore.symptomField, in: resrictionDates)
+        } else {
+            return
         }
-        db.collection(K.FStore.foodCollectionName).whereField(K.FStore.dateField, isEqualTo: searchDate)
-            .getDocuments() { (querySnapshot, err) in
+        
+        if let safeQuery = query {
+            safeQuery.getDocuments() { (querySnapshot, err) in
                 if let err = err {
                     print("Error getting documents: \(err)")
                 } else {
@@ -60,10 +51,96 @@ struct GoogleDataManager {
                         }
                     }
                 }
-                DispatchQueue.main.async {
-                    self.delegate?.didRetrieveFoodData(foodsData: saveFoods)
-                }
+                self.delegate?.didRetrieveFoodData(foodsData: saveFoods)
+            }
+        } else {
+            print ("Query was not properly created. This should never happen.")
+            return
         }
     }
     
+    func loadUpDates(searchSymptom: Symptom) -> [String] {
+        var dateList = [String]()
+        let dateListQuery = db.collection(K.FStore.symptomsCollectionName).whereField(K.FStore.symptomField, isEqualTo: searchSymptom)
+        
+        dateListQuery.getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    let data = document.data()
+                    if let entryDate = data[K.FStore.dateField] as? String {
+                        if !dateList.contains(entryDate) {
+                            dateList.append(entryDate)
+                        }
+                    }
+                }
+            }
+            //            DispatchQueue.main.async {
+            ////                RESUME THE MAIN LOADING FUNCTION WITH THIS DATE ARRAY
+            //            }
+        }
+        return dateList
+    }
+    
+    func loadSymptomsData(searchDate: String? = nil) {
+        var savedSymptoms = [Symptom]()
+        var query: Query?
+        let searchReference = db.collection(K.FStore.symptomsCollectionName)
+        
+        if let safeSearchDate = searchDate {
+            query = searchReference.whereField(K.FStore.dateField, isEqualTo: safeSearchDate)
+        } else {
+            query = searchReference.whereField(K.FStore.symptomField, in: ["Abdominal Pain","Bloating","Coughing","Dizziness","Hives","Inflamed Taste Buds","Itchy Mouth"])
+        }
+        
+        if let safeQuery = query {
+            safeQuery.getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in querySnapshot!.documents {
+                        let data = document.data()
+                        if let symptomTitle = data[K.FStore.symptomField] as? String {
+                            let newSymptom = Symptom(context: self.context)
+                            newSymptom.title = symptomTitle
+                            newSymptom.isChecked = false
+                            savedSymptoms.append(newSymptom)
+                        }
+                    }
+                    self.delegate?.didRetrieveSymptomData(symptomsData: savedSymptoms)
+                }
+            }
+        }
+        else {
+            print ("Query was not properly created. This should never happen.")
+            return
+        }
+    }
+    
+    func saveEntryToGoogle(forFoods selectedFoods: [String], forDate dateString: String) {
+        if SelectedSymptomData.currentEntryTableHeaders.count != 0, selectedFoods.count != 0 {
+            let googleFirebaseFoods = db.collection(K.FStore.foodCollectionName)
+            let googleFirebaseSymptoms = db.collection(K.FStore.symptomsCollectionName)
+            
+            for eachSymptom in SelectedSymptomData.currentEntryTableHeaders {
+                googleFirebaseSymptoms.addDocument(data: [K.FStore.symptomField: eachSymptom, K.FStore.dateField: dateString]) { (error) in
+                    if let e = error {
+                        print ("there was an error saving symptom data \(e)")
+                    } else {
+                        print ("Successfully saved data.")
+                    }
+                }
+            }
+            for eachFood in selectedFoods {
+                googleFirebaseFoods.addDocument(data: [K.FStore.foodField: eachFood, K.FStore.dateField: dateString]) { (error) in
+                    if let e = error {
+                        print ("there was an error saving food data \(e)")
+                    } else {
+                        print ("Successfully saved data.")
+                    }
+                }
+            }
+        }
+    }
 }

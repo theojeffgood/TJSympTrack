@@ -35,6 +35,7 @@
 		E4877D4E2447805300BC249B /* ViewEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4877D4D2447805300BC249B /* ViewEntryViewController.swift */; };
 		E4877D502447807900BC249B /* AnalyticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4877D4F2447807900BC249B /* AnalyticsViewController.swift */; };
 		E4D6777D2454662500C20308 /* UIImageResizeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D6777C2454662400C20308 /* UIImageResizeExtension.swift */; };
+		E4EFC8C62459FA6A003BB382 /* ViewRelevantSymptomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EFC8C52459FA6A003BB382 /* ViewRelevantSymptomsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,7 @@
 		E4877D4D2447805300BC249B /* ViewEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewEntryViewController.swift; sourceTree = "<group>"; };
 		E4877D4F2447807900BC249B /* AnalyticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsViewController.swift; sourceTree = "<group>"; };
 		E4D6777C2454662400C20308 /* UIImageResizeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageResizeExtension.swift; sourceTree = "<group>"; };
+		E4EFC8C52459FA6A003BB382 /* ViewRelevantSymptomsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRelevantSymptomsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +172,7 @@
 				E4877D4724477F7200BC249B /* AddFoodViewController.swift */,
 				E4877D4924477F9400BC249B /* CompleteEntryViewController.swift */,
 				E4877D4F2447807900BC249B /* AnalyticsViewController.swift */,
+				E4EFC8C52459FA6A003BB382 /* ViewRelevantSymptomsViewController.swift */,
 				E4877D4B2447802600BC249B /* CalendarViewController.swift */,
 				E4877D4D2447805300BC249B /* ViewEntryViewController.swift */,
 			);
@@ -322,6 +325,7 @@
 				E4877D2B24476D7A00BC249B /* FoodManager.swift in Sources */,
 				E486D1A324474A0100358D35 /* AppDelegate.swift in Sources */,
 				E4877D3124476E0900BC249B /* TJSymptomsBrain.swift in Sources */,
+				E4EFC8C62459FA6A003BB382 /* ViewRelevantSymptomsViewController.swift in Sources */,
 				E4877D4824477F7200BC249B /* AddFoodViewController.swift in Sources */,
 				E486D1A524474A0100358D35 /* SceneDelegate.swift in Sources */,
 				E4877D4224477EF600BC249B /* FirstViewController.swift in Sources */,

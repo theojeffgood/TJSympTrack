@@ -10,5 +10,6 @@ import Foundation
 
 struct SelectedSymptomData {
     
-    static var entryTableHeaders: [String] = []
+    static var currentEntryTableHeaders: [String] = []
+    static var historicalEntryTableHeaders: [String] = []
 }

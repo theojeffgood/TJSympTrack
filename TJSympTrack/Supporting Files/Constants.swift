@@ -14,9 +14,11 @@ struct K {
     static let foodCellNibName = "FoodCell"
     static let addNewSymptomsSegue = "addSymptoms"
     static let addNewFoodSegue = "addFood"
+    static let reviewSymptomsAddedSegue = "reviewSymptomsAdded"
     static let completeEntrySegue = "completeEntry"
     static let submitEntrySegue = "submitEntry"
     static let viewEntrySegue = "viewEntry"
+    static let viewAnalyticsSegue = "viewAnalytics"
     static let symptomsTableHeaders = ["Selected Symptoms","Common Symptoms"]
     static let foodTableHeaders = ["Selected Foods","Common Foods"]
         

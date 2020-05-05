@@ -37,7 +37,7 @@ class SelectedSymptomsViewController: UIViewController, UITableViewDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == K.addNewFoodSegue {
             for eachSymptom in selectedSymptoms {
-                SelectedSymptomData.entryTableHeaders.append(eachSymptom.title!)
+                SelectedSymptomData.currentEntryTableHeaders.append(eachSymptom.title!)
             }
         }
     }

@@ -12,13 +12,13 @@ import Firebase
 
 class CalendarViewController: UIViewController {
     
-    let db = Firestore.firestore()
+//    let db = Firestore.firestore()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var symptoms: [Symptom] = []
     var foods: [Food] = []
     var googleDataManager = GoogleDataManager()
     var counter = 0
-    var monthString: String = ""
+    var dateString: String = ""
     
     @IBOutlet weak var currentMonthLabel: UILabel!
     
@@ -27,16 +27,15 @@ class CalendarViewController: UIViewController {
     }
     
     @IBAction func datePressed(_ sender: UIButton) {
-        monthString = currentMonthLabel.text! + " " + sender.titleLabel!.text!
-        
-        googleDataManager.downloadSymptomsAndFoodDataFromGoogle(searchDate: monthString)
+        dateString = currentMonthLabel.text! + " " + sender.titleLabel!.text!
         performSegue(withIdentifier: K.viewEntrySegue, sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == K.viewEntrySegue {
             let destinationVC = segue.destination as! ViewEntryViewController
-            destinationVC.monthString = monthString
+            destinationVC.monthString = dateString
+            destinationVC.googleDataManager.delegate = destinationVC
         }
     }
     
