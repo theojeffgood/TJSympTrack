@@ -463,9 +463,8 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y4S-V4-wlN" customClass="PieChartView" customModule="Charts">
-                                <rect key="frame" x="20" y="254" width="374" height="348"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y4S-V4-wlN" customClass="PieChartView" customModule="Charts">
+                                <rect key="frame" x="20" y="254" width="374" height="558"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                         </subviews>
@@ -475,11 +474,16 @@
                             <constraint firstItem="gEy-ih-KYi" firstAttribute="trailing" secondItem="0wH-GW-oPd" secondAttribute="trailing" constant="20" id="7mt-5A-LWb"/>
                             <constraint firstItem="0wH-GW-oPd" firstAttribute="leading" secondItem="Qno-Yp-yR2" secondAttribute="leading" constant="20" id="KlR-CP-r0X"/>
                             <constraint firstItem="Jy7-Oq-NSD" firstAttribute="top" secondItem="0wH-GW-oPd" secondAttribute="bottom" constant="20" id="PQZ-OG-84E"/>
+                            <constraint firstItem="gEy-ih-KYi" firstAttribute="trailing" secondItem="y4S-V4-wlN" secondAttribute="trailing" constant="20" id="Un8-9f-zwZ"/>
                             <constraint firstItem="Jy7-Oq-NSD" firstAttribute="leading" secondItem="gEy-ih-KYi" secondAttribute="leading" constant="20" id="WUB-Uk-dLN"/>
+                            <constraint firstItem="gEy-ih-KYi" firstAttribute="bottom" secondItem="y4S-V4-wlN" secondAttribute="bottom" constant="50" id="Xyg-VO-zDb"/>
+                            <constraint firstItem="y4S-V4-wlN" firstAttribute="top" secondItem="Jy7-Oq-NSD" secondAttribute="bottom" constant="40" id="d7c-HB-0QS"/>
                             <constraint firstItem="0wH-GW-oPd" firstAttribute="top" secondItem="gEy-ih-KYi" secondAttribute="top" constant="20" id="jhG-co-7kq"/>
+                            <constraint firstItem="y4S-V4-wlN" firstAttribute="leading" secondItem="gEy-ih-KYi" secondAttribute="leading" constant="20" id="nuv-zX-PGm"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gEy-ih-KYi"/>
                     </view>
+                    <navigationItem key="navigationItem" id="ndx-DB-8KV"/>
                     <connections>
                         <outlet property="pieChart" destination="y4S-V4-wlN" id="DDA-xn-yeo"/>
                         <outlet property="symptomInFocus" destination="m21-st-BCA" id="3cC-1Z-WIf"/>
@@ -492,7 +496,7 @@
         <!--Analytics-->
         <scene sceneID="5fG-w4-WqY">
             <objects>
-                <viewController id="G4t-Yv-Bjt" customClass="ViewRelevantSymptomsViewController" customModule="TJSympTrack" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="G4t-Yv-Bjt" customClass="RelevantSymptomsViewController" customModule="TJSympTrack" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DnS-Ob-NTj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

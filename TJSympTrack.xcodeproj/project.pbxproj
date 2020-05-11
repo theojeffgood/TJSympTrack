@@ -34,8 +34,9 @@
 		E4877D4C2447802600BC249B /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4877D4B2447802600BC249B /* CalendarViewController.swift */; };
 		E4877D4E2447805300BC249B /* ViewEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4877D4D2447805300BC249B /* ViewEntryViewController.swift */; };
 		E4877D502447807900BC249B /* AnalyticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4877D4F2447807900BC249B /* AnalyticsViewController.swift */; };
+		E498E5FC2463A9CB00A46A7A /* GoogleLoadDataHack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E498E5FB2463A9CB00A46A7A /* GoogleLoadDataHack.swift */; };
 		E4D6777D2454662500C20308 /* UIImageResizeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D6777C2454662400C20308 /* UIImageResizeExtension.swift */; };
-		E4EFC8C62459FA6A003BB382 /* ViewRelevantSymptomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EFC8C52459FA6A003BB382 /* ViewRelevantSymptomsViewController.swift */; };
+		E4EFC8C62459FA6A003BB382 /* RelevantSymptomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EFC8C52459FA6A003BB382 /* RelevantSymptomsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,8 +71,9 @@
 		E4877D4B2447802600BC249B /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		E4877D4D2447805300BC249B /* ViewEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewEntryViewController.swift; sourceTree = "<group>"; };
 		E4877D4F2447807900BC249B /* AnalyticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsViewController.swift; sourceTree = "<group>"; };
+		E498E5FB2463A9CB00A46A7A /* GoogleLoadDataHack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleLoadDataHack.swift; sourceTree = "<group>"; };
 		E4D6777C2454662400C20308 /* UIImageResizeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageResizeExtension.swift; sourceTree = "<group>"; };
-		E4EFC8C52459FA6A003BB382 /* ViewRelevantSymptomsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRelevantSymptomsViewController.swift; sourceTree = "<group>"; };
+		E4EFC8C52459FA6A003BB382 /* RelevantSymptomsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelevantSymptomsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +144,7 @@
 				E486D1AB24474A0100358D35 /* DataModel.xcdatamodeld */,
 				E4877D2A24476D7A00BC249B /* FoodManager.swift */,
 				E4877D2C24476DAB00BC249B /* GoogleDataManager.swift */,
+				E498E5FB2463A9CB00A46A7A /* GoogleLoadDataHack.swift */,
 				E4877D2E24476DD000BC249B /* FoodData.swift */,
 				E4877D3024476E0900BC249B /* TJSymptomsBrain.swift */,
 				E4D6777C2454662400C20308 /* UIImageResizeExtension.swift */,
@@ -167,14 +170,9 @@
 			isa = PBXGroup;
 			children = (
 				E4877D4124477EF600BC249B /* FirstViewController.swift */,
-				E4877D4324477F1D00BC249B /* AddSymptomsViewController.swift */,
-				E4877D4524477F4C00BC249B /* SelectedSymptoms.swift */,
-				E4877D4724477F7200BC249B /* AddFoodViewController.swift */,
-				E4877D4924477F9400BC249B /* CompleteEntryViewController.swift */,
-				E4877D4F2447807900BC249B /* AnalyticsViewController.swift */,
-				E4EFC8C52459FA6A003BB382 /* ViewRelevantSymptomsViewController.swift */,
-				E4877D4B2447802600BC249B /* CalendarViewController.swift */,
-				E4877D4D2447805300BC249B /* ViewEntryViewController.swift */,
+				E498E5FA2461E0E000A46A7A /* Add Foods & Symptoms View Controllers */,
+				E498E5F92461E0C600A46A7A /* Analytics View Controllers */,
+				E498E5F82461E0A000A46A7A /* Historical Data View Controllers */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -187,6 +185,35 @@
 				E4877D372447720900BC249B /* Constants.swift */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E498E5F82461E0A000A46A7A /* Historical Data View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E4877D4B2447802600BC249B /* CalendarViewController.swift */,
+				E4877D4D2447805300BC249B /* ViewEntryViewController.swift */,
+			);
+			path = "Historical Data View Controllers";
+			sourceTree = "<group>";
+		};
+		E498E5F92461E0C600A46A7A /* Analytics View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E4877D4F2447807900BC249B /* AnalyticsViewController.swift */,
+				E4EFC8C52459FA6A003BB382 /* RelevantSymptomsViewController.swift */,
+			);
+			path = "Analytics View Controllers";
+			sourceTree = "<group>";
+		};
+		E498E5FA2461E0E000A46A7A /* Add Foods & Symptoms View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E4877D4324477F1D00BC249B /* AddSymptomsViewController.swift */,
+				E4877D4524477F4C00BC249B /* SelectedSymptoms.swift */,
+				E4877D4724477F7200BC249B /* AddFoodViewController.swift */,
+				E4877D4924477F9400BC249B /* CompleteEntryViewController.swift */,
+			);
+			path = "Add Foods & Symptoms View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -322,10 +349,11 @@
 				E4877D3324476E2E00BC249B /* SelfSizedTableView.swift in Sources */,
 				E4877D3B24477C0F00BC249B /* SymptomCell.swift in Sources */,
 				E486D1AD24474A0100358D35 /* DataModel.xcdatamodeld in Sources */,
+				E498E5FC2463A9CB00A46A7A /* GoogleLoadDataHack.swift in Sources */,
 				E4877D2B24476D7A00BC249B /* FoodManager.swift in Sources */,
 				E486D1A324474A0100358D35 /* AppDelegate.swift in Sources */,
 				E4877D3124476E0900BC249B /* TJSymptomsBrain.swift in Sources */,
-				E4EFC8C62459FA6A003BB382 /* ViewRelevantSymptomsViewController.swift in Sources */,
+				E4EFC8C62459FA6A003BB382 /* RelevantSymptomsViewController.swift in Sources */,
 				E4877D4824477F7200BC249B /* AddFoodViewController.swift in Sources */,
 				E486D1A524474A0100358D35 /* SceneDelegate.swift in Sources */,
 				E4877D4224477EF600BC249B /* FirstViewController.swift in Sources */,

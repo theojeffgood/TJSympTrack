@@ -18,20 +18,29 @@ protocol GoogleManagerDelegate {
 
 struct GoogleDataManager {
     
+//    func loadUpDates(resrictionDates: [String]) {
+//        print ("loadUpDates is called")
+//        loadFoodData(resrictionDates: resrictionDates)
+//    }
+    
     var delegate: GoogleManagerDelegate?
     let db = Firestore.firestore()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+//    var googleLoadDataHack = GoogleLoadDataHack()
     
-    func loadFoodData(forSymptom: Symptom? = nil, searchDate: String? = nil) {
+    func loadFoodData(forSymptom: String? = nil, searchDate: String? = nil, resrictionDates: [String]? = nil) {
         var query: Query?
         var saveFoods = [Food]()
         let searchReference = db.collection(K.FStore.foodCollectionName)
         
         if let safeSearchDate = searchDate {
             query = searchReference.whereField(K.FStore.dateField, isEqualTo: safeSearchDate)
-        } else if let safeSearchSymptom = forSymptom {
-            let resrictionDates = loadUpDates(searchSymptom: safeSearchSymptom)
-            query = searchReference.whereField(K.FStore.symptomField, in: resrictionDates)
+        }
+//        else if let safeSearchSymptom = forSymptom {
+//            return
+//        }
+        else if let safeRestrictionDates = resrictionDates{
+            query = searchReference.whereField(K.FStore.dateField, in: safeRestrictionDates)
         } else {
             return
         }
@@ -57,30 +66,6 @@ struct GoogleDataManager {
             print ("Query was not properly created. This should never happen.")
             return
         }
-    }
-    
-    func loadUpDates(searchSymptom: Symptom) -> [String] {
-        var dateList = [String]()
-        let dateListQuery = db.collection(K.FStore.symptomsCollectionName).whereField(K.FStore.symptomField, isEqualTo: searchSymptom)
-        
-        dateListQuery.getDocuments() { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                for document in querySnapshot!.documents {
-                    let data = document.data()
-                    if let entryDate = data[K.FStore.dateField] as? String {
-                        if !dateList.contains(entryDate) {
-                            dateList.append(entryDate)
-                        }
-                    }
-                }
-            }
-            //            DispatchQueue.main.async {
-            ////                RESUME THE MAIN LOADING FUNCTION WITH THIS DATE ARRAY
-            //            }
-        }
-        return dateList
     }
     
     func loadSymptomsData(searchDate: String? = nil) {

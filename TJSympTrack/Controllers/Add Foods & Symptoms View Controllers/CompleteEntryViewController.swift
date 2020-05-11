@@ -17,7 +17,7 @@ class CompleteEntryViewController: UIViewController, UITableViewDelegate{
     var selectedFoods: [String] = []
     var foodString: String = ""
     lazy var dateString: String = ""
-//    lazy var googleDataManager = GoogleDataManager()
+    lazy var googleDataManager = GoogleDataManager()
 
     @IBOutlet weak var completedEntryTableView: SelfSizedTableView2!
     
@@ -39,7 +39,7 @@ class CompleteEntryViewController: UIViewController, UITableViewDelegate{
     
     @IBAction func completeEntryButtonPressed(_ sender: UIButton) {
         performSegue(withIdentifier: K.submitEntrySegue, sender: self)
-//        googleDataManager.saveEntryToGoogle(forFoods: selectedFoods, forDate: dateString)
+        googleDataManager.saveEntryToGoogle(forFoods: selectedFoods, forDate: dateString)
         SelectedSymptomData.currentEntryTableHeaders = [""]
         selectedFoods = []
     }

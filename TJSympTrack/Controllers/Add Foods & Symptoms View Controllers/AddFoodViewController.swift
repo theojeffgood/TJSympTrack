@@ -85,7 +85,7 @@ class AddFoodViewController: UIViewController, UITableViewDelegate{
         }
     }
     
-        func displaySearchResults(food: FoodData){
+    func displaySearchResults(food: FoodData){
         for eachFood in food.common {
             if !universeOfFood[1].map({ return $0.id }).contains(eachFood.tag_id) {
                 let newFood = Food(context: self.context)
@@ -283,7 +283,6 @@ extension AddFoodViewController: FoodManagerDelegate {
                     self.displaySearchResults(food: food)
                 }
             }
-            print ("func didUpdateFood(food: FoodData){")
         }
     }
     

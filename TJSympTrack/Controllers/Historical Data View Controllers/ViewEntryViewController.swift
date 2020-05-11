@@ -35,8 +35,6 @@ class ViewEntryViewController: UIViewController, UITableViewDelegate{
         viewEntryTableView.invalidateIntrinsicContentSize()
         viewEntryTableView.estimatedRowHeight = 75
         viewEntryTableView.reloadData()
-        googleDataManager.loadSymptomsData(searchDate: dateString)
-        googleDataManager.loadFoodData(searchDate: dateString)
     }
     
     @IBAction func closeButtonPressed(_ sender: UIButton) {
