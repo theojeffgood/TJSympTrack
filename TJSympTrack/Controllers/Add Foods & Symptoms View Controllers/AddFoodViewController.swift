@@ -11,7 +11,6 @@ import CoreData
 
 class AddFoodViewController: UIViewController, UITableViewDelegate{
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var universeOfFood = [[Food](),[Food]()]
     var foodManager = FoodManager()
     var foodString = ""
@@ -88,7 +87,7 @@ class AddFoodViewController: UIViewController, UITableViewDelegate{
     func displaySearchResults(food: FoodData){
         for eachFood in food.common {
             if !universeOfFood[1].map({ return $0.id }).contains(eachFood.tag_id) {
-                let newFood = Food(context: self.context)
+                let newFood = Food(context: TJSymptomsBrain.context)
                 newFood.id = eachFood.tag_id
                 newFood.title = eachFood.tag_name
                 newFood.isChecked = false
@@ -106,7 +105,7 @@ class AddFoodViewController: UIViewController, UITableViewDelegate{
         if selectedFoods.count > 0 {
             var foodItemCount = selectedFoods.count - 1
             for eachFoodItem in selectedFoods {
-                context.delete(eachFoodItem)
+                TJSymptomsBrain.context.delete(eachFoodItem)
                 universeOfFood[0].remove(at: foodItemCount)
                 foodItemCount -= 1
             }
@@ -120,7 +119,7 @@ class AddFoodViewController: UIViewController, UITableViewDelegate{
         if commonFoods.count > 0 {
             var foodItemCount = commonFoods.count - 1
             for eachFoodItem in commonFoods {
-                context.delete(eachFoodItem)
+                TJSymptomsBrain.context.delete(eachFoodItem)
                 universeOfFood[1].remove(at: foodItemCount)
                 foodItemCount -= 1
             }
@@ -164,7 +163,6 @@ class AddFoodViewController: UIViewController, UITableViewDelegate{
     
     func setButtonStatus (toStatus status: Bool) {
         addFoodButton.isEnabled = status
-        addFoodButton.alpha = (addFoodButton.isEnabled ? 1.0 : 0.55)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.275){
             self.foodList.reloadData()

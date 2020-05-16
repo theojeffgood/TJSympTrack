@@ -11,8 +11,8 @@ import CoreData
 
 class AddSymptomsViewController: UIViewController, UITableViewDelegate {
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var universeOfSymptoms = [[Symptom](),[Symptom]()]
+    var usersCurrentExperiencingSymptoms = [String]()
     
     @IBOutlet weak var symptomsList: UITableView!
     @IBOutlet weak var addSymptomsButton: UIButton!
@@ -22,38 +22,74 @@ class AddSymptomsViewController: UIViewController, UITableViewDelegate {
         symptomsList.dataSource = self
         symptomsList.delegate = self
         symptomsList.register(UINib(nibName: K.cellNibName, bundle: nil), forCellReuseIdentifier: K.cellIdentifier)
+        symptomsList.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         universeOfSymptoms = TJSymptomsBrain.loadSymptoms()
-        symptomsList.reloadData()
+        if universeOfSymptoms[1].isEmpty{
+            populateCommonSymptoms()
+        }
     }
     
     @IBAction func closeAddSymptomsPressed(_ sender: UIButton) {
+        clearUnSelectedSymptoms()
+        resetSelectedValues()
         dismiss(animated: true, completion: nil)
     }
     
     @IBAction func addSymptomsPressed(_ sender: UIButton) {
-        if theUserHasMadeASelection() {
+        let theUserHasMadeASelection = !universeOfSymptoms[0].isEmpty
+        if theUserHasMadeASelection {
+            clearUnSelectedSymptoms()
             self.performSegue(withIdentifier: K.reviewSymptomsAddedSegue, sender: self)
-        } else {displayAnErrorMessage()}
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let usersSelectedSymptoms = universeOfSymptoms[0]
-        
-        if segue.identifier == K.reviewSymptomsAddedSegue {
-            let destinationVC = segue.destination as! SelectedSymptomsViewController
-            destinationVC.selectedSymptoms = usersSelectedSymptoms
+        } else {
+            displayAnErrorMessage()
         }
     }
     
-    func theUserHasMadeASelection() -> Bool {
-        let countOfSelectedSymptoms = universeOfSymptoms[0].count
+    func populateCommonSymptoms() {
+        let baseSymptoms = ["Abdominal Pain","Bloating","Coughing","Dizziness","Hives","Inflamed Taste Buds","Itchy Mouth"]
+        let preExistingSymptoms = universeOfSymptoms[0].map({ return $0.title }) + universeOfSymptoms[1].map({ return $0.title })
         
-        if countOfSelectedSymptoms != 0 {
-            return true
-        } else {return false}
+        for eachSymptom in baseSymptoms {
+            if !(preExistingSymptoms.contains(eachSymptom)){
+                let newSymptom = Symptom(context: TJSymptomsBrain.context)
+                newSymptom.title = eachSymptom
+                newSymptom.isChecked = false
+                self.universeOfSymptoms[1].append(newSymptom)
+            } else {
+                usersCurrentExperiencingSymptoms.append(eachSymptom)
+            }
+        }
+        TJSymptomsBrain.saveContext()
+    }
+    
+    func resetSelectedValues(){
+        var symptomCount = universeOfSymptoms[0].count - 1
+        for eachSymptom in universeOfSymptoms[0] {
+            TJSymptomsBrain.context.delete(eachSymptom)
+            universeOfSymptoms[0].remove(at: symptomCount)
+            symptomCount -= 1
+        }
+        for eachNewSymptom in usersCurrentExperiencingSymptoms {
+            let newSymptom = Symptom(context: TJSymptomsBrain.context)
+            newSymptom.title = eachNewSymptom
+            newSymptom.isChecked = true
+            self.universeOfSymptoms[0].append(newSymptom)
+        }
+        TJSymptomsBrain.saveContext()
+    }
+    
+    func clearUnSelectedSymptoms(){
+        let unselectedSymptoms = universeOfSymptoms[1]
+            var symptomItemCount = unselectedSymptoms.count - 1
+            for eachSymptom in unselectedSymptoms {
+                TJSymptomsBrain.context.delete(eachSymptom)
+                universeOfSymptoms[1].remove(at: symptomItemCount)
+                symptomItemCount -= 1
+            }
+            TJSymptomsBrain.saveContext()
     }
     
     func displayAnErrorMessage(){
@@ -86,18 +122,15 @@ class AddSymptomsViewController: UIViewController, UITableViewDelegate {
                 setButtonStatus(toStatus: newButtonStatus)
             }
         }
-        
         universeOfSymptoms[indexPath.section].remove(at: indexPath.row)
         universeOfSymptoms[newIndexpathSection!].insert(usersSelectedCell, at: 0) //move to top of array
         let destinationindexPath = NSIndexPath(row: 0, section: newIndexpathSection!)
         tableView.moveRow(at: indexPath, to: destinationindexPath as IndexPath)
-        TJSymptomsBrain.saveContext()
+//        TJSymptomsBrain.saveContext()
     }
     
     func setButtonStatus (toStatus status: Bool) {
         addSymptomsButton.isEnabled = status
-        addSymptomsButton.alpha = (addSymptomsButton.isEnabled ? 1.0 : 0.55)
-        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.275){
             self.symptomsList.reloadData()
         }
@@ -113,12 +146,12 @@ extension AddSymptomsViewController: UITableViewDataSource {
         let latestSymptom = universeOfSymptoms[indexPath.section][indexPath.row]
         cell.symptomLabel?.text = latestSymptom.title
         
-        // Displays the cell's checkmark when corresponding array.item is checked
+        // Displays a cell's checkmark when its matching array<item> is checked
         cell.symptomCheckmark.isHidden = !(latestSymptom.isChecked)
         
         return cell
     }
-
+    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return K.symptomsTableHeaders[section]
     }

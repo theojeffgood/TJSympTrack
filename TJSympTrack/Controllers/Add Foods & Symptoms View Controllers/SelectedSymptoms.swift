@@ -12,12 +12,22 @@ import CoreData
 class SelectedSymptomsViewController: UIViewController, UITableViewDelegate {
     
     var selectedSymptoms = [Symptom]()
+    var unselectedSymptoms = [Symptom]()
+    var segueDestination: String?
     
     @IBOutlet weak var selectedSymptomsList: SelfSizedTableView!
     @IBOutlet weak var addFoodButton: UIButton!
+    @IBOutlet weak var addMoreSymptomsButton: UIButton!
+    @IBOutlet weak var userInstructionsLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        loadSymptoms()
+        setupView()
+        
         selectedSymptomsList.dataSource = self
         selectedSymptomsList.delegate = self
         selectedSymptomsList.reloadData()
@@ -26,19 +36,49 @@ class SelectedSymptomsViewController: UIViewController, UITableViewDelegate {
         selectedSymptomsList.invalidateIntrinsicContentSize()
     }
     
+    func loadSymptoms(){
+        let request: NSFetchRequest<Symptom> = Symptom.fetchRequest()
+        
+        do {
+            selectedSymptoms = try TJSymptomsBrain.context.fetch(request)
+        } catch {
+            print("Error fetching data from context \(error)")
+        }
+    }
+    
     @IBAction func addMoreSymptomsPressed(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
+        TJSymptomsBrain.saveContext()
+        performSegue(withIdentifier: K.addNewSymptomsSegue, sender: self)
     }
     
     @IBAction func addFoodPressed(_ sender: UIButton) {
-        performSegue(withIdentifier: K.addNewFoodSegue, sender: self)
+        if let safeSegueDestination = segueDestination {
+            performSegue(withIdentifier: safeSegueDestination, sender: self)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == K.addNewFoodSegue {
-            for eachSymptom in selectedSymptoms {
+            let usersCurrentExperiencingSymptoms = selectedSymptoms.filter( {$0.isChecked == true }).map({ return $0 })
+            for eachSymptom in usersCurrentExperiencingSymptoms {
                 SelectedSymptomData.currentEntryTableHeaders.append(eachSymptom.title!)
             }
+        } else if segue.identifier == K.addNewSymptomsSegue {
+            for symptom in selectedSymptoms where symptom.isChecked == false {
+                symptom.isChecked = !symptom.isChecked
+            }
+        }
+    }
+    
+    func setupView(){
+        if selectedSymptoms.isEmpty {
+            addFoodButton.setTitle("Add Symptoms", for: .normal)
+            segueDestination = K.addNewSymptomsSegue
+            addMoreSymptomsButton.isHidden = true
+            userInstructionsLabel.isHidden = true
+        } else {
+            addFoodButton.setTitle("Add Foods", for: .normal)
+            segueDestination = K.addNewFoodSegue
         }
     }
     
@@ -52,13 +92,8 @@ class SelectedSymptomsViewController: UIViewController, UITableViewDelegate {
         usersSelectedRow.isChecked = !usersSelectedRow.isChecked
         tableView.reloadRows(at: [IndexPath(row: indexPath.row, section: indexPath.section)], with: .none)
         
-        if selectedSymptoms.count == 0 {
-            addFoodButton.isEnabled = false
-            addFoodButton.alpha = 0.55
-        } else {
-            addFoodButton.isEnabled = true
-            addFoodButton.alpha = 1.0
-        }
+        let usersCurrentExperiencingSymptoms = selectedSymptoms.filter( {$0.isChecked == true }).map({ return $0 })
+        addFoodButton.isEnabled = (usersCurrentExperiencingSymptoms.isEmpty ? false : true)
     }
 }
 
@@ -66,6 +101,12 @@ class SelectedSymptomsViewController: UIViewController, UITableViewDelegate {
 
 extension SelectedSymptomsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if selectedSymptoms.isEmpty {
+            //            tableView.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 250)
+            tableView.setEmptyMessage("Add the symptoms you experience. We'll figure our what foods are causing them!")
+        } else {
+            tableView.restore()
+        }
         return selectedSymptoms.count
     }
     
@@ -73,12 +114,7 @@ extension SelectedSymptomsViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.cellIdentifier, for: indexPath) as! SymptomCell
         let latestSymptom = selectedSymptoms[indexPath.row]
         cell.symptomLabel?.text = latestSymptom.title
-        
-        if latestSymptom.isChecked {
-            cell.symptomCheckmark.isHidden = false
-        } else {
-            cell.symptomCheckmark.isHidden = true
-        }
+        cell.symptomCheckmark.isHidden = latestSymptom.isChecked ? false : true
         return cell
     }
     

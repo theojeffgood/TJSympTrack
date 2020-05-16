@@ -12,7 +12,6 @@ import Firebase
 
 class CompleteEntryViewController: UIViewController, UITableViewDelegate{
 
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let db = Firestore.firestore()
     var selectedFoods: [String] = []
     var foodString: String = ""
@@ -29,11 +28,10 @@ class CompleteEntryViewController: UIViewController, UITableViewDelegate{
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        completedEntryTableView.invalidateIntrinsicContentSize()
-        completedEntryTableView.estimatedRowHeight = 75
         convertFoodListToString()
         completedEntryTableView.reloadData()
-        
+        completedEntryTableView.estimatedRowHeight = 75
+        completedEntryTableView.invalidateIntrinsicContentSize()
         getCurrentDate()
     }
     
@@ -89,6 +87,13 @@ class CompleteEntryViewController: UIViewController, UITableViewDelegate{
         func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
             let headerView = UITableViewHeaderFooterView()  
             headerView.contentView.backgroundColor = UIColor.white
+            headerView.textLabel?.font = UIFont.boldSystemFont(ofSize: 29)
             return headerView
+        }
+        
+        func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int)
+        {
+            let header = view as! UITableViewHeaderFooterView
+            header.textLabel?.font = UIFont(name: "Futura", size: 29)!
         }
     }

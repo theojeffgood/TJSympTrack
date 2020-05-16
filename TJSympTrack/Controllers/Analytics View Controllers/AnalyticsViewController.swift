@@ -22,7 +22,14 @@ class AnalyticsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         symptomInFocus.text = selectedSymptom ?? "No Symptom Was Selected"
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         populateChartDataSet()
+    }
+    
+    @IBAction func closeAnalyticsButtonPressed(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
     }
     
     func refreshChart(usingRefreshedData chartDataSet: PieChartDataSet) {
@@ -35,8 +42,8 @@ class AnalyticsViewController: UIViewController {
         pFormatter.percentSymbol = "%"
         chartData.setValueFormatter(DefaultValueFormatter(formatter: pFormatter))
     
-        pieChart.animate(xAxisDuration: 1.4, easingOption: .easeOutBack)
-        pieChart.animate(yAxisDuration: 1.4)
+        pieChart.animate(xAxisDuration: 1.1, easingOption: .easeOutBack)
+        pieChart.animate(yAxisDuration: 1.1)
         pieChart.drawEntryLabelsEnabled = false
         pieChart.legend.font = UIFont(name: "Futura", size: 25)!
         pieChart.legend.formSize = 15

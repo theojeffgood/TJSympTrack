@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D5BA83C0C221C2D3F47A6AB6 /* Pods_TJSympTrack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82ADDAAA5EE24D9FF11D86F3 /* Pods_TJSympTrack.framework */; };
+		E41E8C82246B202F0026B389 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41E8C81246B202F0026B389 /* Alerts.swift */; };
 		E486D1A324474A0100358D35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E486D1A224474A0100358D35 /* AppDelegate.swift */; };
 		E486D1A524474A0100358D35 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E486D1A424474A0100358D35 /* SceneDelegate.swift */; };
 		E486D1AA24474A0100358D35 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E486D1A824474A0100358D35 /* Main.storyboard */; };
@@ -26,7 +27,6 @@
 		E4877D3C24477C0F00BC249B /* SymptomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4877D3A24477C0F00BC249B /* SymptomCell.xib */; };
 		E4877D3F24477C2800BC249B /* FoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4877D3D24477C2800BC249B /* FoodCell.swift */; };
 		E4877D4024477C2800BC249B /* FoodCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4877D3E24477C2800BC249B /* FoodCell.xib */; };
-		E4877D4224477EF600BC249B /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4877D4124477EF600BC249B /* FirstViewController.swift */; };
 		E4877D4424477F1D00BC249B /* AddSymptomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4877D4324477F1D00BC249B /* AddSymptomsViewController.swift */; };
 		E4877D4624477F4C00BC249B /* SelectedSymptoms.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4877D4524477F4C00BC249B /* SelectedSymptoms.swift */; };
 		E4877D4824477F7200BC249B /* AddFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4877D4724477F7200BC249B /* AddFoodViewController.swift */; };
@@ -35,14 +35,18 @@
 		E4877D4E2447805300BC249B /* ViewEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4877D4D2447805300BC249B /* ViewEntryViewController.swift */; };
 		E4877D502447807900BC249B /* AnalyticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4877D4F2447807900BC249B /* AnalyticsViewController.swift */; };
 		E498E5FC2463A9CB00A46A7A /* GoogleLoadDataHack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E498E5FB2463A9CB00A46A7A /* GoogleLoadDataHack.swift */; };
+		E4B2D268246D9B2300DA4E0C /* EmptyViewTableview.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B2D267246D9B2300DA4E0C /* EmptyViewTableview.swift */; };
+		E4CE059E246E32C2008A62CB /* UIBUttonExtensionSetAlpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CE059D246E32C2008A62CB /* UIBUttonExtensionSetAlpha.swift */; };
 		E4D6777D2454662500C20308 /* UIImageResizeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D6777C2454662400C20308 /* UIImageResizeExtension.swift */; };
 		E4EFC8C62459FA6A003BB382 /* RelevantSymptomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EFC8C52459FA6A003BB382 /* RelevantSymptomsViewController.swift */; };
+		E4F35D8F246B65C600455E8C /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F35D8E246B65C600455E8C /* TabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		184659C72DB6E75288F3AB1A /* Pods-TJSympTrack.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TJSympTrack.debug.xcconfig"; path = "Target Support Files/Pods-TJSympTrack/Pods-TJSympTrack.debug.xcconfig"; sourceTree = "<group>"; };
 		82ADDAAA5EE24D9FF11D86F3 /* Pods_TJSympTrack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TJSympTrack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F9FA9A860688BDF1B30FBEA /* Pods-TJSympTrack.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TJSympTrack.release.xcconfig"; path = "Target Support Files/Pods-TJSympTrack/Pods-TJSympTrack.release.xcconfig"; sourceTree = "<group>"; };
+		E41E8C81246B202F0026B389 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		E486D19F24474A0100358D35 /* TJSympTrack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TJSympTrack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E486D1A224474A0100358D35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E486D1A424474A0100358D35 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,7 +67,6 @@
 		E4877D3A24477C0F00BC249B /* SymptomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SymptomCell.xib; sourceTree = "<group>"; };
 		E4877D3D24477C2800BC249B /* FoodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCell.swift; sourceTree = "<group>"; };
 		E4877D3E24477C2800BC249B /* FoodCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FoodCell.xib; sourceTree = "<group>"; };
-		E4877D4124477EF600BC249B /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		E4877D4324477F1D00BC249B /* AddSymptomsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSymptomsViewController.swift; sourceTree = "<group>"; };
 		E4877D4524477F4C00BC249B /* SelectedSymptoms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedSymptoms.swift; sourceTree = "<group>"; };
 		E4877D4724477F7200BC249B /* AddFoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFoodViewController.swift; sourceTree = "<group>"; };
@@ -72,8 +75,11 @@
 		E4877D4D2447805300BC249B /* ViewEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewEntryViewController.swift; sourceTree = "<group>"; };
 		E4877D4F2447807900BC249B /* AnalyticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsViewController.swift; sourceTree = "<group>"; };
 		E498E5FB2463A9CB00A46A7A /* GoogleLoadDataHack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleLoadDataHack.swift; sourceTree = "<group>"; };
+		E4B2D267246D9B2300DA4E0C /* EmptyViewTableview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyViewTableview.swift; sourceTree = "<group>"; };
+		E4CE059D246E32C2008A62CB /* UIBUttonExtensionSetAlpha.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBUttonExtensionSetAlpha.swift; sourceTree = "<group>"; };
 		E4D6777C2454662400C20308 /* UIImageResizeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageResizeExtension.swift; sourceTree = "<group>"; };
 		E4EFC8C52459FA6A003BB382 /* RelevantSymptomsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelevantSymptomsViewController.swift; sourceTree = "<group>"; };
+		E4F35D8E246B65C600455E8C /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +156,8 @@
 				E4D6777C2454662400C20308 /* UIImageResizeExtension.swift */,
 				E4877D3224476E2E00BC249B /* SelfSizedTableView.swift */,
 				E4877D3424476E4D00BC249B /* SelectedSymptomData.swift */,
+				E4B2D267246D9B2300DA4E0C /* EmptyViewTableview.swift */,
+				E4CE059D246E32C2008A62CB /* UIBUttonExtensionSetAlpha.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -169,7 +177,7 @@
 		E4877D2924476D4B00BC249B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				E4877D4124477EF600BC249B /* FirstViewController.swift */,
+				E4F35D8E246B65C600455E8C /* TabBarController.swift */,
 				E498E5FA2461E0E000A46A7A /* Add Foods & Symptoms View Controllers */,
 				E498E5F92461E0C600A46A7A /* Analytics View Controllers */,
 				E498E5F82461E0A000A46A7A /* Historical Data View Controllers */,
@@ -183,6 +191,7 @@
 				E486D1B024474A0100358D35 /* LaunchScreen.storyboard */,
 				E486D1AE24474A0100358D35 /* Assets.xcassets */,
 				E4877D372447720900BC249B /* Constants.swift */,
+				E41E8C81246B202F0026B389 /* Alerts.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -344,19 +353,22 @@
 				E4877D4C2447802600BC249B /* CalendarViewController.swift in Sources */,
 				E4877D502447807900BC249B /* AnalyticsViewController.swift in Sources */,
 				E4877D4E2447805300BC249B /* ViewEntryViewController.swift in Sources */,
+				E41E8C82246B202F0026B389 /* Alerts.swift in Sources */,
 				E4877D3F24477C2800BC249B /* FoodCell.swift in Sources */,
 				E4877D4624477F4C00BC249B /* SelectedSymptoms.swift in Sources */,
 				E4877D3324476E2E00BC249B /* SelfSizedTableView.swift in Sources */,
 				E4877D3B24477C0F00BC249B /* SymptomCell.swift in Sources */,
+				E4CE059E246E32C2008A62CB /* UIBUttonExtensionSetAlpha.swift in Sources */,
 				E486D1AD24474A0100358D35 /* DataModel.xcdatamodeld in Sources */,
 				E498E5FC2463A9CB00A46A7A /* GoogleLoadDataHack.swift in Sources */,
 				E4877D2B24476D7A00BC249B /* FoodManager.swift in Sources */,
+				E4F35D8F246B65C600455E8C /* TabBarController.swift in Sources */,
+				E4B2D268246D9B2300DA4E0C /* EmptyViewTableview.swift in Sources */,
 				E486D1A324474A0100358D35 /* AppDelegate.swift in Sources */,
 				E4877D3124476E0900BC249B /* TJSymptomsBrain.swift in Sources */,
 				E4EFC8C62459FA6A003BB382 /* RelevantSymptomsViewController.swift in Sources */,
 				E4877D4824477F7200BC249B /* AddFoodViewController.swift in Sources */,
 				E486D1A524474A0100358D35 /* SceneDelegate.swift in Sources */,
-				E4877D4224477EF600BC249B /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

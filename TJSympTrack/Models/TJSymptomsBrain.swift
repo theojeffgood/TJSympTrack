@@ -44,7 +44,7 @@ struct TJSymptomsBrain{
             let allSymptoms = try context.fetch(request)
             commonSymptoms = allSymptoms.filter( {$0.isChecked == false }).map({ return $0 })
             selectedSymptoms = allSymptoms.filter( {$0.isChecked == true }).map({ return $0 })
-        } catch{
+        } catch {
             print("Error fetching data from context \(error)")
         }
         return ([selectedSymptoms,commonSymptoms])
