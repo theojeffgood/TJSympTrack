@@ -14,7 +14,6 @@ class ViewEntryViewController: UIViewController, UITableViewDelegate{
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var selectedFoods = [Food]()
     var selectedSymptoms = [Symptom]()
-    var foodString: String = ""
     var monthString: String = ""
     var googleDataManager = GoogleDataManager()
     var dateString = "March 12"
@@ -30,7 +29,6 @@ class ViewEntryViewController: UIViewController, UITableViewDelegate{
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        convertFoodListToString()
         entryDateLabel.text = ("\(monthString)th")
         viewEntryTableView.invalidateIntrinsicContentSize()
         viewEntryTableView.estimatedRowHeight = 75
@@ -40,16 +38,6 @@ class ViewEntryViewController: UIViewController, UITableViewDelegate{
     @IBAction func closeButtonPressed(_ sender: UIButton) {
         selectedSymptoms = []
         dismiss(animated: true, completion: nil)
-    }
-    
-    func convertFoodListToString() {
-        for eachFood in selectedFoods {
-            foodString += ("\(eachFood.title!)")
-            if eachFood != selectedFoods.last! {
-                foodString += ", "
-            }
-        }
-        foodString = foodString.capitalized
     }
 }
 
@@ -77,6 +65,8 @@ extension ViewEntryViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.cellIdentifier, for: indexPath) as! SymptomCell
+        let foodString = selectedFoods.map({ return $0.title! }).joined(separator: ", ")
+
         cell.symptomLabel?.text = foodString
         cell.symptomCheckmark.isHidden = true
         cell.symptomCheckCircle.isHidden = true
@@ -95,7 +85,6 @@ extension ViewEntryViewController: GoogleManagerDelegate {
     
     func didRetrieveFoodData(foodsData: [Food]) {
         selectedFoods = foodsData
-        convertFoodListToString()
         viewEntryTableView.reloadData()
     }
     

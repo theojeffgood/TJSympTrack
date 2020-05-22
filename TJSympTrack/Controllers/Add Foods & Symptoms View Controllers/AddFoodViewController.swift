@@ -37,12 +37,20 @@ class AddFoodViewController: UIViewController, UITableViewDelegate{
         activateTapRecognition()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         displaySearchbarAnimation()
     }
     
     @IBAction func backButtonPressed(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        performSegue(withIdentifier: "UnwindSegueToSelectSymptoms", sender: self)
     }
     
     @IBAction func addFoodPressed(_ sender: Any) {

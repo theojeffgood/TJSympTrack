@@ -22,28 +22,31 @@ class SelectedSymptomsViewController: UIViewController, UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        selectedSymptomsList.dataSource = self
+        selectedSymptomsList.delegate = self
+        selectedSymptomsList.register(UINib(nibName: K.cellNibName, bundle: nil), forCellReuseIdentifier: K.cellIdentifier)
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = true
+        
         loadSymptoms()
         setupView()
-        
-        selectedSymptomsList.dataSource = self
-        selectedSymptomsList.delegate = self
         selectedSymptomsList.reloadData()
-        selectedSymptomsList.register(UINib(nibName: K.cellNibName, bundle: nil), forCellReuseIdentifier: K.cellIdentifier)
         selectedSymptomsList.estimatedRowHeight = 40
         selectedSymptomsList.invalidateIntrinsicContentSize()
     }
     
-    func loadSymptoms(){
-        let request: NSFetchRequest<Symptom> = Symptom.fetchRequest()
-        
-        do {
-            selectedSymptoms = try TJSymptomsBrain.context.fetch(request)
-        } catch {
-            print("Error fetching data from context \(error)")
-        }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.isNavigationBarHidden = true
+    }
+    
+    @IBAction func modalDismissed(segue: UIStoryboardSegue) {
+      // You can use segue.source to retrieve the VC
+      // being dismissed to collect any data which needs
+      // to be processed 
     }
     
     @IBAction func addMoreSymptomsPressed(_ sender: UIButton) {
@@ -68,6 +71,18 @@ class SelectedSymptomsViewController: UIViewController, UITableViewDelegate {
                 symptom.isChecked = !symptom.isChecked
             }
         }
+    }
+    
+    func loadSymptoms(){
+        print("loadSymptomsCalled. current symptoms count is: \(selectedSymptoms.count)")
+        let request: NSFetchRequest<Symptom> = Symptom.fetchRequest()
+        
+        do {
+            selectedSymptoms = try TJSymptomsBrain.context.fetch(request)
+        } catch {
+            print("Error fetching data from context \(error)")
+        }
+        print("new symptoms count is: \(selectedSymptoms.count)")
     }
     
     func setupView(){

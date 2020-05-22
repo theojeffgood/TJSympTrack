@@ -26,6 +26,7 @@ class AddSymptomsViewController: UIViewController, UITableViewDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         universeOfSymptoms = TJSymptomsBrain.loadSymptoms()
         if universeOfSymptoms[1].isEmpty{
             populateCommonSymptoms()
@@ -42,7 +43,7 @@ class AddSymptomsViewController: UIViewController, UITableViewDelegate {
         let theUserHasMadeASelection = !universeOfSymptoms[0].isEmpty
         if theUserHasMadeASelection {
             clearUnSelectedSymptoms()
-            self.performSegue(withIdentifier: K.reviewSymptomsAddedSegue, sender: self)
+            performSegue(withIdentifier: "UnwindSegueToSelectSymptoms", sender: self)
         } else {
             displayAnErrorMessage()
         }

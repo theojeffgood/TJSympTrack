@@ -46,7 +46,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="YZU-e1-wEr" firstAttribute="leading" secondItem="NDJ-TU-yi9" secondAttribute="leading" constant="20" id="6ut-82-VQ1"/>
+                                    <constraint firstItem="YZU-e1-wEr" firstAttribute="leading" secondItem="NDJ-TU-yi9" secondAttribute="leading" constant="20" identifier="cellIndentPadding" id="6ut-82-VQ1"/>
                                     <constraint firstAttribute="trailing" secondItem="EfV-xg-6lV" secondAttribute="trailing" constant="20" id="8LT-p5-c50"/>
                                     <constraint firstItem="EfV-xg-6lV" firstAttribute="centerY" secondItem="NDJ-TU-yi9" secondAttribute="centerY" id="AGb-U1-KdN"/>
                                     <constraint firstAttribute="trailing" secondItem="YTW-LO-1rO" secondAttribute="trailing" constant="25" id="EAD-1E-sDj"/>
@@ -68,6 +68,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="A6I-yc-9Ju"/>
             <connections>
+                <outlet property="leftPaddingConstraint" destination="6ut-82-VQ1" id="6nQ-fH-5rL"/>
                 <outlet property="symptomCheckCircle" destination="EfV-xg-6lV" id="uJs-A7-4Bs"/>
                 <outlet property="symptomCheckmark" destination="YTW-LO-1rO" id="LsN-G1-2Di"/>
                 <outlet property="symptomLabel" destination="YZU-e1-wEr" id="Pt2-uK-v9Z"/>

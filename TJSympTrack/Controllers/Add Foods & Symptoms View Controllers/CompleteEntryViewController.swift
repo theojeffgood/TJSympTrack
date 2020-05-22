@@ -14,7 +14,6 @@ class CompleteEntryViewController: UIViewController, UITableViewDelegate{
 
     let db = Firestore.firestore()
     var selectedFoods: [String] = []
-    var foodString: String = ""
     lazy var dateString: String = ""
     lazy var googleDataManager = GoogleDataManager()
 
@@ -28,7 +27,6 @@ class CompleteEntryViewController: UIViewController, UITableViewDelegate{
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        convertFoodListToString()
         completedEntryTableView.reloadData()
         completedEntryTableView.estimatedRowHeight = 75
         completedEntryTableView.invalidateIntrinsicContentSize()
@@ -36,10 +34,10 @@ class CompleteEntryViewController: UIViewController, UITableViewDelegate{
     }
     
     @IBAction func completeEntryButtonPressed(_ sender: UIButton) {
-        performSegue(withIdentifier: K.submitEntrySegue, sender: self)
         googleDataManager.saveEntryToGoogle(forFoods: selectedFoods, forDate: dateString)
         SelectedSymptomData.currentEntryTableHeaders = [""]
         selectedFoods = []
+        performSegue(withIdentifier: "UnwindSegueToSelectSymptoms", sender: self)
     }
 
     func getCurrentDate(){
@@ -48,16 +46,6 @@ class CompleteEntryViewController: UIViewController, UITableViewDelegate{
         dateFormatter.dateFormat = "MMMM d"
         dateString = dateFormatter.string(from: date)
     }
-    
-    func convertFoodListToString() {
-        for eachFood in selectedFoods {
-            foodString += ("\(eachFood)")
-            if eachFood != selectedFoods.last! {
-                foodString += ", "
-            }
-        }
-        foodString = foodString.capitalized
-    }
 }
 
     //MARK: - UITableViewSource
@@ -65,11 +53,12 @@ class CompleteEntryViewController: UIViewController, UITableViewDelegate{
     extension CompleteEntryViewController: UITableViewDataSource {
         
         func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-            return SelectedSymptomData.currentEntryTableHeaders[section]
+            let symptomString = SelectedSymptomData.currentEntryTableHeaders.joined(separator: ", ")
+            return symptomString
         }
 
         func numberOfSections(in tableView: UITableView) -> Int {
-            return SelectedSymptomData.currentEntryTableHeaders.count
+            return 1
         }
 
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -78,6 +67,8 @@ class CompleteEntryViewController: UIViewController, UITableViewDelegate{
 
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: K.cellIdentifier, for: indexPath) as! SymptomCell
+            let foodString = selectedFoods.joined(separator: ", ").capitalized
+            cell.leftPaddingConstraint.constant = 20
             cell.symptomLabel?.text = foodString
             cell.symptomCheckmark.isHidden = true
             cell.symptomCheckCircle.isHidden = true
@@ -85,15 +76,24 @@ class CompleteEntryViewController: UIViewController, UITableViewDelegate{
         }
         
         func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-            let headerView = UITableViewHeaderFooterView()  
-            headerView.contentView.backgroundColor = UIColor.white
-            headerView.textLabel?.font = UIFont.boldSystemFont(ofSize: 29)
-            return headerView
+            let header = UITableViewHeaderFooterView()
+            header.contentView.backgroundColor = UIColor.white
+            header.textLabel?.frame = header.frame
+            header.textLabel?.setFontSize()
+            return header
         }
         
-        func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int)
-        {
-            let header = view as! UITableViewHeaderFooterView
-            header.textLabel?.font = UIFont(name: "Futura", size: 29)!
+        func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+            return UITableView.automaticDimension
         }
+        
+        func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
+            return 50.0
+        }
+}
+
+extension UILabel {
+    func setFontSize (){
+        UILabel.appearance(whenContainedInInstancesOf: [UITableViewHeaderFooterView.self]).font = UIFont.boldSystemFont(ofSize: 25)
     }
+}

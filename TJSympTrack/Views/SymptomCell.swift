@@ -13,6 +13,7 @@ class SymptomCell: UITableViewCell {
     @IBOutlet weak var symptomLabel: UILabel!
     @IBOutlet weak var symptomCheckmark: UIImageView!
     @IBOutlet weak var symptomCheckCircle: UIImageView!
+    @IBOutlet weak var leftPaddingConstraint: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()

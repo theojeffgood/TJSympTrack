@@ -217,8 +217,8 @@
 		E498E5FA2461E0E000A46A7A /* Add Foods & Symptoms View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				E4877D4324477F1D00BC249B /* AddSymptomsViewController.swift */,
 				E4877D4524477F4C00BC249B /* SelectedSymptoms.swift */,
+				E4877D4324477F1D00BC249B /* AddSymptomsViewController.swift */,
 				E4877D4724477F7200BC249B /* AddFoodViewController.swift */,
 				E4877D4924477F9400BC249B /* CompleteEntryViewController.swift */,
 			);
