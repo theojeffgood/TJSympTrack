@@ -20,17 +20,6 @@
                                 <rect key="frame" x="20" y="197" width="374" height="575"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="30" maxY="0.0"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SymptomCell" id="gb2-Y9-TYO">
-                                        <rect key="frame" x="0.0" y="28" width="374" height="43.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gb2-Y9-TYO" id="qkc-dj-5k9">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J6W-ZA-LYe" userLabel="Add Symptoms Button">
                                 <rect key="frame" x="309" y="797" width="80" height="40"/>
@@ -212,23 +201,11 @@
                                             <constraint firstAttribute="width" constant="20" id="jv3-G5-QSN"/>
                                         </constraints>
                                     </view>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8bs-JM-bmk" userLabel="Food Table View">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="65" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8bs-JM-bmk" userLabel="Food Table View">
                                         <rect key="frame" x="20" y="0.0" width="374" height="612"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="separatorColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationWidth="0.0" reuseIdentifier="ReusableFoodCell" id="KLL-Jw-tr7">
-                                                <rect key="frame" x="0.0" y="28" width="374" height="65"/>
-                                                <autoresizingMask key="autoresizingMask"/>
-                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KLL-Jw-tr7" id="PnW-Id-F2K">
-                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="65"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </tableViewCellContentView>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </tableViewCell>
-                                        </prototypes>
                                     </tableView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lns-AW-s8t" userLabel="Right Padding View">
                                         <rect key="frame" x="394" y="0.0" width="20" height="612"/>
@@ -288,10 +265,10 @@
             </objects>
             <point key="canvasLocation" x="1408.8" y="-0.44977511244377816"/>
         </scene>
-        <!--Analytics View Controller-->
+        <!--Pie Chart View Controller-->
         <scene sceneID="TNt-CD-s1J">
             <objects>
-                <viewController id="yRP-t4-BuP" customClass="AnalyticsViewController" customModule="TJSympTrack" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="yRP-t4-BuP" customClass="PieChartViewController" customModule="TJSympTrack" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Qno-Yp-yR2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -365,10 +342,10 @@
             </objects>
             <point key="canvasLocation" x="-197.10144927536234" y="-311.38392857142856"/>
         </scene>
-        <!--Relevant Symptoms View Controller-->
+        <!--Analytics-->
         <scene sceneID="5fG-w4-WqY">
             <objects>
-                <viewController id="G4t-Yv-Bjt" customClass="RelevantSymptomsViewController" customModule="TJSympTrack" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="G4t-Yv-Bjt" customClass="AnalyticsViewController" customModule="TJSympTrack" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DnS-Ob-NTj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -427,16 +404,6 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8xB-jJ-qkM">
                                 <rect key="frame" x="20" y="210" width="374" height="583"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SymptomCell" id="dxB-XJ-H3d">
-                                        <rect key="frame" x="0.0" y="28" width="374" height="43.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dxB-XJ-H3d" id="DKD-S8-aM0">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
                                 <sections/>
                             </tableView>
                         </subviews>
@@ -455,7 +422,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1Aj-Ov-sYQ"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="chart.pie" catalog="system" id="X7s-Te-Zgt"/>
+                    <tabBarItem key="tabBarItem" title="Analytics" image="Analytics Icon" selectedImage="Analytics Icon - Selected" id="X7s-Te-Zgt"/>
                     <navigationItem key="navigationItem" id="Hck-B6-VBH"/>
                     <connections>
                         <outlet property="relevantSymptomsList" destination="8xB-jJ-qkM" id="lgQ-A4-x8K"/>
@@ -466,7 +433,7 @@
             </objects>
             <point key="canvasLocation" x="-197" y="431"/>
         </scene>
-        <!--Calendar View Controller-->
+        <!--Calendar-->
         <scene sceneID="713-ph-SeH">
             <objects>
                 <viewController id="gwZ-aP-kAm" customClass="CalendarViewController" customModule="TJSympTrack" customModuleProvider="target" sceneMemberID="viewController">
@@ -993,7 +960,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yto-XL-1pP"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="calendar" catalog="system" id="lkx-Ul-Wvj"/>
+                    <tabBarItem key="tabBarItem" title="Calendar" image="Calendar Icon" selectedImage="Calendar Icon - Selected" id="lkx-Ul-Wvj"/>
                     <navigationItem key="navigationItem" id="IYO-CN-PcJ"/>
                     <connections>
                         <outlet property="currentMonthLabel" destination="EFQ-Ks-Iak" id="I9y-as-Fdk"/>
@@ -1061,21 +1028,10 @@
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="374" placeholderIntrinsicHeight="250" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VqP-4K-XXe" customClass="SelfSizedTableView" customModule="TJSympTrack" customModuleProvider="target">
                                 <rect key="frame" x="20" y="226.5" width="374" height="250"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="250" id="JCu-wD-vNY"/>
                                 </constraints>
-                                <inset key="separatorInset" minX="21" minY="0.0" maxX="25" maxY="0.0"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Twx-GJ-CUn">
-                                        <rect key="frame" x="0.0" y="28" width="374" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Twx-GJ-CUn" id="yM9-a5-s8H">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
+                                <color key="separatorColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <sections/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g1m-Sd-f3O" userLabel="Add Food Button">
@@ -1255,17 +1211,6 @@
                                 <rect key="frame" x="20" y="212" width="374" height="550"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <inset key="separatorInset" minX="30" minY="0.0" maxX="30" maxY="0.0"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SymptomCell" id="bX2-U0-gvu">
-                                        <rect key="frame" x="0.0" y="28" width="374" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bX2-U0-gvu" id="fb1-1i-gUD">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1330,17 +1275,6 @@
                                 <rect key="frame" x="20" y="259" width="374" height="603"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <inset key="separatorInset" minX="30" minY="0.0" maxX="30" maxY="0.0"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SymptomCell" id="dIa-bz-aBE">
-                                        <rect key="frame" x="0.0" y="28" width="374" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dIa-bz-aBE" id="pga-ZJ-Xfu">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E5k-VZ-N0I" userLabel="Back Button">
                                 <rect key="frame" x="5" y="49" width="60" height="60"/>
@@ -1395,7 +1329,9 @@
         <scene sceneID="CUo-U4-b35">
             <objects>
                 <navigationController title="Navigation Controller" automaticallyAdjustsScrollViewInsets="NO" id="t6v-1c-gjm" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="plus" catalog="system" id="aY6-sO-ght"/>
+                    <tabBarItem key="tabBarItem" title="" image="Plus Icon" selectedImage="Plus Icon - Selected" id="aY6-sO-ght">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="5"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Da9-5W-BWr">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -1415,10 +1351,14 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Analytics Icon" width="24.5" height="24"/>
+        <image name="Analytics Icon - Selected" width="24.5" height="24"/>
+        <image name="Calendar Icon" width="28" height="28"/>
+        <image name="Calendar Icon - Selected" width="28" height="28"/>
         <image name="Logo transparent" width="341" height="172"/>
+        <image name="Plus Icon" width="54.5" height="54.5"/>
+        <image name="Plus Icon - Selected" width="54.5" height="54.5"/>
         <image name="arrow.left" catalog="system" width="64" height="48"/>
-        <image name="calendar" catalog="system" width="64" height="52"/>
-        <image name="chart.pie" catalog="system" width="64" height="60"/>
         <image name="minus" catalog="system" width="64" height="12"/>
         <image name="plus" catalog="system" width="64" height="56"/>
         <image name="xmark.circle.fill" catalog="system" width="64" height="60"/>

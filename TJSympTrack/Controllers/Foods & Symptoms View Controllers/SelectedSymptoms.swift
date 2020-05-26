@@ -32,7 +32,7 @@ class SelectedSymptomsViewController: UIViewController, UITableViewDelegate {
         navigationController?.isNavigationBarHidden = true
         
         loadSymptoms()
-        setupView()
+        setupUI()
         selectedSymptomsList.reloadData()
         selectedSymptomsList.estimatedRowHeight = 40
         selectedSymptomsList.invalidateIntrinsicContentSize()
@@ -44,9 +44,6 @@ class SelectedSymptomsViewController: UIViewController, UITableViewDelegate {
     }
     
     @IBAction func modalDismissed(segue: UIStoryboardSegue) {
-      // You can use segue.source to retrieve the VC
-      // being dismissed to collect any data which needs
-      // to be processed 
     }
     
     @IBAction func addMoreSymptomsPressed(_ sender: UIButton) {
@@ -85,7 +82,8 @@ class SelectedSymptomsViewController: UIViewController, UITableViewDelegate {
         print("new symptoms count is: \(selectedSymptoms.count)")
     }
     
-    func setupView(){
+    func setupUI(){
+        print("the symptoms count at setupView is : \(selectedSymptoms.count)")
         if selectedSymptoms.isEmpty {
             addFoodButton.setTitle("Add Symptoms", for: .normal)
             segueDestination = K.addNewSymptomsSegue
@@ -94,6 +92,8 @@ class SelectedSymptomsViewController: UIViewController, UITableViewDelegate {
         } else {
             addFoodButton.setTitle("Add Foods", for: .normal)
             segueDestination = K.addNewFoodSegue
+            addMoreSymptomsButton.isHidden = false
+            userInstructionsLabel.isHidden = false
         }
     }
     

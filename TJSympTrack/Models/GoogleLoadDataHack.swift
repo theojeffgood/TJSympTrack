@@ -12,7 +12,6 @@ import CoreData
 
 protocol GoogleLoadDataHackDelegate {
     func loadUpDates(resrictionDates: [String])
-//    func didFailWithError(error: Error)
 }
 
 struct GoogleLoadDataHack {

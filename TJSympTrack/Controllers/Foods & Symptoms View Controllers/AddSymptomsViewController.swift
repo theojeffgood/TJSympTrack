@@ -28,7 +28,7 @@ class AddSymptomsViewController: UIViewController, UITableViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         universeOfSymptoms = TJSymptomsBrain.loadSymptoms()
-        if universeOfSymptoms[1].isEmpty{
+        if universeOfSymptoms[1].isEmpty && universeOfSymptoms[0].count != 7{
             populateCommonSymptoms()
         }
     }

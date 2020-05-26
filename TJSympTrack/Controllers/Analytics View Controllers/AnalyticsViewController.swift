@@ -1,69 +1,127 @@
 //
-//  AnalyticsViewController.swift
+//  RelevantSymptomsViewController.swift
 //  TJSympTrack
 //
-//  Created by Theo Goodman on 4/15/20.
+//  Created by Theo Goodman on 4/29/20.
 //  Copyright © 2020 Theo Goodman. All rights reserved.
 //
 
 import UIKit
 import Firebase
-import Charts
 
-class AnalyticsViewController: UIViewController {
+class AnalyticsViewController: UIViewController, UITableViewDelegate {
     
-    @IBOutlet weak var symptomInFocus: UILabel!
-    @IBOutlet weak var pieChart: PieChartView!
+    lazy var googleDataManager = GoogleDataManager()
+    var googleLoadDataHack = GoogleLoadDataHack()
+    lazy var selectedSymptoms = [Symptom]()
+    lazy var flattenedSymptomsArray: [String] = []
+    lazy var relevantFoods: [String] = []
+    lazy var dateString: String = ""
+    lazy var usersSelectedSymptom = ""
     
-    var selectedSymptom: String?
-    var numberOfDownloadsDataEntries = [PieChartDataEntry]()
-    var relevantFoods: [String] = []
+    @IBOutlet weak var relevantSymptomsList: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        symptomInFocus.text = selectedSymptom ?? "No Symptom Was Selected"
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        populateChartDataSet()
-    }
-    
-    @IBAction func closeAnalyticsButtonPressed(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
-    }
-    
-    func refreshChart(usingRefreshedData chartDataSet: PieChartDataSet) {
-        let chartData = PieChartData(dataSet: chartDataSet)
+        relevantSymptomsList.dataSource = self
+        relevantSymptomsList.delegate = self
+        relevantSymptomsList.reloadData()
+        relevantSymptomsList.register(UINib(nibName: K.cellNibName, bundle: nil), forCellReuseIdentifier: K.cellIdentifier)
         
-        let pFormatter = NumberFormatter()
-        pFormatter.numberStyle = .percent
-        pFormatter.maximumFractionDigits = 1
-        pFormatter.multiplier = 1
-        pFormatter.percentSymbol = "%"
-        chartData.setValueFormatter(DefaultValueFormatter(formatter: pFormatter))
-    
-        pieChart.animate(xAxisDuration: 1.1, easingOption: .easeOutBack)
-        pieChart.animate(yAxisDuration: 1.1)
-        pieChart.drawEntryLabelsEnabled = false
-        pieChart.legend.font = UIFont(name: "Futura", size: 25)!
-        pieChart.legend.formSize = 15
-        pieChart.legend.drawInside = false
-        pieChart.data = chartData
+        googleLoadDataHack.delegate = self
+        googleDataManager.delegate = self
+        googleDataManager.loadSymptomsData()
     }
     
-    func populateChartDataSet(){
-        for i in 0...(relevantFoods.count/10) {
-            let latestChartDataPoint = PieChartDataEntry(value: 15.0, label: relevantFoods[i])
-            numberOfDownloadsDataEntries.append(latestChartDataPoint)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == K.viewAnalyticsSegue {
+            let destinationVC = segue.destination as! PieChartViewController
+            destinationVC.relevantFoods = relevantFoods
+            destinationVC.selectedSymptom = usersSelectedSymptom
         }
+    }
+    
+    func getFoodsAndCountsForSymptom(symptom: String){
+        //        THINK ABOUT TRANSFERING THIS FUNCTION TO THE ANALYTICS VIEWCONTROLLER TO POPULATE PIE CHART
+        //        let asdf = googleDataManager.
+    }
+    
+    func displaySearchResults(symptomsData: [Symptom]){
+        for eachSymptom in symptomsData {
+            if !flattenedSymptomsArray.contains(eachSymptom.title!) {
+                flattenedSymptomsArray.append(eachSymptom.title!)
+            }
+        }
+        relevantSymptomsList.reloadData()
+    }
+    
+    //MARK: - TableView Delegate Methods
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        usersSelectedSymptom = flattenedSymptomsArray[indexPath.row]
         
-        let chartDataSet = PieChartDataSet(entries: numberOfDownloadsDataEntries, label: nil)
-        chartDataSet.colors = ChartColorTemplates.joyful()
-        chartDataSet.sliceSpace = 7
-        chartDataSet.entryLabelFont = UIFont(name: "Futura", size: 20)!
-        chartDataSet.entryLabelColor = UIColor.black
-        chartDataSet.valueColors = [UIColor.black]
-        chartDataSet.valueFont = UIFont(name: "Futura", size: 15.0)!
-        refreshChart(usingRefreshedData: chartDataSet)
+        googleLoadDataHack.loadUpDates(searchSymptom: usersSelectedSymptom)
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+//        performSegue(withIdentifier: K.viewAnalyticsSegue, sender: self)
+        getFoodsAndCountsForSymptom(symptom: usersSelectedSymptom)
+    }
+}
+
+//MARK: - UITableView Source
+
+extension AnalyticsViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: K.cellIdentifier, for: indexPath) as! SymptomCell
+        let latestSymptom = flattenedSymptomsArray[indexPath.row]
+        
+        cell.symptomLabel?.text = latestSymptom
+        cell.symptomCheckmark.isHidden = true
+        cell.symptomCheckCircle.isHidden = true
+        
+        return cell
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return flattenedSymptomsArray.count
+    }
+}
+
+
+//MARK: - GoogleDataManager Delegate
+
+extension AnalyticsViewController: GoogleManagerDelegate {
+    
+    func didRetrieveSymptomData(symptomsData: [Symptom]) {
+        DispatchQueue.main.async {
+            self.displaySearchResults(symptomsData: symptomsData)
+        }
+    }
+    
+    //    THINK ABOUT TRANSFERING THIS FUNCTION TO THE ANALYTICS VIEWCONTROLLER TO POPULATE PIE CHART
+    
+    func didRetrieveFoodData(foodsData: [Food]) {
+        relevantFoods = foodsData.map({ return $0.title! })
+        performSegue(withIdentifier: K.viewAnalyticsSegue, sender: self)
+    }
+    
+    func didFailWithError(error: Error) {
+        print ("There was an error retrieving data from the Google Cloud: \(error)")
+    }
+}
+
+//MARK: - GoogleDataLoadHack Delegate
+
+extension AnalyticsViewController: GoogleLoadDataHackDelegate {
+    
+    func loadUpDates(resrictionDates: [String]) {
+        if !resrictionDates.isEmpty {
+            googleDataManager.loadFoodData(resrictionDates: resrictionDates)
+        }
     }
 }
