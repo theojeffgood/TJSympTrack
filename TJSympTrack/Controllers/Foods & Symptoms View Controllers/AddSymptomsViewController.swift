@@ -35,7 +35,7 @@ class AddSymptomsViewController: UIViewController, UITableViewDelegate {
     
     @IBAction func closeAddSymptomsPressed(_ sender: UIButton) {
         clearUnSelectedSymptoms()
-        resetSelectedValues()
+        resetUsersSelection()
         dismiss(animated: true, completion: nil)
     }
     
@@ -43,7 +43,7 @@ class AddSymptomsViewController: UIViewController, UITableViewDelegate {
         let theUserHasMadeASelection = !universeOfSymptoms[0].isEmpty
         if theUserHasMadeASelection {
             clearUnSelectedSymptoms()
-            performSegue(withIdentifier: "UnwindSegueToSelectSymptoms", sender: self)
+            dismiss(animated: true, completion: nil)
         } else {
             displayAnErrorMessage()
         }
@@ -66,7 +66,7 @@ class AddSymptomsViewController: UIViewController, UITableViewDelegate {
         TJSymptomsBrain.saveContext()
     }
     
-    func resetSelectedValues(){
+    func resetUsersSelection(){
         var symptomCount = universeOfSymptoms[0].count - 1
         for eachSymptom in universeOfSymptoms[0] {
             TJSymptomsBrain.context.delete(eachSymptom)

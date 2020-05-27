@@ -90,7 +90,7 @@
                 <exit id="HzA-tu-C4Z" userLabel="Exit" sceneMemberID="exit"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kge-CP-x7C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3108.6956521739135" y="-741.29464285714278"/>
+            <point key="canvasLocation" x="2152" y="666"/>
         </scene>
         <!--Add Food View Controller-->
         <scene sceneID="xpY-tA-lQ5">
@@ -263,7 +263,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eHt-R6-agF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="uHK-kX-c9i" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1408.8" y="-0.44977511244377816"/>
+            <point key="canvasLocation" x="1409" y="1339"/>
         </scene>
         <!--Pie Chart View Controller-->
         <scene sceneID="TNt-CD-s1J">
@@ -298,7 +298,7 @@
                                 </constraints>
                             </stackView>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y4S-V4-wlN" customClass="PieChartView" customModule="Charts">
-                                <rect key="frame" x="20" y="202" width="374" height="610"/>
+                                <rect key="frame" x="20" y="202" width="374" height="561"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PdN-eM-h5J" userLabel="Back Button">
@@ -340,9 +340,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VlH-Dt-3K8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-197.10144927536234" y="-311.38392857142856"/>
+            <point key="canvasLocation" x="-117" y="1339"/>
         </scene>
-        <!--Analytics-->
+        <!--Analytics View Controller-->
         <scene sceneID="5fG-w4-WqY">
             <objects>
                 <viewController id="G4t-Yv-Bjt" customClass="AnalyticsViewController" customModule="TJSympTrack" customModuleProvider="target" sceneMemberID="viewController">
@@ -422,18 +422,17 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1Aj-Ov-sYQ"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Analytics" image="Analytics Icon" selectedImage="Analytics Icon - Selected" id="X7s-Te-Zgt"/>
                     <navigationItem key="navigationItem" id="Hck-B6-VBH"/>
                     <connections>
                         <outlet property="relevantSymptomsList" destination="8xB-jJ-qkM" id="lgQ-A4-x8K"/>
-                        <segue destination="yRP-t4-BuP" kind="presentation" identifier="viewAnalytics" modalPresentationStyle="fullScreen" id="9VQ-kQ-QcJ"/>
+                        <segue destination="yRP-t4-BuP" kind="show" identifier="viewAnalytics" id="9VQ-kQ-QcJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Arz-4u-SAy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-197" y="431"/>
+            <point key="canvasLocation" x="-117" y="666"/>
         </scene>
-        <!--Calendar-->
+        <!--Calendar View Controller-->
         <scene sceneID="713-ph-SeH">
             <objects>
                 <viewController id="gwZ-aP-kAm" customClass="CalendarViewController" customModule="TJSympTrack" customModuleProvider="target" sceneMemberID="viewController">
@@ -960,16 +959,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yto-XL-1pP"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Calendar" image="Calendar Icon" selectedImage="Calendar Icon - Selected" id="lkx-Ul-Wvj"/>
                     <navigationItem key="navigationItem" id="IYO-CN-PcJ"/>
                     <connections>
                         <outlet property="currentMonthLabel" destination="EFQ-Ks-Iak" id="I9y-as-Fdk"/>
-                        <segue destination="cXT-Y3-IGb" kind="presentation" identifier="viewEntry" modalPresentationStyle="fullScreen" id="bEb-G3-GEo"/>
+                        <segue destination="cXT-Y3-IGb" kind="show" identifier="viewEntry" id="bEb-G3-GEo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sSJ-tg-yE2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="649" y="680"/>
+            <point key="canvasLocation" x="648" y="666"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="2Lx-b8-uIF">
@@ -982,14 +980,14 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="gwZ-aP-kAm" kind="relationship" relationship="viewControllers" id="Mac-9M-aT3"/>
+                        <segue destination="YoY-uL-fKO" kind="relationship" relationship="viewControllers" id="Mac-9M-aT3"/>
                         <segue destination="t6v-1c-gjm" kind="relationship" relationship="viewControllers" id="GjW-eR-8E9"/>
-                        <segue destination="G4t-Yv-Bjt" kind="relationship" relationship="viewControllers" id="nAl-eE-84L"/>
+                        <segue destination="kBr-jF-p0v" kind="relationship" relationship="viewControllers" id="nAl-eE-84L"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tUB-zt-7OB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="649" y="-311"/>
+            <point key="canvasLocation" x="648" y="-741"/>
         </scene>
         <!--Add Symptoms View Controller-->
         <scene sceneID="4m0-we-jq9">
@@ -1126,7 +1124,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mIq-52-cqN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2318.840579710145" y="-741.29464285714278"/>
+            <point key="canvasLocation" x="1409" y="666"/>
         </scene>
         <!--Complete Entry View Controller-->
         <scene sceneID="xsd-En-DbD">
@@ -1240,7 +1238,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zcq-fW-8Yi" sceneMemberID="firstResponder"/>
                 <exit id="ljJ-SP-Sam" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2198.5507246376815" y="0.0"/>
+            <point key="canvasLocation" x="1409" y="2012"/>
         </scene>
         <!--View Entry View Controller-->
         <scene sceneID="u0P-ti-KNw">
@@ -1272,7 +1270,7 @@
                                 </constraints>
                             </stackView>
                             <tableView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="335" placeholderIntrinsicHeight="376" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VCq-tS-Cxs" userLabel="&quot;View Entry&quot; Table View" customClass="SelfSizedTableView2" customModule="TJSympTrack" customModuleProvider="target">
-                                <rect key="frame" x="20" y="259" width="374" height="603"/>
+                                <rect key="frame" x="20" y="259" width="374" height="554"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <inset key="separatorInset" minX="30" minY="0.0" maxX="30" maxY="0.0"/>
                             </tableView>
@@ -1323,18 +1321,17 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7TP-e1-lHK" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1409" y="680"/>
+            <point key="canvasLocation" x="648" y="1339"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Add Symptoms Navigation Controller-->
         <scene sceneID="CUo-U4-b35">
             <objects>
-                <navigationController title="Navigation Controller" automaticallyAdjustsScrollViewInsets="NO" id="t6v-1c-gjm" sceneMemberID="viewController">
+                <navigationController title="Add Symptoms Navigation Controller" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="t6v-1c-gjm" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="Plus Icon" selectedImage="Plus Icon - Selected" id="aY6-sO-ght">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="5"/>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Da9-5W-BWr">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" hidden="YES" opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Da9-5W-BWr">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1347,7 +1344,43 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j0X-h9-aoq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1408.6956521739132" y="-741.29464285714278"/>
+            <point key="canvasLocation" x="1409" y="-13"/>
+        </scene>
+        <!--Analytics Navigation Controller-->
+        <scene sceneID="Syy-ze-UQL">
+            <objects>
+                <navigationController title="Analytics Navigation Controller" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="kBr-jF-p0v" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Analytics" image="Analytics Icon" selectedImage="Analytics Icon - Selected" id="X7s-Te-Zgt"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" hidden="YES" opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ADq-gp-Xa8">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="G4t-Yv-Bjt" kind="relationship" relationship="rootViewController" id="yjt-oV-WCg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lqX-vA-g2D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-117.39130434782609" y="-13.392857142857142"/>
+        </scene>
+        <!--Calendar Navigation Controller-->
+        <scene sceneID="iyV-uH-sZI">
+            <objects>
+                <navigationController title="Calendar Navigation Controller" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="YoY-uL-fKO" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Calendar" image="Calendar Icon" selectedImage="Calendar Icon - Selected" id="lkx-Ul-Wvj"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" hidden="YES" opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="TX1-3b-63c">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="gwZ-aP-kAm" kind="relationship" relationship="rootViewController" id="cfz-K8-AEQ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XDs-xV-VBX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="647.82608695652175" y="-13.392857142857142"/>
         </scene>
     </scenes>
     <resources>

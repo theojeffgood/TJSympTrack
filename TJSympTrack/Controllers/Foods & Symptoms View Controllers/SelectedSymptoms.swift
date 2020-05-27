@@ -29,21 +29,11 @@ class SelectedSymptomsViewController: UIViewController, UITableViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.isNavigationBarHidden = true
-        
         loadSymptoms()
         setupUI()
         selectedSymptomsList.reloadData()
         selectedSymptomsList.estimatedRowHeight = 40
         selectedSymptomsList.invalidateIntrinsicContentSize()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.isNavigationBarHidden = true
-    }
-    
-    @IBAction func modalDismissed(segue: UIStoryboardSegue) {
     }
     
     @IBAction func addMoreSymptomsPressed(_ sender: UIButton) {
@@ -71,7 +61,6 @@ class SelectedSymptomsViewController: UIViewController, UITableViewDelegate {
     }
     
     func loadSymptoms(){
-        print("loadSymptomsCalled. current symptoms count is: \(selectedSymptoms.count)")
         let request: NSFetchRequest<Symptom> = Symptom.fetchRequest()
         
         do {
@@ -79,11 +68,9 @@ class SelectedSymptomsViewController: UIViewController, UITableViewDelegate {
         } catch {
             print("Error fetching data from context \(error)")
         }
-        print("new symptoms count is: \(selectedSymptoms.count)")
     }
     
     func setupUI(){
-        print("the symptoms count at setupView is : \(selectedSymptoms.count)")
         if selectedSymptoms.isEmpty {
             addFoodButton.setTitle("Add Symptoms", for: .normal)
             segueDestination = K.addNewSymptomsSegue

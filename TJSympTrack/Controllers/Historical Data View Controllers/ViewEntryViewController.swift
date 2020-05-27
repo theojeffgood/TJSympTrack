@@ -12,8 +12,8 @@ import CoreData
 class ViewEntryViewController: UIViewController, UITableViewDelegate{
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    var selectedFoods = [Food]()
-    var selectedSymptoms = [Symptom]()
+    var selectedFoods = [String]()
+    var selectedSymptoms = [String]()
     var monthString: String = ""
     var googleDataManager = GoogleDataManager()
     var dateString = "March 12"
@@ -37,7 +37,7 @@ class ViewEntryViewController: UIViewController, UITableViewDelegate{
     
     @IBAction func closeButtonPressed(_ sender: UIButton) {
         selectedSymptoms = []
-        dismiss(animated: true, completion: nil)
+        navigationController?.popToRootViewController(animated: true)
     }
 }
 
@@ -46,7 +46,7 @@ class ViewEntryViewController: UIViewController, UITableViewDelegate{
 extension ViewEntryViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return selectedSymptoms[section].title
+        return selectedSymptoms[section]
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -65,7 +65,7 @@ extension ViewEntryViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.cellIdentifier, for: indexPath) as! SymptomCell
-        let foodString = selectedFoods.map({ return $0.title! }).joined(separator: ", ")
+        let foodString = selectedFoods.joined(separator: ", ")
 
         cell.symptomLabel?.text = foodString
         cell.symptomCheckmark.isHidden = true
@@ -78,12 +78,12 @@ extension ViewEntryViewController: UITableViewDataSource {
 
 extension ViewEntryViewController: GoogleManagerDelegate {
     
-    func didRetrieveSymptomData(symptomsData: [Symptom]) {
+    func didRetrieveSymptomData(symptomsData: [String]) {
         self.selectedSymptoms = symptomsData
         self.viewEntryTableView.reloadData()
     }
     
-    func didRetrieveFoodData(foodsData: [Food]) {
+    func didRetrieveFoodData(foodsData: [String]) {
         selectedFoods = foodsData
         viewEntryTableView.reloadData()
     }

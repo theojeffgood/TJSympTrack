@@ -11,8 +11,8 @@ import Firebase
 import CoreData
 
 protocol GoogleManagerDelegate {
-    func didRetrieveSymptomData(symptomsData: [Symptom])
-    func didRetrieveFoodData(foodsData: [Food])
+    func didRetrieveSymptomData(symptomsData: [String])
+    func didRetrieveFoodData(foodsData: [String])
     func didFailWithError(error: Error)
 }
 
@@ -20,11 +20,10 @@ struct GoogleDataManager {
     
     var delegate: GoogleManagerDelegate?
     let db = Firestore.firestore()
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     func loadFoodData(forSymptom: String? = nil, searchDate: String? = nil, resrictionDates: [String]? = nil) {
         var query: Query?
-        var saveFoods = [Food]()
+        var saveFoods = [String]()
         let searchReference = db.collection(K.FStore.foodCollectionName)
         
         if let safeSearchDate = searchDate {
@@ -44,10 +43,7 @@ struct GoogleDataManager {
                     for document in querySnapshot!.documents {
                         let data = document.data()
                         if let foodTitle = data[K.FStore.foodField] as? String {
-                            let newFood = Food(context: self.context)
-                            newFood.title = foodTitle
-                            newFood.isChecked = false
-                            saveFoods.append(newFood)
+                            saveFoods.append(foodTitle)
                         }
                     }
                 }
@@ -60,7 +56,7 @@ struct GoogleDataManager {
     }
     
     func loadSymptomsData(searchDate: String? = nil) {
-        var savedSymptoms = [Symptom]()
+        var savedSymptoms = [String]()
         var query: Query?
         let searchReference = db.collection(K.FStore.symptomsCollectionName)
         
@@ -78,10 +74,7 @@ struct GoogleDataManager {
                     for document in querySnapshot!.documents {
                         let data = document.data()
                         if let symptomTitle = data[K.FStore.symptomField] as? String {
-                            let newSymptom = Symptom(context: self.context)
-                            newSymptom.title = symptomTitle
-                            newSymptom.isChecked = false
-                            savedSymptoms.append(newSymptom)
+                            savedSymptoms.append(symptomTitle)
                         }
                     }
                     self.delegate?.didRetrieveSymptomData(symptomsData: savedSymptoms)

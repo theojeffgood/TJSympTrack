@@ -37,7 +37,7 @@ class CompleteEntryViewController: UIViewController, UITableViewDelegate{
         googleDataManager.saveEntryToGoogle(forFoods: selectedFoods, forDate: dateString)
         SelectedSymptomData.currentEntryTableHeaders = [""]
         selectedFoods = []
-        performSegue(withIdentifier: "UnwindSegueToSelectSymptoms", sender: self)
+        navigationController?.popToRootViewController(animated: true)
     }
 
     func getCurrentDate(){

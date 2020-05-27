@@ -41,15 +41,10 @@ class AnalyticsViewController: UIViewController, UITableViewDelegate {
         }
     }
     
-    func getFoodsAndCountsForSymptom(symptom: String){
-        //        THINK ABOUT TRANSFERING THIS FUNCTION TO THE ANALYTICS VIEWCONTROLLER TO POPULATE PIE CHART
-        //        let asdf = googleDataManager.
-    }
-    
-    func displaySearchResults(symptomsData: [Symptom]){
+    func displaySearchResults(symptomsData: [String]){
         for eachSymptom in symptomsData {
-            if !flattenedSymptomsArray.contains(eachSymptom.title!) {
-                flattenedSymptomsArray.append(eachSymptom.title!)
+            if !flattenedSymptomsArray.contains(eachSymptom) {
+                flattenedSymptomsArray.append(eachSymptom)
             }
         }
         relevantSymptomsList.reloadData()
@@ -64,7 +59,6 @@ class AnalyticsViewController: UIViewController, UITableViewDelegate {
         
         tableView.deselectRow(at: indexPath, animated: true)
 //        performSegue(withIdentifier: K.viewAnalyticsSegue, sender: self)
-        getFoodsAndCountsForSymptom(symptom: usersSelectedSymptom)
     }
 }
 
@@ -97,16 +91,14 @@ extension AnalyticsViewController: UITableViewDataSource {
 
 extension AnalyticsViewController: GoogleManagerDelegate {
     
-    func didRetrieveSymptomData(symptomsData: [Symptom]) {
+    func didRetrieveSymptomData(symptomsData: [String]) {
         DispatchQueue.main.async {
             self.displaySearchResults(symptomsData: symptomsData)
         }
     }
-    
-    //    THINK ABOUT TRANSFERING THIS FUNCTION TO THE ANALYTICS VIEWCONTROLLER TO POPULATE PIE CHART
-    
-    func didRetrieveFoodData(foodsData: [Food]) {
-        relevantFoods = foodsData.map({ return $0.title! })
+        
+    func didRetrieveFoodData(foodsData: [String]) {
+        relevantFoods = foodsData
         performSegue(withIdentifier: K.viewAnalyticsSegue, sender: self)
     }
     

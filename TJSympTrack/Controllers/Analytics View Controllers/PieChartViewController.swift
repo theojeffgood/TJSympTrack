@@ -29,7 +29,7 @@ class PieChartViewController: UIViewController {
     }
     
     @IBAction func closeAnalyticsButtonPressed(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
+        navigationController?.popToRootViewController(animated: true)
     }
     
     func refreshChart(usingRefreshedData chartDataSet: PieChartDataSet) {
