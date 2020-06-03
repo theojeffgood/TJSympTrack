@@ -50,7 +50,7 @@ class AddFoodViewController: UIViewController, UITableViewDelegate{
     }
     
     @IBAction func backButtonPressed(_ sender: Any) {
-        performSegue(withIdentifier: "UnwindSegueToSelectSymptoms", sender: self)
+        navigationController?.popToRootViewController(animated: true)
     }
     
     @IBAction func addFoodPressed(_ sender: Any) {

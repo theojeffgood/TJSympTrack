@@ -14,6 +14,8 @@ class SelectedSymptomsViewController: UIViewController, UITableViewDelegate {
     var selectedSymptoms = [Symptom]()
     var unselectedSymptoms = [Symptom]()
     var segueDestination: String?
+    let googleDataManager = GoogleDataManager()
+    lazy var defaultTableViewHeightConstraint: NSLayoutConstraint = selectedSymptomsList.heightAnchor.constraint(equalToConstant: 250)
     
     @IBOutlet weak var selectedSymptomsList: SelfSizedTableView!
     @IBOutlet weak var addFoodButton: UIButton!
@@ -25,6 +27,8 @@ class SelectedSymptomsViewController: UIViewController, UITableViewDelegate {
         selectedSymptomsList.dataSource = self
         selectedSymptomsList.delegate = self
         selectedSymptomsList.register(UINib(nibName: K.cellNibName, bundle: nil), forCellReuseIdentifier: K.cellIdentifier)
+        
+        googleDataManager.refreshLocallyStoredHistoricalSymptomsList()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,7 +55,7 @@ class SelectedSymptomsViewController: UIViewController, UITableViewDelegate {
         if segue.identifier == K.addNewFoodSegue {
             let usersCurrentExperiencingSymptoms = selectedSymptoms.filter( {$0.isChecked == true }).map({ return $0 })
             for eachSymptom in usersCurrentExperiencingSymptoms {
-                SelectedSymptomData.currentEntryTableHeaders.append(eachSymptom.title!)
+                SelectedSymptomData.currentSessionSymptomsList.append(eachSymptom.title!)
             }
         } else if segue.identifier == K.addNewSymptomsSegue {
             for symptom in selectedSymptoms where symptom.isChecked == false {
@@ -62,7 +66,6 @@ class SelectedSymptomsViewController: UIViewController, UITableViewDelegate {
     
     func loadSymptoms(){
         let request: NSFetchRequest<Symptom> = Symptom.fetchRequest()
-        
         do {
             selectedSymptoms = try TJSymptomsBrain.context.fetch(request)
         } catch {
@@ -76,11 +79,14 @@ class SelectedSymptomsViewController: UIViewController, UITableViewDelegate {
             segueDestination = K.addNewSymptomsSegue
             addMoreSymptomsButton.isHidden = true
             userInstructionsLabel.isHidden = true
+            selectedSymptomsList.translatesAutoresizingMaskIntoConstraints = false
+            defaultTableViewHeightConstraint.isActive = true
         } else {
             addFoodButton.setTitle("Add Foods", for: .normal)
             segueDestination = K.addNewFoodSegue
             addMoreSymptomsButton.isHidden = false
             userInstructionsLabel.isHidden = false
+            defaultTableViewHeightConstraint.isActive = false
         }
     }
     

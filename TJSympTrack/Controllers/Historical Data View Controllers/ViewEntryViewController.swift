@@ -15,7 +15,7 @@ class ViewEntryViewController: UIViewController, UITableViewDelegate{
     var selectedFoods = [String]()
     var selectedSymptoms = [String]()
     var monthString: String = ""
-    var googleDataManager = GoogleDataManager()
+    var loadMealDataFromGoogle = LoadMealDataFromGoogle()
     var dateString = "March 12"
     
     @IBOutlet weak var viewEntryTableView: SelfSizedTableView3!
@@ -76,15 +76,10 @@ extension ViewEntryViewController: UITableViewDataSource {
 
 //MARK: - GoogleDataManager Delegate
 
-extension ViewEntryViewController: GoogleManagerDelegate {
-    
-    func didRetrieveSymptomData(symptomsData: [String]) {
-        self.selectedSymptoms = symptomsData
-        self.viewEntryTableView.reloadData()
-    }
-    
-    func didRetrieveFoodData(foodsData: [String]) {
-        selectedFoods = foodsData
+extension ViewEntryViewController: LoadMealDataFromGoogleDelegate {
+    func didRetrieveMealData(symptomsTitles: [String], foodsTitles: [String], mealDateTitle: String) {
+        selectedSymptoms = symptomsTitles
+        selectedFoods = foodsTitles
         viewEntryTableView.reloadData()
     }
     

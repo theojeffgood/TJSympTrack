@@ -12,10 +12,6 @@ import Firebase
 
 class CalendarViewController: UIViewController {
     
-//    var googleDataManager = GoogleDataManager()
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    var symptoms: [Symptom] = []
-    var foods: [Food] = []
     var counter = 0
     var dateString: String = ""
     
@@ -34,9 +30,8 @@ class CalendarViewController: UIViewController {
         if segue.identifier == K.viewEntrySegue {
             let destinationVC = segue.destination as! ViewEntryViewController
             destinationVC.monthString = dateString
-            destinationVC.googleDataManager.delegate = destinationVC
-            destinationVC.googleDataManager.loadSymptomsData(searchDate: dateString)
-            destinationVC.googleDataManager.loadFoodData(searchDate: dateString)
+            destinationVC.loadMealDataFromGoogle.delegate = destinationVC
+            destinationVC.loadMealDataFromGoogle.loadMealsData(searchDate: dateString)
         }
     }
     

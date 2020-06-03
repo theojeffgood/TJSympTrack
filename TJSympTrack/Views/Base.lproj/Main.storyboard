@@ -378,10 +378,10 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="45" translatesAutoresizingMaskIntoConstraints="NO" id="MNU-oJ-Sxf" userLabel="Symptoms Stack View">
-                                <rect key="frame" x="20" y="139" width="374" height="56"/>
+                                <rect key="frame" x="20" y="139" width="374" height="74"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="0wd-5Y-b4H" userLabel="&quot;Your Symptoms&quot; Stack View">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="56"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="74"/>
                                         <subviews>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Your Analytics" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Vwf-oo-gzu">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="36"/>
@@ -393,6 +393,12 @@
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="thin"/>
                                             </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a symptom to view your matched foods." textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Np-VB-Yyw">
+                                                <rect key="frame" x="0.0" y="56" width="374" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="1h2-A8-QmP" firstAttribute="leading" secondItem="0wd-5Y-b4H" secondAttribute="leading" id="GRa-pW-mMG"/>
@@ -402,7 +408,7 @@
                                 </subviews>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8xB-jJ-qkM">
-                                <rect key="frame" x="20" y="210" width="374" height="583"/>
+                                <rect key="frame" x="20" y="223" width="374" height="570"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <sections/>
                             </tableView>
@@ -412,7 +418,7 @@
                             <constraint firstItem="orp-04-NjD" firstAttribute="leading" secondItem="1Aj-Ov-sYQ" secondAttribute="leading" constant="20" id="8wL-mF-OMT"/>
                             <constraint firstItem="1Aj-Ov-sYQ" firstAttribute="bottom" secondItem="8xB-jJ-qkM" secondAttribute="bottom" constant="20" id="9nh-dB-HKr"/>
                             <constraint firstItem="8xB-jJ-qkM" firstAttribute="leading" secondItem="1Aj-Ov-sYQ" secondAttribute="leading" constant="20" id="KN1-1i-V6w"/>
-                            <constraint firstItem="8xB-jJ-qkM" firstAttribute="top" secondItem="MNU-oJ-Sxf" secondAttribute="bottom" constant="15" id="Mkf-Ry-o9c"/>
+                            <constraint firstItem="8xB-jJ-qkM" firstAttribute="top" secondItem="MNU-oJ-Sxf" secondAttribute="bottom" constant="10" id="Mkf-Ry-o9c"/>
                             <constraint firstItem="1Aj-Ov-sYQ" firstAttribute="trailing" secondItem="orp-04-NjD" secondAttribute="trailing" constant="20" id="a4e-N1-MMh"/>
                             <constraint firstItem="orp-04-NjD" firstAttribute="top" secondItem="1Aj-Ov-sYQ" secondAttribute="top" constant="20" id="bUR-qH-VYg"/>
                             <constraint firstItem="1Aj-Ov-sYQ" firstAttribute="trailing" secondItem="8xB-jJ-qkM" secondAttribute="trailing" constant="20" id="dfC-OV-YHk"/>
@@ -430,7 +436,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Arz-4u-SAy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-117" y="666"/>
+            <point key="canvasLocation" x="-117.39130434782609" y="665.625"/>
         </scene>
         <!--Calendar View Controller-->
         <scene sceneID="713-ph-SeH">
@@ -1026,9 +1032,6 @@
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="374" placeholderIntrinsicHeight="250" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VqP-4K-XXe" customClass="SelfSizedTableView" customModule="TJSympTrack" customModuleProvider="target">
                                 <rect key="frame" x="20" y="226.5" width="374" height="250"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="250" id="JCu-wD-vNY"/>
-                                </constraints>
                                 <color key="separatorColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <sections/>
                             </tableView>
@@ -1070,7 +1073,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8uh-q3-oOP">
-                                <rect key="frame" x="20" y="486.5" width="127" height="27.5"/>
+                                <rect key="frame" x="20" y="481.5" width="127" height="27.5"/>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
                                         <fragment content="Add More Symptoms">
@@ -1088,6 +1091,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="8uh-q3-oOP" firstAttribute="top" secondItem="VqP-4K-XXe" secondAttribute="bottom" constant="5" id="6tc-Ak-fue"/>
                             <constraint firstItem="57A-uR-NKd" firstAttribute="top" secondItem="Kdw-G9-CgC" secondAttribute="bottom" constant="25" id="76N-kb-4Js"/>
                             <constraint firstItem="a56-cN-W43" firstAttribute="leading" secondItem="3Dw-9h-YS2" secondAttribute="leading" constant="20" id="Bsx-Cu-Cvk"/>
                             <constraint firstItem="3Dw-9h-YS2" firstAttribute="trailing" secondItem="sPV-Cw-L2g" secondAttribute="trailing" constant="20" id="E8j-wb-vlf"/>
@@ -1098,7 +1102,6 @@
                             <constraint firstItem="VqP-4K-XXe" firstAttribute="leading" secondItem="3Dw-9h-YS2" secondAttribute="leading" constant="20" id="bHu-ch-axi"/>
                             <constraint firstItem="sPV-Cw-L2g" firstAttribute="leading" secondItem="3Dw-9h-YS2" secondAttribute="leading" constant="20" id="eVH-ut-C1f"/>
                             <constraint firstItem="3Dw-9h-YS2" firstAttribute="bottom" secondItem="g1m-Sd-f3O" secondAttribute="bottom" constant="20" id="eZ8-r4-Mtq"/>
-                            <constraint firstItem="8uh-q3-oOP" firstAttribute="top" secondItem="VqP-4K-XXe" secondAttribute="bottom" constant="10" id="hRZ-gs-Psl"/>
                             <constraint firstAttribute="trailing" secondItem="a56-cN-W43" secondAttribute="trailing" constant="20" id="mhD-nF-SG0"/>
                             <constraint firstItem="VqP-4K-XXe" firstAttribute="centerX" secondItem="2jf-dO-Xth" secondAttribute="centerX" id="nhc-Mf-wSq"/>
                             <constraint firstItem="VqP-4K-XXe" firstAttribute="trailing" secondItem="3Dw-9h-YS2" secondAttribute="trailing" constant="-20" id="oEp-Ay-BXE"/>

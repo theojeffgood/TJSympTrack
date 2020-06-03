@@ -11,10 +11,8 @@ import Firebase
 
 class AnalyticsViewController: UIViewController, UITableViewDelegate {
     
-    lazy var googleDataManager = GoogleDataManager()
-    var googleLoadDataHack = GoogleLoadDataHack()
+    
     lazy var selectedSymptoms = [Symptom]()
-    lazy var flattenedSymptomsArray: [String] = []
     lazy var relevantFoods: [String] = []
     lazy var dateString: String = ""
     lazy var usersSelectedSymptom = ""
@@ -27,38 +25,31 @@ class AnalyticsViewController: UIViewController, UITableViewDelegate {
         relevantSymptomsList.delegate = self
         relevantSymptomsList.reloadData()
         relevantSymptomsList.register(UINib(nibName: K.cellNibName, bundle: nil), forCellReuseIdentifier: K.cellIdentifier)
-        
-        googleLoadDataHack.delegate = self
-        googleDataManager.delegate = self
-        googleDataManager.loadSymptomsData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        relevantSymptomsList.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == K.viewAnalyticsSegue {
             let destinationVC = segue.destination as! PieChartViewController
-            destinationVC.relevantFoods = relevantFoods
+            destinationVC.loadFoodDataFromGoogle.delegate = destinationVC
+            destinationVC.loadFoodDataFromGoogle.loadPreExistingFoods(forSymptoms: [usersSelectedSymptom])
             destinationVC.selectedSymptom = usersSelectedSymptom
         }
-    }
-    
-    func displaySearchResults(symptomsData: [String]){
-        for eachSymptom in symptomsData {
-            if !flattenedSymptomsArray.contains(eachSymptom) {
-                flattenedSymptomsArray.append(eachSymptom)
-            }
-        }
-        relevantSymptomsList.reloadData()
     }
     
     //MARK: - TableView Delegate Methods
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        usersSelectedSymptom = flattenedSymptomsArray[indexPath.row]
+        usersSelectedSymptom = SelectedSymptomData.historicalSymptomsList[indexPath.row]
         
-        googleLoadDataHack.loadUpDates(searchSymptom: usersSelectedSymptom)
+//        loadFoodDataFromGoogle.loadPreExistingFoods(forSymptoms: [usersSelectedSymptom])
         
         tableView.deselectRow(at: indexPath, animated: true)
-//        performSegue(withIdentifier: K.viewAnalyticsSegue, sender: self)
+        performSegue(withIdentifier: K.viewAnalyticsSegue, sender: self)
     }
 }
 
@@ -68,7 +59,7 @@ extension AnalyticsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.cellIdentifier, for: indexPath) as! SymptomCell
-        let latestSymptom = flattenedSymptomsArray[indexPath.row]
+        let latestSymptom = SelectedSymptomData.historicalSymptomsList[indexPath.row]
         
         cell.symptomLabel?.text = latestSymptom
         cell.symptomCheckmark.isHidden = true
@@ -82,38 +73,6 @@ extension AnalyticsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return flattenedSymptomsArray.count
-    }
-}
-
-
-//MARK: - GoogleDataManager Delegate
-
-extension AnalyticsViewController: GoogleManagerDelegate {
-    
-    func didRetrieveSymptomData(symptomsData: [String]) {
-        DispatchQueue.main.async {
-            self.displaySearchResults(symptomsData: symptomsData)
-        }
-    }
-        
-    func didRetrieveFoodData(foodsData: [String]) {
-        relevantFoods = foodsData
-        performSegue(withIdentifier: K.viewAnalyticsSegue, sender: self)
-    }
-    
-    func didFailWithError(error: Error) {
-        print ("There was an error retrieving data from the Google Cloud: \(error)")
-    }
-}
-
-//MARK: - GoogleDataLoadHack Delegate
-
-extension AnalyticsViewController: GoogleLoadDataHackDelegate {
-    
-    func loadUpDates(resrictionDates: [String]) {
-        if !resrictionDates.isEmpty {
-            googleDataManager.loadFoodData(resrictionDates: resrictionDates)
-        }
+        return SelectedSymptomData.historicalSymptomsList.count
     }
 }

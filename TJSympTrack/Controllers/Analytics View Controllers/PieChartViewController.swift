@@ -15,9 +15,10 @@ class PieChartViewController: UIViewController {
     @IBOutlet weak var symptomInFocus: UILabel!
     @IBOutlet weak var pieChart: PieChartView!
     
+    var loadFoodDataFromGoogle = LoadFoodDataFromGoogle()
     var selectedSymptom: String?
     var numberOfDownloadsDataEntries = [PieChartDataEntry]()
-    var relevantFoods: [String] = []
+    var relevantFoods: [String : Int] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,10 +53,15 @@ class PieChartViewController: UIViewController {
     }
     
     func populateChartDataSet(){
-        for i in 0...(relevantFoods.count/10) {
-            let latestChartDataPoint = PieChartDataEntry(value: 15.0, label: relevantFoods[i])
+        for (key, value) in relevantFoods{
+            let latestChartDataPoint = PieChartDataEntry(value: Double(value), label: key)
             numberOfDownloadsDataEntries.append(latestChartDataPoint)
         }
+        
+//        for i in 0...(relevantFoods.count/10) {
+//            let latestChartDataPoint = PieChartDataEntry(value: 15.0, label: relevantFoods[i])
+//            numberOfDownloadsDataEntries.append(latestChartDataPoint)
+//        }
         
         let chartDataSet = PieChartDataSet(entries: numberOfDownloadsDataEntries, label: nil)
         chartDataSet.colors = ChartColorTemplates.joyful()
@@ -66,4 +72,16 @@ class PieChartViewController: UIViewController {
         chartDataSet.valueFont = UIFont(name: "Futura", size: 15.0)!
         refreshChart(usingRefreshedData: chartDataSet)
     }
+}
+
+extension PieChartViewController: LoadFoodDataFromGoogleDelegate {
+    func didRetrieveFoodData(foodsData: [String : Int]) {
+        relevantFoods = foodsData
+    }
+    
+    func didFailWithError(error: Error) {
+        print ("There was an error retrieving data from the Google Cloud: \(error)")
+    }
+    
+    
 }

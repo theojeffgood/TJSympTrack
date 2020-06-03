@@ -34,8 +34,8 @@ class CompleteEntryViewController: UIViewController, UITableViewDelegate{
     }
     
     @IBAction func completeEntryButtonPressed(_ sender: UIButton) {
-        googleDataManager.saveEntryToGoogle(forFoods: selectedFoods, forDate: dateString)
-        SelectedSymptomData.currentEntryTableHeaders = [""]
+        googleDataManager.saveMealToGoogle(forFoods: selectedFoods, forDate: dateString)
+        SelectedSymptomData.currentSessionSymptomsList = [""]
         selectedFoods = []
         navigationController?.popToRootViewController(animated: true)
     }
@@ -53,7 +53,7 @@ class CompleteEntryViewController: UIViewController, UITableViewDelegate{
     extension CompleteEntryViewController: UITableViewDataSource {
         
         func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-            let symptomString = SelectedSymptomData.currentEntryTableHeaders.joined(separator: ", ")
+            let symptomString = SelectedSymptomData.currentSessionSymptomsList.joined(separator: ", ")
             return symptomString
         }
 
@@ -92,8 +92,3 @@ class CompleteEntryViewController: UIViewController, UITableViewDelegate{
         }
 }
 
-extension UILabel {
-    func setFontSize (){
-        UILabel.appearance(whenContainedInInstancesOf: [UITableViewHeaderFooterView.self]).font = UIFont.boldSystemFont(ofSize: 25)
-    }
-}
