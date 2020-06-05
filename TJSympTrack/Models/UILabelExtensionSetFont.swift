@@ -9,7 +9,7 @@
 import UIKit
 
 extension UILabel {
-    func setFontSize (){
-        UILabel.appearance(whenContainedInInstancesOf: [UITableViewHeaderFooterView.self]).font = UIFont.boldSystemFont(ofSize: 25)
-    }
+   func setFontSize (){
+      UILabel.appearance(whenContainedInInstancesOf: [UITableViewHeaderFooterView.self]).font = UIFont.boldSystemFont(ofSize: 25)
+   }
 }

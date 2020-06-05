@@ -9,10 +9,10 @@
 import UIKit
 
 extension UIButton {
-    
-    override open var isEnabled: Bool{
-        didSet {
-            self.alpha = isEnabled ? 1.0 : 0.55
-        }
-    }
+   
+   override open var isEnabled: Bool{
+      didSet {
+         self.alpha = isEnabled ? 1.0 : 0.55
+      }
+   }
 }

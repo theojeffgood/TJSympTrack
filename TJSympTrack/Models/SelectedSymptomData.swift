@@ -9,7 +9,7 @@
 import Foundation
 
 struct SelectedSymptomData {
-    
-    static var currentSessionSymptomsList: [String] = []
-    static var historicalSymptomsList: [String] = []
+   
+   static var currentSessionSymptomsList: [String] = []
+   static var historicalSymptomsList: [String] = []
 }

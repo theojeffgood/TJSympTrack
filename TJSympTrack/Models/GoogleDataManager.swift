@@ -22,7 +22,7 @@ struct GoogleDataManager {
     let db = Firestore.firestore()
     
     func saveMealToGoogle(forFoods selectedFoods: [String], forDate dateString: String) {
-//        saveSymptomsToGoogle()
+        saveSymptomsToGoogle()
         saveFoodsToGoogle(forFoods: selectedFoods)
         refreshLocallyStoredHistoricalSymptomsList()
         
@@ -41,7 +41,7 @@ struct GoogleDataManager {
     
     func saveSymptomsToGoogle() {
         let symptomsCollectionReference = db.collection("users").document("51XvMBaVYmTNKNzuukJ7").collection("symptoms")
-
+        
         for eachSymptom in SelectedSymptomData.currentSessionSymptomsList{
             if !SelectedSymptomData.historicalSymptomsList.contains(eachSymptom){
                 symptomsCollectionReference.document(eachSymptom).setData(["userId": "1234", "name": eachSymptom]) { (error) in
@@ -57,12 +57,13 @@ struct GoogleDataManager {
     
     func saveFoodsToGoogle(forFoods selectedFoods: [String]) {
         for eachSymptom in SelectedSymptomData.currentSessionSymptomsList {
-            
-            let googleFirebaseFoods = db.collection("users").document("51XvMBaVYmTNKNzuukJ7").collection("symptoms").document(eachSymptom).collection("foods")
+            print ("eachSymptom is \(eachSymptom)")
+            let foodsCollectionReference = db.collection("users").document("51XvMBaVYmTNKNzuukJ7").collection("symptoms").document(eachSymptom).collection("foods")
             
             for eachFood in selectedFoods{
-                //            if foodDoesntExist{
-                googleFirebaseFoods.addDocument(data: ["count": 1, "name": eachFood]) { (error) in
+                print ("eachFood is \(eachFood)")
+                let foodDocumentReference = foodsCollectionReference.document(eachFood)
+                foodDocumentReference.setData(["count": FieldValue.increment(1.0), "name": eachFood], merge: true) { (error) in
                     if let e = error {
                         print ("there was an error saving symptom data \(e)")
                     } else {
@@ -70,22 +71,10 @@ struct GoogleDataManager {
                     }
                 }
             }
-            
-            //        } else {
-            //            update existing food document
-            //                googleFirebaseFoods.document(eachFood).updateData(["count" : FieldValue.increment(1.0)]) { (error) in
-            //                    if let e = error {
-            //                        print ("there was an error saving symptom data \(e)")
-            //                    } else {
-            //                        print ("Successfully updated food data in the 'foods' collection in Firebase.")
-            //                    }
-            //                }
-            //        }
         }
     }
     
-    
-//MARK:-- New data-model methods FOR LOADING data from Google Firebase
+    //MARK:-- New data-model methods FOR LOADING data from Google Firebase
     
     func refreshLocallyStoredHistoricalSymptomsList() {
         let symptomsCollectionReference = db.collection("users").document("51XvMBaVYmTNKNzuukJ7").collection("symptoms")
