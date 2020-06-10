@@ -57,11 +57,9 @@ struct GoogleDataManager {
     
     func saveFoodsToGoogle(forFoods selectedFoods: [String]) {
         for eachSymptom in SelectedSymptomData.currentSessionSymptomsList {
-            print ("eachSymptom is \(eachSymptom)")
             let foodsCollectionReference = db.collection("users").document("51XvMBaVYmTNKNzuukJ7").collection("symptoms").document(eachSymptom).collection("foods")
             
             for eachFood in selectedFoods{
-                print ("eachFood is \(eachFood)")
                 let foodDocumentReference = foodsCollectionReference.document(eachFood)
                 foodDocumentReference.setData(["count": FieldValue.increment(1.0), "name": eachFood], merge: true) { (error) in
                     if let e = error {

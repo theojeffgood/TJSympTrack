@@ -158,12 +158,12 @@
 				E413D08824870A2A00BE2E09 /* LoadFoodDataFromGoogle.swift */,
 				E4877D2E24476DD000BC249B /* FoodData.swift */,
 				E4877D3024476E0900BC249B /* TJSymptomsBrain.swift */,
-				E4D6777C2454662400C20308 /* UIImageResizeExtension.swift */,
 				E4877D3224476E2E00BC249B /* SelfSizedTableView.swift */,
 				E4877D3424476E4D00BC249B /* SelectedSymptomData.swift */,
 				E4B2D267246D9B2300DA4E0C /* EmptyViewTableview.swift */,
 				E4CE059D246E32C2008A62CB /* UIBUttonExtensionSetAlpha.swift */,
 				E47012092481A0E10011D040 /* UILabelExtensionSetFont.swift */,
+				E4D6777C2454662400C20308 /* UIImageResizeExtension.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";

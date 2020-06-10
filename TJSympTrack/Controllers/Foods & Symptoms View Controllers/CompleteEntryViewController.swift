@@ -28,7 +28,6 @@ class CompleteEntryViewController: UIViewController, UITableViewDelegate{
    
    override func viewWillAppear(_ animated: Bool) {
       super.viewWillAppear(animated)
-      print ("Checkpoint 4. SelectedSymptomData.currentSessionSymptomsList is \(SelectedSymptomData.currentSessionSymptomsList)")
       completedEntryTableView.reloadData()
       completedEntryTableView.estimatedRowHeight = 75
       completedEntryTableView.invalidateIntrinsicContentSize()

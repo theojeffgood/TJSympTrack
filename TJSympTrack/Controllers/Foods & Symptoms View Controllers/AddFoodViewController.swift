@@ -15,8 +15,6 @@ class AddFoodViewController: UIViewController, UITableViewDelegate{
    var foodManager = FoodManager()
    var foodString = ""
    
-   var imageCache: [String: UIImage?] = [:]
-   
    @IBOutlet weak var foodList: UITableView!
    @IBOutlet weak var searchBar: UITextField!
    @IBOutlet weak var addFoodButton: UIButton!
@@ -190,6 +188,10 @@ extension AddFoodViewController: UITableViewDataSource {
       return universeOfFood[section].count
    }
    
+   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+      return 100.0
+   }
+   
    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
       let cell = tableView.dequeueReusableCell(withIdentifier: K.foodCellIdentifier, for: indexPath) as! FoodCell
       let latestFood = universeOfFood[indexPath.section][indexPath.row]
@@ -199,30 +201,18 @@ extension AddFoodViewController: UITableViewDataSource {
       // Displays the cell's checkmark when corresponding array.item is checked
       cell.foodCheckmark.isHidden = !(latestFood.isChecked)
       
-      cell.imageView?.image = nil
-      if let url = URL(string: latestFood.imageUrl!) {
-         if let cachedImage = imageCache[url.absoluteString] {
-            cell.imageView?.image = cachedImage
-         } else {
-            foodManager.imageFrom(url: url) {
-               (image, error) in
-               guard error == nil else {
-                  print(error!)
-                  return
-               }
-               
-               // Save the image so we won't have to keep fetching it if they scroll
-               if let scaledImage = image?.scaleImageToSize(img: image!, size: cell.foodImage.frame.size) {
-                  self.imageCache[url.absoluteString] = scaledImage
-                  if let cellToUpdate = tableView.cellForRow(at: indexPath) {
-                     
-                     cellToUpdate.imageView?.image = scaledImage // will work fine even if image is nil
-                     // need to reload the view, which won't happen otherwise
-                     // since this is in an async call
-                     cellToUpdate.setNeedsLayout()
-                  }
-               }
+      if let foodImageUrl = URL(string: latestFood.imageUrl!) {
+         foodManager.imageFrom(url: foodImageUrl) {
+            (image, error) in
+            guard error == nil else {
+               print("There was an error getting the image: \(error!)")
+               return
             }
+            
+            cell.foodImage?.image = image // will work fine even if image is nil
+            // need to reload the view, which won't happen otherwise, since this is in an async call
+            
+            cell.setNeedsLayout()
          }
       }
       return cell
