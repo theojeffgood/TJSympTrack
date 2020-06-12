@@ -276,7 +276,7 @@
                             <stackView opaque="NO" contentMode="center" axis="vertical" distribution="equalCentering" alignment="center" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="jeI-ji-xk6" userLabel="Header Stack View">
                                 <rect key="frame" x="20" y="134" width="374" height="38"/>
                                 <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Symptom Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m21-st-BCA" userLabel="Your Symptom Label">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Symptom" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m21-st-BCA" userLabel="Your Symptom Label">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <nil key="highlightedColor"/>
@@ -378,12 +378,12 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="45" translatesAutoresizingMaskIntoConstraints="NO" id="MNU-oJ-Sxf" userLabel="Symptoms Stack View">
-                                <rect key="frame" x="20" y="139" width="374" height="80"/>
+                                <rect key="frame" x="20" y="139" width="374" height="56"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="0wd-5Y-b4H" userLabel="&quot;Your Symptoms&quot; Stack View">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="80"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="56"/>
                                         <subviews>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Your Symptoms Profile" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Vwf-oo-gzu">
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Pick a symptom. See your stats." lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Vwf-oo-gzu">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="36"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                 <nil key="highlightedColor"/>
@@ -393,12 +393,6 @@
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="thin"/>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a symptom to see the food stats." textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Np-VB-Yyw">
-                                                <rect key="frame" x="0.0" y="56" width="374" height="24"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="1h2-A8-QmP" firstAttribute="leading" secondItem="0wd-5Y-b4H" secondAttribute="leading" id="GRa-pW-mMG"/>
@@ -408,7 +402,7 @@
                                 </subviews>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8xB-jJ-qkM">
-                                <rect key="frame" x="20" y="229" width="374" height="564"/>
+                                <rect key="frame" x="20" y="205" width="374" height="588"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <sections/>
                             </tableView>
@@ -1167,7 +1161,7 @@
                             <stackView opaque="NO" contentMode="center" axis="vertical" distribution="equalCentering" alignment="center" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="mum-s6-vzn" userLabel="Header Stack View">
                                 <rect key="frame" x="20" y="169" width="374" height="38"/>
                                 <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Entry" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tNN-NY-EM3" userLabel="Your Entry Label">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Complete Your Entry" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tNN-NY-EM3" userLabel="Your Entry Label">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <nil key="highlightedColor"/>
@@ -1208,23 +1202,23 @@
                                     <action selector="completeEntryButtonPressed:" destination="WdZ-VE-7TO" eventType="touchUpInside" id="w7n-J0-bzT"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="335" placeholderIntrinsicHeight="550" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Je0-o4-q4D" userLabel="&quot;Review Entry&quot; Table View" customClass="SelfSizedTableView2" customModule="TJSympTrack" customModuleProvider="target">
-                                <rect key="frame" x="20" y="212" width="374" height="550"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XvM-fY-nCg" userLabel="Completed Entry Table View">
+                                <rect key="frame" x="20" y="215" width="374" height="510"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <inset key="separatorInset" minX="30" minY="0.0" maxX="30" maxY="0.0"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="e5w-np-MyK" firstAttribute="leading" secondItem="I6L-GU-A31" secondAttribute="leading" constant="20" id="7bC-5L-u7P"/>
                             <constraint firstItem="fjg-21-nCP" firstAttribute="leading" secondItem="I6L-GU-A31" secondAttribute="leading" constant="20" id="Dhe-AY-n7D"/>
+                            <constraint firstItem="XvM-fY-nCg" firstAttribute="leading" secondItem="I6L-GU-A31" secondAttribute="leading" constant="20" id="HTT-om-rmh"/>
+                            <constraint firstItem="I6L-GU-A31" firstAttribute="trailing" secondItem="XvM-fY-nCg" secondAttribute="trailing" constant="20" id="I0o-rn-H87"/>
                             <constraint firstItem="I6L-GU-A31" firstAttribute="bottom" secondItem="e5w-np-MyK" secondAttribute="bottom" constant="20" id="KTb-dB-TFd"/>
+                            <constraint firstItem="XvM-fY-nCg" firstAttribute="top" secondItem="mum-s6-vzn" secondAttribute="bottom" constant="8" id="NDU-SQ-8ZT"/>
+                            <constraint firstItem="e5w-np-MyK" firstAttribute="top" secondItem="XvM-fY-nCg" secondAttribute="bottom" constant="8" id="Oif-aE-hA9"/>
                             <constraint firstItem="I6L-GU-A31" firstAttribute="trailing" secondItem="e5w-np-MyK" secondAttribute="trailing" constant="20" id="Tqs-Qu-c8t"/>
-                            <constraint firstItem="I6L-GU-A31" firstAttribute="trailing" secondItem="Je0-o4-q4D" secondAttribute="trailing" constant="20" id="UoS-g0-106"/>
-                            <constraint firstItem="Je0-o4-q4D" firstAttribute="top" secondItem="mum-s6-vzn" secondAttribute="bottom" constant="5" id="atf-Wp-Har"/>
                             <constraint firstItem="I6L-GU-A31" firstAttribute="trailing" secondItem="fjg-21-nCP" secondAttribute="trailing" constant="20" id="clb-eg-f9b"/>
                             <constraint firstItem="fjg-21-nCP" firstAttribute="top" secondItem="I6L-GU-A31" secondAttribute="top" constant="20" id="dJv-u6-LWL"/>
-                            <constraint firstItem="Je0-o4-q4D" firstAttribute="leading" secondItem="I6L-GU-A31" secondAttribute="leading" constant="20" id="jRM-EZ-6jO"/>
                             <constraint firstItem="mum-s6-vzn" firstAttribute="leading" secondItem="I6L-GU-A31" secondAttribute="leading" constant="20" id="lHd-7C-ImO"/>
                             <constraint firstItem="mum-s6-vzn" firstAttribute="top" secondItem="fjg-21-nCP" secondAttribute="bottom" constant="55" id="pDB-9K-0wc"/>
                             <constraint firstItem="I6L-GU-A31" firstAttribute="trailing" secondItem="mum-s6-vzn" secondAttribute="trailing" constant="20" id="rab-uO-TGx"/>
@@ -1234,14 +1228,14 @@
                     <tabBarItem key="tabBarItem" title="Add" image="plus" catalog="system" id="3S3-Zv-wRc"/>
                     <navigationItem key="navigationItem" id="2aZ-3e-1Yf"/>
                     <connections>
-                        <outlet property="completedEntryTableView" destination="Je0-o4-q4D" id="JZn-5S-asy"/>
+                        <outlet property="completedEntryTableView" destination="XvM-fY-nCg" id="dBr-5T-e9b"/>
                         <segue destination="ljJ-SP-Sam" kind="unwind" identifier="UnwindSegueToSelectSymptoms" unwindAction="modalDismissedWithSegue:" id="XaV-ZB-Yga"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zcq-fW-8Yi" sceneMemberID="firstResponder"/>
                 <exit id="ljJ-SP-Sam" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1409" y="2012"/>
+            <point key="canvasLocation" x="1408.6956521739132" y="2011.6071428571427"/>
         </scene>
         <!--View Entry View Controller-->
         <scene sceneID="u0P-ti-KNw">

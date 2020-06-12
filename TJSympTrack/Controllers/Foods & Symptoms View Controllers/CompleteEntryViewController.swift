@@ -17,7 +17,7 @@ class CompleteEntryViewController: UIViewController, UITableViewDelegate{
    lazy var dateString: String = ""
    lazy var googleDataManager = GoogleDataManager()
    
-   @IBOutlet weak var completedEntryTableView: SelfSizedTableView2!
+   @IBOutlet weak var completedEntryTableView: UITableView!
    
    override func viewDidLoad() {
       super.viewDidLoad()
