@@ -21,13 +21,14 @@ class AnalyticsViewController: UIViewController, UITableViewDelegate {
       super.viewDidLoad()
       relevantSymptomsList.dataSource = self
       relevantSymptomsList.delegate = self
-      relevantSymptomsList.reloadData()
+//      relevantSymptomsList.reloadData()
       relevantSymptomsList.register(UINib(nibName: K.cellNibName, bundle: nil), forCellReuseIdentifier: K.cellIdentifier)
    }
    
    override func viewWillAppear(_ animated: Bool) {
       super.viewWillAppear(animated)
-      relevantSymptomsList.reloadData()
+//      relevantSymptomsList.reloadData()
+      relevantSymptomsList.animateTable()
    }
    
    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

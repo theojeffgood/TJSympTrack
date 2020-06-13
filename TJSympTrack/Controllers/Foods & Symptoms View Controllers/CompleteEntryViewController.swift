@@ -53,11 +53,6 @@ class CompleteEntryViewController: UIViewController, UITableViewDelegate{
 
 extension CompleteEntryViewController: UITableViewDataSource {
    
-   func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-      let symptomString = SelectedSymptomData.currentSessionSymptomsList.joined(separator: ", ")
-      return symptomString
-   }
-   
    func numberOfSections(in tableView: UITableView) -> Int {
       return 1
    }
@@ -77,11 +72,10 @@ extension CompleteEntryViewController: UITableViewDataSource {
    }
    
    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-      let header = UITableViewHeaderFooterView()
-      header.contentView.backgroundColor = UIColor.white
-      header.textLabel?.frame = header.frame
-      header.textLabel?.setFontSize()
-      return header
+      let symptomString = SelectedSymptomData.currentSessionSymptomsList.joined(separator: ", ")
+      let headerLabel = tableViewHeaderLabel()
+      headerLabel.text = symptomString
+      return headerLabel
    }
    
    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -92,4 +86,3 @@ extension CompleteEntryViewController: UITableViewDataSource {
       return 50.0
    }
 }
-

@@ -111,7 +111,6 @@ class SelectedSymptomsViewController: UIViewController, UITableViewDelegate {
 extension SelectedSymptomsViewController: UITableViewDataSource {
    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
       if selectedSymptoms.isEmpty {
-         //            tableView.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 250)
          tableView.setEmptyMessage("Add the symptoms you experience. We'll figure our what foods are causing them!")
       } else {
          tableView.restore()

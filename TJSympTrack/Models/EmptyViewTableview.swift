@@ -23,7 +23,7 @@ extension UITableView {
       let messageLabel = UILabel()
       messageLabel.translatesAutoresizingMaskIntoConstraints = false
       messageLabel.textColor = UIColor.black
-      messageLabel.font = UIFont.systemFont(ofSize: 13.0)
+      messageLabel.font = UIFont.systemFont(ofSize: 17.0)
       emptyView.addSubview(messageLabel)
       messageLabel.topAnchor.constraint(equalTo: imgView.bottomAnchor, constant: 20).isActive = true
       messageLabel.leftAnchor.constraint(equalTo: emptyView.leftAnchor, constant: 20).isActive = true
