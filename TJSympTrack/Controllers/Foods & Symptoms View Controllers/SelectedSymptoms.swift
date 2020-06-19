@@ -29,6 +29,7 @@ class SelectedSymptomsViewController: UIViewController, UITableViewDelegate {
       selectedSymptomsList.register(UINib(nibName: K.cellNibName, bundle: nil), forCellReuseIdentifier: K.cellIdentifier)
       
       googleDataManager.refreshLocallyStoredHistoricalSymptomsList()
+      googleDataManager.createUserIfNoneExists()
    }
    
    override func viewWillAppear(_ animated: Bool) {

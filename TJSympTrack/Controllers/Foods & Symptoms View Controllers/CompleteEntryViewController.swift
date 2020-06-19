@@ -73,7 +73,7 @@ extension CompleteEntryViewController: UITableViewDataSource {
    
    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
       let symptomString = SelectedSymptomData.currentSessionSymptomsList.joined(separator: ", ")
-      let headerLabel = tableViewHeaderLabel()
+      let headerLabel = TableViewHeaderLabel()
       headerLabel.text = symptomString
       return headerLabel
    }

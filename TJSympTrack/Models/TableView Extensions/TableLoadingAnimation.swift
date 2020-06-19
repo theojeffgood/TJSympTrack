@@ -1,5 +1,5 @@
 //
-//  TableViewLoadingAnimation.swift
+//  TableLoadingAnimation.swift
 //  TJSympTrack
 //
 //  Created by Theo Goodman on 6/12/20.

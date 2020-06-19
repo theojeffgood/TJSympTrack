@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		D5BA83C0C221C2D3F47A6AB6 /* Pods_TJSympTrack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82ADDAAA5EE24D9FF11D86F3 /* Pods_TJSympTrack.framework */; };
-		E40C1A01249412F900FD8EBF /* TableViewLoadingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40C1A00249412F900FD8EBF /* TableViewLoadingAnimation.swift */; };
-		E40C1A0324943DDE00FD8EBF /* tableViewHeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40C1A0224943DDE00FD8EBF /* tableViewHeaderLabel.swift */; };
+		E40C1A01249412F900FD8EBF /* TableLoadingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40C1A00249412F900FD8EBF /* TableLoadingAnimation.swift */; };
+		E40C1A0324943DDE00FD8EBF /* TableViewHeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40C1A0224943DDE00FD8EBF /* TableViewHeaderLabel.swift */; };
+		E40C1A0724957C5300FD8EBF /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40C1A0624957C5300FD8EBF /* UserData.swift */; };
 		E413D08924870A2A00BE2E09 /* LoadFoodDataFromGoogle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E413D08824870A2A00BE2E09 /* LoadFoodDataFromGoogle.swift */; };
 		E413D08B24870AB200BE2E09 /* LoadMealDataFromGoogle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E413D08A24870AB200BE2E09 /* LoadMealDataFromGoogle.swift */; };
 		E41E8C82246B202F0026B389 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41E8C81246B202F0026B389 /* Alerts.swift */; };
@@ -50,8 +51,9 @@
 		184659C72DB6E75288F3AB1A /* Pods-TJSympTrack.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TJSympTrack.debug.xcconfig"; path = "Target Support Files/Pods-TJSympTrack/Pods-TJSympTrack.debug.xcconfig"; sourceTree = "<group>"; };
 		82ADDAAA5EE24D9FF11D86F3 /* Pods_TJSympTrack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TJSympTrack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F9FA9A860688BDF1B30FBEA /* Pods-TJSympTrack.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TJSympTrack.release.xcconfig"; path = "Target Support Files/Pods-TJSympTrack/Pods-TJSympTrack.release.xcconfig"; sourceTree = "<group>"; };
-		E40C1A00249412F900FD8EBF /* TableViewLoadingAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewLoadingAnimation.swift; sourceTree = "<group>"; };
-		E40C1A0224943DDE00FD8EBF /* tableViewHeaderLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tableViewHeaderLabel.swift; sourceTree = "<group>"; };
+		E40C1A00249412F900FD8EBF /* TableLoadingAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableLoadingAnimation.swift; sourceTree = "<group>"; };
+		E40C1A0224943DDE00FD8EBF /* TableViewHeaderLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewHeaderLabel.swift; sourceTree = "<group>"; };
+		E40C1A0624957C5300FD8EBF /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		E413D08824870A2A00BE2E09 /* LoadFoodDataFromGoogle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadFoodDataFromGoogle.swift; sourceTree = "<group>"; };
 		E413D08A24870AB200BE2E09 /* LoadMealDataFromGoogle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadMealDataFromGoogle.swift; sourceTree = "<group>"; };
 		E41E8C81246B202F0026B389 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
@@ -119,6 +121,28 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E40C1A042495754F00FD8EBF /* TableView Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E4877D3224476E2E00BC249B /* SelfSizedTableView.swift */,
+				E40C1A00249412F900FD8EBF /* TableLoadingAnimation.swift */,
+				E40C1A0224943DDE00FD8EBF /* TableViewHeaderLabel.swift */,
+				E4877D3424476E4D00BC249B /* SelectedSymptomData.swift */,
+				E4B2D267246D9B2300DA4E0C /* EmptyViewTableview.swift */,
+			);
+			path = "TableView Extensions";
+			sourceTree = "<group>";
+		};
+		E40C1A052495757600FD8EBF /* Button, Label & Image Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E4CE059D246E32C2008A62CB /* UIBUttonExtensionSetAlpha.swift */,
+				E47012092481A0E10011D040 /* UILabelExtensionSetFont.swift */,
+				E4D6777C2454662400C20308 /* UIImageResizeExtension.swift */,
+			);
+			path = "Button, Label & Image Extensions";
+			sourceTree = "<group>";
+		};
 		E486D19624474A0100358D35 = {
 			isa = PBXGroup;
 			children = (
@@ -157,19 +181,14 @@
 			children = (
 				E486D1AB24474A0100358D35 /* DataModel.xcdatamodeld */,
 				E4877D2A24476D7A00BC249B /* FoodManager.swift */,
-				E40C1A0224943DDE00FD8EBF /* tableViewHeaderLabel.swift */,
 				E4877D2C24476DAB00BC249B /* GoogleDataManager.swift */,
+				E40C1A0624957C5300FD8EBF /* UserData.swift */,
 				E413D08A24870AB200BE2E09 /* LoadMealDataFromGoogle.swift */,
 				E413D08824870A2A00BE2E09 /* LoadFoodDataFromGoogle.swift */,
 				E4877D2E24476DD000BC249B /* FoodData.swift */,
 				E4877D3024476E0900BC249B /* TJSymptomsBrain.swift */,
-				E4877D3224476E2E00BC249B /* SelfSizedTableView.swift */,
-				E40C1A00249412F900FD8EBF /* TableViewLoadingAnimation.swift */,
-				E4877D3424476E4D00BC249B /* SelectedSymptomData.swift */,
-				E4B2D267246D9B2300DA4E0C /* EmptyViewTableview.swift */,
-				E4CE059D246E32C2008A62CB /* UIBUttonExtensionSetAlpha.swift */,
-				E47012092481A0E10011D040 /* UILabelExtensionSetFont.swift */,
-				E4D6777C2454662400C20308 /* UIImageResizeExtension.swift */,
+				E40C1A042495754F00FD8EBF /* TableView Extensions */,
+				E40C1A052495757600FD8EBF /* Button, Label & Image Extensions */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -365,7 +384,7 @@
 				E4877D4424477F1D00BC249B /* AddSymptomsViewController.swift in Sources */,
 				E4877D4C2447802600BC249B /* CalendarViewController.swift in Sources */,
 				E4877D502447807900BC249B /* PieChartViewController.swift in Sources */,
-				E40C1A01249412F900FD8EBF /* TableViewLoadingAnimation.swift in Sources */,
+				E40C1A01249412F900FD8EBF /* TableLoadingAnimation.swift in Sources */,
 				E4877D4E2447805300BC249B /* ViewEntryViewController.swift in Sources */,
 				E41E8C82246B202F0026B389 /* Alerts.swift in Sources */,
 				E4877D3F24477C2800BC249B /* FoodCell.swift in Sources */,
@@ -374,9 +393,10 @@
 				E470120A2481A0E10011D040 /* UILabelExtensionSetFont.swift in Sources */,
 				E4877D3324476E2E00BC249B /* SelfSizedTableView.swift in Sources */,
 				E4877D3B24477C0F00BC249B /* SymptomCell.swift in Sources */,
+				E40C1A0724957C5300FD8EBF /* UserData.swift in Sources */,
 				E4CE059E246E32C2008A62CB /* UIBUttonExtensionSetAlpha.swift in Sources */,
 				E486D1AD24474A0100358D35 /* DataModel.xcdatamodeld in Sources */,
-				E40C1A0324943DDE00FD8EBF /* tableViewHeaderLabel.swift in Sources */,
+				E40C1A0324943DDE00FD8EBF /* TableViewHeaderLabel.swift in Sources */,
 				E4877D2B24476D7A00BC249B /* FoodManager.swift in Sources */,
 				E4F35D8F246B65C600455E8C /* TabBarController.swift in Sources */,
 				E4B2D268246D9B2300DA4E0C /* EmptyViewTableview.swift in Sources */,
