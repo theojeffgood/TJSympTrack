@@ -218,18 +218,25 @@ extension AddFoodViewController: UITableViewDataSource {
       return cell
    }
    
-   func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-      return K.foodTableHeaders[section]
-   }
+   //   func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+   //      return K.foodTableHeaders[section]
+   //   }
    
    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-      let headerView = UITableViewHeaderFooterView()
-      headerView.contentView.backgroundColor = UIColor.white
+      let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 14))
+      headerView.backgroundColor = .white
+      let headerLabel = UILabel()
+      headerView.addSubview(headerLabel)
+      headerLabel.translatesAutoresizingMaskIntoConstraints = false
+      headerLabel.centerYAnchor.constraint(equalTo: headerView.centerYAnchor).isActive = true
+      headerLabel.leadingAnchor.constraint(equalTo: headerView.safeAreaLayoutGuide.leadingAnchor, constant: 25).isActive = true
+      headerLabel.font = .boldSystemFont(ofSize: 17)
+      headerLabel.text = K.foodTableHeaders[section]
       
       if !(universeOfFood[section].isEmpty) {
-         headerView.textLabel?.textColor = UIColor(named: K.BrandColors.blue)
+         headerLabel.textColor = UIColor(named: K.BrandColors.blue)
       } else {
-         headerView.textLabel?.textColor = UIColor.systemGray
+         headerLabel.textColor = UIColor.systemGray
       }
       return headerView
    }
@@ -251,7 +258,7 @@ extension AddFoodViewController: UITextFieldDelegate {
    
    func textFieldDidChangeSelection(_ textField: UITextField) {
       if let foodItem = searchBar.text {
-         if foodItem.count >= 2 {
+         if foodItem.count >= 3 {
             foodManager.fetchFoods(foodItem)
          } else if foodItem.count == 0 {
             resetFoodSearchResults()
