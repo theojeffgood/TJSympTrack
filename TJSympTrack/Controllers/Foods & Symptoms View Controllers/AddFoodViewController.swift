@@ -94,7 +94,7 @@ class AddFoodViewController: UIViewController, UITableViewDelegate{
    //    This block animates the Searchbar Placeholder text
    func displaySearchbarAnimation() {
       searchBar.placeholder = ""
-//      let searchBarPlaceholderText = K.searchbarPlaceholder
+      let searchBarPlaceholderText = K.searchbarPlaceholder
       var charIndex = 0.0
       for eachLetter in K.searchbarDefaultText {
          DispatchQueue.main.asyncAfter(deadline: .now() + 0.07 * charIndex){
