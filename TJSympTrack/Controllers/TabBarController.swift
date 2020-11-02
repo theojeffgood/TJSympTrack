@@ -10,14 +10,17 @@ import UIKit
 import Foundation
 
 class TabBarController: UITabBarController {
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-//        self.tabBarController?.selectedIndex = 1
-        self.selectedIndex = 1
-    }
+   
+   override func viewDidLoad() {
+      super.viewDidLoad()
+      delegate = self
+   }
+   
+   override func viewWillAppear(_ animated: Bool) {
+      super.viewWillAppear(animated)
+//              self.tabBarController?.selectedIndex = 1
+      self.selectedIndex = 1
+   }
 }
+
+extension TabBarController: UITabBarControllerDelegate  {}

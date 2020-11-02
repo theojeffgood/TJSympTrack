@@ -7,12 +7,23 @@
 //
 
 import UIKit
-import CoreData
+import RealmSwift
 
 class SelectedSymptomsViewController: UIViewController, UITableViewDelegate {
    
-   var selectedSymptoms = [Symptom]()
-   var unselectedSymptoms = [Symptom]()
+   let realm = try! Realm()
+   
+   var selectedSymptoms: Results<Symptom> {
+      get {
+//         let predicate = NSPredicate(format: "isChecked == true", argumentArray: nil)
+//         return realm.objects(Symptom.self).filter(predicate)
+         return realm.objects(Symptom.self)
+      }
+      set {
+         selectedSymptomsList.reloadData()
+      }
+   }
+   
    var segueDestination: String?
    let googleDataManager = GoogleDataManager()
    lazy var defaultTableViewHeightConstraint: NSLayoutConstraint = selectedSymptomsList.heightAnchor.constraint(equalToConstant: 250)
@@ -42,11 +53,12 @@ class SelectedSymptomsViewController: UIViewController, UITableViewDelegate {
    }
    
    @IBAction func addMoreSymptomsPressed(_ sender: UIButton) {
-      TJSymptomsBrain.saveContext()
+//      TJSymptomsBrain.saveContext()
       performSegue(withIdentifier: K.addNewSymptomsSegue, sender: self)
    }
    
    @IBAction func addFoodPressed(_ sender: UIButton) {
+      
       if let safeSegueDestination = segueDestination {
          performSegue(withIdentifier: safeSegueDestination, sender: self)
       }
@@ -54,25 +66,27 @@ class SelectedSymptomsViewController: UIViewController, UITableViewDelegate {
    
    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
       if segue.identifier == K.addNewFoodSegue {
-         let usersCurrentExperiencingSymptoms = selectedSymptoms.filter( {$0.isChecked == true }).map({ return $0 })
+//         let usersCurrentExperiencingSymptoms = selectedSymptoms.filter( {$0.isChecked == true }).map({ return $0 })
+         
+         let predicate = NSPredicate(format: "isChecked == true", argumentArray: nil)
+         let usersCurrentExperiencingSymptoms = realm.objects(Symptom.self).filter(predicate)
+         
          SelectedSymptomData.currentSessionSymptomsList.removeAll()
          for eachSymptom in usersCurrentExperiencingSymptoms {
-            SelectedSymptomData.currentSessionSymptomsList.append(eachSymptom.title!)
+            SelectedSymptomData.currentSessionSymptomsList.append(eachSymptom.title)
          }
       } else if segue.identifier == K.addNewSymptomsSegue {
          for symptom in selectedSymptoms where symptom.isChecked == false {
-            symptom.isChecked = !symptom.isChecked
+            try! realm.write{
+               symptom.isChecked = !symptom.isChecked
+            }
          }
       }
    }
    
    func loadSymptoms(){
-      let request: NSFetchRequest<Symptom> = Symptom.fetchRequest()
-      do {
-         selectedSymptoms = try TJSymptomsBrain.context.fetch(request)
-      } catch {
-         print("Error fetching data from context \(error)")
-      }
+      let symptoms = realm.objects(Symptom.self)
+      selectedSymptoms = symptoms.filter("isChecked == %@", true)
    }
    
    func setupUI(){
@@ -99,11 +113,16 @@ class SelectedSymptomsViewController: UIViewController, UITableViewDelegate {
       
       tableView.deselectRow(at: indexPath, animated: true)
       
-      usersSelectedRow.isChecked = !usersSelectedRow.isChecked
-      tableView.reloadRows(at: [IndexPath(row: indexPath.row, section: indexPath.section)], with: .none)
+      try! realm.write {
+         usersSelectedRow.isChecked = !usersSelectedRow.isChecked
+      }
+      
+//      tableView.reloadRows(at: [IndexPath(row: indexPath.row, section: indexPath.section)], with: .none)
       
       let usersCurrentExperiencingSymptoms = selectedSymptoms.filter({$0.isChecked == true }).map({ return $0 })
       addFoodButton.isEnabled = (usersCurrentExperiencingSymptoms.isEmpty ? false : true)
+      
+      tableView.reloadData()
    }
 }
 

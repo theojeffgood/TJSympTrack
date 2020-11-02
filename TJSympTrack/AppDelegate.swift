@@ -9,17 +9,31 @@
 import UIKit
 import CoreData
 import Firebase
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+   
+//   override init() {
+//      super.init()
+//      FirebaseApp.configure()
+//   }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        FirebaseApp.configure()
-        let db = Firestore.firestore()
-        print (db)
+      
+      do {
+         _ = try Realm()
+      }
+      catch{
+         print ("There's an error initializing new Realm \(error)")
+      }
+      
+      print (Realm.Configuration.defaultConfiguration.fileURL)
+      FirebaseApp.configure()
+      
         return true
     }
 

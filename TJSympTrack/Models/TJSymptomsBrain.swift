@@ -9,18 +9,54 @@
 import Foundation
 import UIKit
 import CoreData
+import RealmSwift
 
 struct TJSymptomsBrain{
    
-   let selectedSymptoms = [Symptom].self
-   static let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+   static let realm = try! Realm()
    
-   static func saveContext() {
-      let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+   static var foods: Results<Food>?
+   static var symptoms: Results<Symptom>?
+   
+//   let selectedSymptoms = [Symptom].self
+   
+   static func saveFoods(food: Food) {
       do {
-         try context.save()
+         try realm.write {
+            realm.add(food)
+         }
       } catch {
-         print("Error saving context \(error)")
+         print("Error saving food \(error)")
+      }
+   }
+   
+   static func saveSymptoms(symptom: Symptom) {
+      do {
+         try realm.write {
+            realm.add(symptom)
+         }
+      } catch {
+         print("Error saving symptom \(error)")
+      }
+   }
+   
+   static func deleteFoods(food: Food) {
+      do {
+         try realm.write {
+            realm.delete(food)
+         }
+      } catch {
+         print("Error deleting food \(error)")
+      }
+   }
+   
+   static func deleteSymptoms(symptom: Symptom) {
+      do {
+         try realm.write {
+            realm.delete(symptom)
+         }
+      } catch {
+         print("Error deleting symptom \(error)")
       }
    }
    
@@ -35,33 +71,55 @@ struct TJSymptomsBrain{
    //        TJSymptomsBrain.saveContext()
    //    }
    
-   static func loadSymptoms() -> ([[Symptom]]) {
-      let request: NSFetchRequest<Symptom> = Symptom.fetchRequest()
-      var commonSymptoms = [Symptom]()
-      var selectedSymptoms = [Symptom]()
+//   static func loadSymptoms() -> ([[Symptom]]) {
+//      let request: NSFetchRequest<Symptom> = Symptom.fetchRequest()
+//      var commonSymptoms = [Symptom]()
+//      var selectedSymptoms = [Symptom]()
+//
+//      do {
+//         let allSymptoms = try context.fetch(request)
+//         commonSymptoms = allSymptoms.filter( {$0.isChecked == false }).map({ return $0 })
+//         selectedSymptoms = allSymptoms.filter( {$0.isChecked == true }).map({ return $0 })
+//      } catch {
+//         print("Error fetching data from context \(error)")
+//      }
+//      return ([selectedSymptoms,commonSymptoms])
+//   }
+   
+   static func loadFoods() -> ([Results<Food>?]) {
+//      var commonFoods: Results<Food>?
+//      var selectedFoods: Results<Food>?
       
-      do {
-         let allSymptoms = try context.fetch(request)
-         commonSymptoms = allSymptoms.filter( {$0.isChecked == false }).map({ return $0 })
-         selectedSymptoms = allSymptoms.filter( {$0.isChecked == true }).map({ return $0 })
-      } catch {
-         print("Error fetching data from context \(error)")
-      }
-      return ([selectedSymptoms,commonSymptoms])
+      foods = realm.objects(Food.self)
+      let commonFoods = foods?.filter("isChecked == %@", false)
+      let selectedFoods = foods?.filter("isChecked == %@", true)
+      
+      return ([commonFoods,selectedFoods])
    }
    
-   static func loadFoods() -> ([[Food]]) {
-      let request: NSFetchRequest<Food> = Food.fetchRequest()
-      var commonFoods = [Food]()
-      var selectedFoods = [Food]()
+//   static func loadFoods() -> ([[Food]]) {
+//      let request: NSFetchRequest<Food> = Food.fetchRequest()
+//      var commonFoods = [Food]()
+//      var selectedFoods = [Food]()
+//
+//      do {
+//         let allFoods = try context.fetch(request)
+//         commonFoods = allFoods.filter( {$0.isChecked == false }).map({ return $0 })
+//         selectedFoods = allFoods.filter( {$0.isChecked == true }).map({ return $0 })
+//      } catch{
+//         print("Error fetching data from context \(error)")
+//      }
+//      return ([selectedFoods,commonFoods])
+//   }
+   
+   static func loadSymptoms() -> ([Results<Symptom>?]) {
+      var commonSymptoms: Results<Symptom>?
+      var selectedSymptoms: Results<Symptom>?
       
-      do {
-         let allFoods = try context.fetch(request)
-         commonFoods = allFoods.filter( {$0.isChecked == false }).map({ return $0 })
-         selectedFoods = allFoods.filter( {$0.isChecked == true }).map({ return $0 })
-      } catch{
-         print("Error fetching data from context \(error)")
-      }
-      return ([selectedFoods,commonFoods])
+      symptoms = realm.objects(Symptom.self)
+      commonSymptoms = symptoms?.filter("isChecked == %@", false)
+      selectedSymptoms = symptoms?.filter("isChecked == %@", true)
+      
+      return ([commonSymptoms,selectedSymptoms])
    }
 }

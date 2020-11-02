@@ -7,13 +7,21 @@
 //
 
 import UIKit
-import CoreData
-import Firebase
+import RealmSwift
+//import Firebase
 
 class CompleteEntryViewController: UIViewController, UITableViewDelegate{
    
-   let db = Firestore.firestore()
-   var selectedFoods: [String] = []
+//   let db = Firestore.firestore()
+   //   var selectedFoods: [String] = []
+   var foodString = ""
+   var selectedFoods: [Results<Food>]? {
+      didSet {
+         for foodItem in selectedFoods![0] {
+            foodString += foodItem.title
+         }
+      }
+   }
    lazy var dateString: String = ""
    lazy var googleDataManager = GoogleDataManager()
    
@@ -35,7 +43,7 @@ class CompleteEntryViewController: UIViewController, UITableViewDelegate{
    }
    
    @IBAction func completeEntryButtonPressed(_ sender: UIButton) {
-      googleDataManager.saveMealToGoogle(forFoods: selectedFoods, forDate: dateString)
+//      googleDataManager.saveMealToGoogle(forFoods: selectedFoods, forDate: dateString)
       SelectedSymptomData.currentSessionSymptomsList.removeAll()
       selectedFoods = []
       navigationController?.popToRootViewController(animated: true)
@@ -63,9 +71,9 @@ extension CompleteEntryViewController: UITableViewDataSource {
    
    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
       let cell = tableView.dequeueReusableCell(withIdentifier: K.cellIdentifier, for: indexPath) as! SymptomCell
-      let foodString = selectedFoods.joined(separator: ", ").capitalized
+//      let foodString = selectedFoods.joined(separator: ", ").capitalized
       cell.leftPaddingConstraint.constant = 20
-      cell.symptomLabel?.text = foodString
+//      cell.symptomLabel?.text = foodString
       cell.symptomCheckmark.isHidden = true
       cell.symptomCheckCircle.isHidden = true
       return cell

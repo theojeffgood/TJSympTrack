@@ -18,7 +18,6 @@
 		E486D1A324474A0100358D35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E486D1A224474A0100358D35 /* AppDelegate.swift */; };
 		E486D1A524474A0100358D35 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E486D1A424474A0100358D35 /* SceneDelegate.swift */; };
 		E486D1AA24474A0100358D35 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E486D1A824474A0100358D35 /* Main.storyboard */; };
-		E486D1AD24474A0100358D35 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E486D1AB24474A0100358D35 /* DataModel.xcdatamodeld */; };
 		E486D1AF24474A0100358D35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E486D1AE24474A0100358D35 /* Assets.xcassets */; };
 		E486D1B224474A0100358D35 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E486D1B024474A0100358D35 /* LaunchScreen.storyboard */; };
 		E4877D2624475DA400BC249B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E4877D2524475DA400BC249B /* GoogleService-Info.plist */; };
@@ -41,6 +40,8 @@
 		E4877D4E2447805300BC249B /* ViewEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4877D4D2447805300BC249B /* ViewEntryViewController.swift */; };
 		E4877D502447807900BC249B /* PieChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4877D4F2447807900BC249B /* PieChartViewController.swift */; };
 		E4B2D268246D9B2300DA4E0C /* EmptyViewTableview.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B2D267246D9B2300DA4E0C /* EmptyViewTableview.swift */; };
+		E4BD8D9F24C2852A007A93F4 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BD8D9E24C2852A007A93F4 /* Food.swift */; };
+		E4BD8DA124C28534007A93F4 /* Symptom.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BD8DA024C28534007A93F4 /* Symptom.swift */; };
 		E4CE059E246E32C2008A62CB /* UIBUttonExtensionSetAlpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CE059D246E32C2008A62CB /* UIBUttonExtensionSetAlpha.swift */; };
 		E4D6777D2454662500C20308 /* UIImageResizeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D6777C2454662400C20308 /* UIImageResizeExtension.swift */; };
 		E4EFC8C62459FA6A003BB382 /* AnalyticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EFC8C52459FA6A003BB382 /* AnalyticsViewController.swift */; };
@@ -62,7 +63,6 @@
 		E486D1A224474A0100358D35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E486D1A424474A0100358D35 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E486D1A924474A0100358D35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		E486D1AC24474A0100358D35 /* TJSympTrack.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TJSympTrack.xcdatamodel; sourceTree = "<group>"; };
 		E486D1AE24474A0100358D35 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E486D1B124474A0100358D35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E486D1B324474A0100358D35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -86,6 +86,8 @@
 		E4877D4D2447805300BC249B /* ViewEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewEntryViewController.swift; sourceTree = "<group>"; };
 		E4877D4F2447807900BC249B /* PieChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartViewController.swift; sourceTree = "<group>"; };
 		E4B2D267246D9B2300DA4E0C /* EmptyViewTableview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyViewTableview.swift; sourceTree = "<group>"; };
+		E4BD8D9E24C2852A007A93F4 /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
+		E4BD8DA024C28534007A93F4 /* Symptom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symptom.swift; sourceTree = "<group>"; };
 		E4CE059D246E32C2008A62CB /* UIBUttonExtensionSetAlpha.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBUttonExtensionSetAlpha.swift; sourceTree = "<group>"; };
 		E4D6777C2454662400C20308 /* UIImageResizeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageResizeExtension.swift; sourceTree = "<group>"; };
 		E4EFC8C52459FA6A003BB382 /* AnalyticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsViewController.swift; sourceTree = "<group>"; };
@@ -179,7 +181,8 @@
 		E4877D2724476D0E00BC249B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				E486D1AB24474A0100358D35 /* DataModel.xcdatamodeld */,
+				E4BD8D9E24C2852A007A93F4 /* Food.swift */,
+				E4BD8DA024C28534007A93F4 /* Symptom.swift */,
 				E4877D2A24476D7A00BC249B /* FoodManager.swift */,
 				E4877D2C24476DAB00BC249B /* GoogleDataManager.swift */,
 				E40C1A0624957C5300FD8EBF /* UserData.swift */,
@@ -387,6 +390,7 @@
 				E40C1A01249412F900FD8EBF /* TableLoadingAnimation.swift in Sources */,
 				E4877D4E2447805300BC249B /* ViewEntryViewController.swift in Sources */,
 				E41E8C82246B202F0026B389 /* Alerts.swift in Sources */,
+				E4BD8D9F24C2852A007A93F4 /* Food.swift in Sources */,
 				E4877D3F24477C2800BC249B /* FoodCell.swift in Sources */,
 				E4877D4624477F4C00BC249B /* SelectedSymptoms.swift in Sources */,
 				E413D08924870A2A00BE2E09 /* LoadFoodDataFromGoogle.swift in Sources */,
@@ -395,12 +399,12 @@
 				E4877D3B24477C0F00BC249B /* SymptomCell.swift in Sources */,
 				E40C1A0724957C5300FD8EBF /* UserData.swift in Sources */,
 				E4CE059E246E32C2008A62CB /* UIBUttonExtensionSetAlpha.swift in Sources */,
-				E486D1AD24474A0100358D35 /* DataModel.xcdatamodeld in Sources */,
 				E40C1A0324943DDE00FD8EBF /* TableViewHeaderLabel.swift in Sources */,
 				E4877D2B24476D7A00BC249B /* FoodManager.swift in Sources */,
 				E4F35D8F246B65C600455E8C /* TabBarController.swift in Sources */,
 				E4B2D268246D9B2300DA4E0C /* EmptyViewTableview.swift in Sources */,
 				E486D1A324474A0100358D35 /* AppDelegate.swift in Sources */,
+				E4BD8DA124C28534007A93F4 /* Symptom.swift in Sources */,
 				E4877D3124476E0900BC249B /* TJSymptomsBrain.swift in Sources */,
 				E4EFC8C62459FA6A003BB382 /* AnalyticsViewController.swift in Sources */,
 				E4877D4824477F7200BC249B /* AddFoodViewController.swift in Sources */,
@@ -480,7 +484,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -534,7 +538,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -552,7 +556,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 78U3X38B3F;
 				INFOPLIST_FILE = TJSympTrack/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -560,7 +564,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hellogoodman.TJSympTrack;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -572,7 +576,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 78U3X38B3F;
 				INFOPLIST_FILE = TJSympTrack/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -580,7 +584,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hellogoodman.TJSympTrack;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -606,19 +610,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		E486D1AB24474A0100358D35 /* DataModel.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				E486D1AC24474A0100358D35 /* TJSympTrack.xcdatamodel */,
-			);
-			currentVersion = E486D1AC24474A0100358D35 /* TJSympTrack.xcdatamodel */;
-			path = DataModel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = E486D19724474A0100358D35 /* Project object */;
 }

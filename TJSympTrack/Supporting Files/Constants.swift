@@ -7,7 +7,7 @@
 //
 
 struct K {
-    static let searchbarPlaceholder = "Search"
+    static let searchbarDefaultText = "Search"
     static let cellIdentifier = "ReusableCell"
     static let cellNibName = "SymptomCell"
     static let foodCellIdentifier = "ReusableFoodCell"

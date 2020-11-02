@@ -1,4 +1,4 @@
-platform :ios, '13.0'
+platform :ios, '12.0'
 
 target 'TJSympTrack' do
   # Comment the next line if you don't want to use dynamic frameworks
@@ -10,5 +10,6 @@ target 'TJSympTrack' do
   pod 'FirebaseFirestoreSwift'
   pod 'Alamofire', '~> 5.1'
   pod 'Charts', '~> 3.5.0'
+  pod 'RealmSwift'
 
 end

@@ -7,11 +7,24 @@
 //
 
 import UIKit
-import CoreData
+import RealmSwift
 
 class AddSymptomsViewController: UIViewController, UITableViewDelegate {
    
-   var universeOfSymptoms = [[Symptom](),[Symptom]()]
+   let realm = try! Realm()
+   
+   var universeOfSymptoms: [Results<Symptom>] {
+      get {
+         let checkedItemsPredicate = NSPredicate(format: "isChecked == true", argumentArray: nil)
+         let uncheckedItemsPredicate = NSPredicate(format: "isChecked == false", argumentArray: nil)
+         let checkedItems = realm.objects(Symptom.self).filter(checkedItemsPredicate)
+         let uncheckedItems = realm.objects(Symptom.self).filter(uncheckedItemsPredicate)
+         return [checkedItems,uncheckedItems]
+      }
+//      set {
+//         symptomsList.reloadData()
+//      }
+   }
    var usersCurrentExperiencingSymptoms: [String] = []
    
    @IBOutlet weak var symptomsList: UITableView!
@@ -27,7 +40,7 @@ class AddSymptomsViewController: UIViewController, UITableViewDelegate {
    
    override func viewWillAppear(_ animated: Bool) {
       super.viewWillAppear(animated)
-      universeOfSymptoms = TJSymptomsBrain.loadSymptoms()
+//      universeOfSymptoms = TJSymptomsBrain.loadSymptoms()
       if universeOfSymptoms[1].isEmpty && universeOfSymptoms[0].count != 7{
          populateCommonSymptoms()
       }
@@ -51,46 +64,52 @@ class AddSymptomsViewController: UIViewController, UITableViewDelegate {
    
    func populateCommonSymptoms() {
       let baseSymptoms = ["Abdominal Pain","Bloating","Coughing","Dizziness","Hives","Inflamed Taste Buds","Itchy Mouth"]
-      let preExistingSymptoms = universeOfSymptoms[0].map({ return $0.title }) + universeOfSymptoms[1].map({ return $0.title })
+//      let preExistingSymptoms = universeOfSymptoms[0].map({ return $0.title }) + universeOfSymptoms[1].map({ return $0.title })
+      
+      let preExistingSymptoms = universeOfSymptoms[0].map({ return $0.title })
       
       for eachSymptom in baseSymptoms {
          if !(preExistingSymptoms.contains(eachSymptom)){
-            let newSymptom = Symptom(context: TJSymptomsBrain.context)
+            let newSymptom = Symptom()
             newSymptom.title = eachSymptom
             newSymptom.isChecked = false
-            self.universeOfSymptoms[1].append(newSymptom)
+//            self.universeOfSymptoms[1].append(newSymptom)
+            TJSymptomsBrain.saveSymptoms(symptom: newSymptom)
          } else {
             usersCurrentExperiencingSymptoms.append(eachSymptom)
          }
       }
-      TJSymptomsBrain.saveContext()
+//      TJSymptomsBrain.saveContext()
    }
    
    func resetUsersSelection(){
       var symptomCount = universeOfSymptoms[0].count - 1
       for eachSymptom in universeOfSymptoms[0] {
-         TJSymptomsBrain.context.delete(eachSymptom)
-         universeOfSymptoms[0].remove(at: symptomCount)
+         TJSymptomsBrain.deleteSymptoms(symptom: (eachSymptom))
+//         universeOfSymptoms[0].remove(at: symptomCount)
          symptomCount -= 1
       }
       for eachNewSymptom in usersCurrentExperiencingSymptoms {
-         let newSymptom = Symptom(context: TJSymptomsBrain.context)
+         let newSymptom = Symptom()
          newSymptom.title = eachNewSymptom
          newSymptom.isChecked = true
-         self.universeOfSymptoms[0].append(newSymptom)
+//         self.universeOfSymptoms[0].append(newSymptom)
+         TJSymptomsBrain.saveSymptoms(symptom: newSymptom)
       }
-      TJSymptomsBrain.saveContext()
+//      TJSymptomsBrain.saveSymptoms(symptom: newSymptom)
    }
    
    func clearUnSelectedSymptoms(){
       let unselectedSymptoms = universeOfSymptoms[1]
-      var symptomItemCount = unselectedSymptoms.count - 1
+//      var symptomItemCount = unselectedSymptoms.count - 1
       for eachSymptom in unselectedSymptoms {
-         TJSymptomsBrain.context.delete(eachSymptom)
-         universeOfSymptoms[1].remove(at: symptomItemCount)
-         symptomItemCount -= 1
+//         TJSymptomsBrain.context.delete(eachSymptom)
+         TJSymptomsBrain.deleteSymptoms(symptom: eachSymptom)
+//         universeOfSymptoms[1].remove(at: symptomItemCount)
+//         universeOfSymptoms[1].removeLast()
+//         symptomItemCount -= 1
       }
-      TJSymptomsBrain.saveContext()
+//      TJSymptomsBrain.saveContext()
    }
    
    func displayAnErrorMessage(){
@@ -103,38 +122,30 @@ class AddSymptomsViewController: UIViewController, UITableViewDelegate {
    //MARK: - TableView Delegate Methods
    
    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-      tableView.deselectRow(at: indexPath, animated: true)
-      
-      let usersSelectedCell = universeOfSymptoms[indexPath.section][indexPath.row]
-      usersSelectedCell.isChecked = !usersSelectedCell.isChecked
-      tableView.reloadRows(at: [IndexPath(row: indexPath.row, section: indexPath.section)], with: .none)
-      
-      let newIndexpathSection: Int?
-      let selectedSymptoms = universeOfSymptoms[0]
-      let newButtonStatus = selectedSymptoms.isEmpty
+      let usersSelectedSymptoms = universeOfSymptoms[0]
+      let newIndexPath: IndexPath?
       if indexPath.section == 0 {
-         newIndexpathSection = 1
-         if selectedSymptoms.count == 1 {
-            setButtonStatus(toStatus: newButtonStatus)
+         newIndexPath = [1, 0]
+         if usersSelectedSymptoms.count == 1 {
+            addSymptomsButton.deactivateButton()
          }
       } else {
-         newIndexpathSection = 0
-         if selectedSymptoms.isEmpty {
-            setButtonStatus(toStatus: newButtonStatus)
+         newIndexPath = [0, universeOfSymptoms[0].count]
+         if usersSelectedSymptoms.isEmpty {
+            addSymptomsButton.activateButton()
+            tableView.reloadSections([0], with: .none)
          }
       }
-      universeOfSymptoms[indexPath.section].remove(at: indexPath.row)
-      universeOfSymptoms[newIndexpathSection!].insert(usersSelectedCell, at: 0) //move to top of array
-      let destinationindexPath = NSIndexPath(row: 0, section: newIndexpathSection!)
-      tableView.moveRow(at: indexPath, to: destinationindexPath as IndexPath)
-      //        TJSymptomsBrain.saveContext()
-   }
-   
-   func setButtonStatus (toStatus status: Bool) {
-      addSymptomsButton.isEnabled = status
-      DispatchQueue.main.asyncAfter(deadline: .now() + 0.275){
-         self.symptomsList.reloadData()
+
+      let usersSelectedCell = universeOfSymptoms[indexPath.section][indexPath.row]
+      try! realm.write{
+         usersSelectedCell.isChecked = !usersSelectedCell.isChecked
       }
+      guard let cell = tableView.cellForRow(at: indexPath) as? SymptomCell else {return}
+      cell.symptomCheckmark.isHidden = !(usersSelectedCell.isChecked)
+            
+      tableView.deselectRow(at: indexPath, animated: true)
+      tableView.moveRow(at: indexPath, to: newIndexPath ?? [0, 0])
    }
 }
 
@@ -160,12 +171,8 @@ extension AddSymptomsViewController: UITableViewDataSource {
    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
       let headerView = UITableViewHeaderFooterView()
       headerView.contentView.backgroundColor = UIColor.white
+      headerView.textLabel?.textColor = UIColor(named: K.BrandColors.blue)
       
-      if !(universeOfSymptoms[section].isEmpty) {
-         headerView.textLabel?.textColor = UIColor(named: K.BrandColors.blue)
-      } else {
-         headerView.textLabel?.textColor = UIColor.systemGray
-      }
       return headerView
    }
    
